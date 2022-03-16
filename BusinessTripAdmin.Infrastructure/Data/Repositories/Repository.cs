@@ -183,7 +183,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.Repositories
 
         public void DeleteRange<T>(Expression<Func<T, bool>> deleteWhereClause) where T : class
         {
-            var entities = All(deleteWhereClause);
+            var entities = GetAll(deleteWhereClause);
             DeleteRange(entities);
         }
     }
