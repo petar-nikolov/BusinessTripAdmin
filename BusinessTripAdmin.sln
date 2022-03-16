@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTripAdmin", "BusinessTripAdmin\BusinessTripAdmin.csproj", "{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin", "BusinessTripAdmin\BusinessTripAdmin.csproj", "{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTripAdmin.Core", "BusinessTripAdmin.Core\BusinessTripAdmin.Core.csproj", "{77619A4D-B926-4090-B114-FE945A017DE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTripAdmin.Infrastructure", "BusinessTripAdmin.Infrastructure\BusinessTripAdmin.Infrastructure.csproj", "{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77619A4D-B926-4090-B114-FE945A017DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77619A4D-B926-4090-B114-FE945A017DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77619A4D-B926-4090-B114-FE945A017DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77619A4D-B926-4090-B114-FE945A017DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
