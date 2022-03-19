@@ -1,11 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using BusinessTripAdmin.Infrastructure.Constants;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class EmployeeBusinessTrip : BaseEntity
     {
+        [Required]
+        [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string TripFrom { get; set; }
 
+        [Required]
+        [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string TripTo { get; set; }
 
         public DateTime DateFrom { get; set; }
