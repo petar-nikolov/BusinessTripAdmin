@@ -4,9 +4,9 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class EmployeeBusinessTrip : BaseEntity
     {
-        public Country TripFrom { get; set; }
+        public string TripFrom { get; set; }
 
-        public Country TripTo { get; set; }
+        public string TripTo { get; set; }
 
         public DateTime DateFrom { get; set; }
 

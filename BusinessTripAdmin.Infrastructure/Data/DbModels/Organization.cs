@@ -4,6 +4,6 @@
     {
         public string OrganizationName { get; set; }
 
-        public Country LocalCountry { get; set; }
+        public string LocalCountry { get; set; }
     }
 }

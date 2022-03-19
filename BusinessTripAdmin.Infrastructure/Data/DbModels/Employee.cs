@@ -10,10 +10,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         public bool IsActive { get; set; }
 
-        [ForeignKey(nameof(Position))]
-        public Guid PositionId { get; set; }
-
-        public Position Position { get; set; }
+        public string PositionName { get; set; }
 
         [ForeignKey(nameof(Organization))]
         public Guid OrganizationId { get; set; }
