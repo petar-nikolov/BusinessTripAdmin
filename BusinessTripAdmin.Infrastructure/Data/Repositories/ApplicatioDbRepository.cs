@@ -1,14 +1,12 @@
-﻿using BusinessTripAdmin.Infrastructure.Data;
-using BusinessTripAdmin.Infrastructure.Data.Abstraction;
-using BusinessTripAdmin.Infrastructure.Data.Repositories;
+﻿using BusinessTripAdmin.Infrastructure.Data.Abstraction;
 
-namespace Warehouse.Infrastructure.Data.Repositories
+namespace BusinessTripAdmin.Infrastructure.Data.Repositories
 {
     public class ApplicatioDbRepository : Repository, IApplicatioDbRepository
     {
         public ApplicatioDbRepository(ApplicationDbContext context)
         {
-            this.Context = context;
+            Context = context;
         }
     }
 }
