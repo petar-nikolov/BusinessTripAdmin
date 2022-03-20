@@ -1,4 +1,4 @@
-using BusinessTripAdmin.Infrastructure;
+using BusinessTripAdmin.Infrastructure.Constants;
 using BusinessTripAdmin.Infrastructure.Data;
 using BusinessTripAdmin.ModelBinders;
 using Microsoft.AspNetCore.Identity;

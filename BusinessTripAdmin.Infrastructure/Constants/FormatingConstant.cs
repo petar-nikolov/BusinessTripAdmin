@@ -1,4 +1,4 @@
-﻿namespace BusinessTripAdmin.Infrastructure
+﻿namespace BusinessTripAdmin.Infrastructure.Constants
 {
     public class FormatingConstant
     {

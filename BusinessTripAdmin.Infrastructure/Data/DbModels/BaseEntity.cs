@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BusinessTripAdmin.Infrastructure.Constants;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace BusinessTripAdmin.Infrastructure.Data.DbModels
