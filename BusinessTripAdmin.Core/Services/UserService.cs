@@ -36,5 +36,19 @@ namespace BusinessTripAdmin.Core.Services
                     FullName = $"{x.FirstName} {x.LastName}"
                 }).ToListAsync();
         }
+
+        public async Task<bool> UpdateUser(UserEdit userEdit)
+        {
+            var userToUpdate = await _applicatioDbRepository.GetAll<ApplicationUser>().FirstOrDefaultAsync(x => x.Id == userEdit.Id);
+            if (userToUpdate != null)
+            {
+                userToUpdate.FirstName = userEdit.FirstName;
+                userToUpdate.LastName = userEdit.LastName;
+                await _applicatioDbRepository.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

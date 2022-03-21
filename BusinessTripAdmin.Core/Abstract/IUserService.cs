@@ -7,5 +7,7 @@ namespace BusinessTripAdmin.Core.Abstract
         Task<IEnumerable<UserList>> GetUsers();
 
         Task<UserEdit> GetUserForEdit(string id);
+
+        Task<bool> UpdateUser(UserEdit userEdit);
     }
 }
