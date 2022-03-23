@@ -15,6 +15,11 @@ namespace BusinessTripAdmin.Core.Services
             _applicatioDbRepository = applicatioDbRepository;
         }
 
+        //public async Task<ApplicationUser> GetApplicationUser(string id)
+        //{
+        //    return await _applicatioDbRepository.GetByIdAsync<ApplicationUser>(id);
+        //}
+
         public async Task<UserEdit> GetUserForEdit(string id)
         {
             var user = await _applicatioDbRepository.GetByIdAsync<ApplicationUser>(id);

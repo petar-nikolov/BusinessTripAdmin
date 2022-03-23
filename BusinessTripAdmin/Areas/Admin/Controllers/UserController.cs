@@ -1,20 +1,25 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
 using BusinessTripAdmin.Core.Constants;
 using BusinessTripAdmin.Core.ViewModels;
+using BusinessTripAdmin.Infrastructure.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessTripAdmin.Areas.Admin.Controllers
 {
     public class UserController : BaseAreaController
     {
         private readonly RoleManager<IdentityRole> _rolemanager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserService _userService;
 
-        public UserController(RoleManager<IdentityRole> rolemanager, IUserService userService)
+        public UserController(RoleManager<IdentityRole> rolemanager, IUserService userService, UserManager<ApplicationUser> userManager)
         {
             _rolemanager = rolemanager;
             _userService = userService;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -37,12 +42,12 @@ namespace BusinessTripAdmin.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UserEdit editModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(editModel);
             }
 
-            if(await _userService.UpdateUser(editModel))
+            if (await _userService.UpdateUser(editModel))
             {
                 ViewData[MessageConstants.SuccessMessage] = "Update succeeded!";
             }
@@ -54,10 +59,34 @@ namespace BusinessTripAdmin.Areas.Admin.Controllers
             return View(editModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SetRole()
+        public async Task<IActionResult> Roles(string id)
         {
-            return Ok();
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            var model = new UserRolesList
+            {
+                UserId = user.Id,
+                Name = $"{user.FirstName} {user.LastName}"
+            };
+
+            var roles = _rolemanager.Roles.ToList();
+            var roleItems = roles
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id,
+                    Selected = _userManager.IsInRoleAsync(user, x.Name).Result
+                }).ToList();
+
+            ViewBag.RoleItems = roleItems;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Roles(UserRolesList model)
+        {
+            return Ok(model);
         }
 
         public async Task<IActionResult> CreateRole()

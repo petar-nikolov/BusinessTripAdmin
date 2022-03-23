@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace BusinessTripAdmin.Infrastructure.Data.Common
+namespace BusinessTripAdmin.Infrastructure.Data.Abstraction
 {
     /// <summary>
     /// Abstraction of repository access methods
