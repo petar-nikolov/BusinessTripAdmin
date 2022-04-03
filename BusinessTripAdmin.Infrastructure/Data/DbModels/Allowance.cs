@@ -4,6 +4,11 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class Allowance : BaseEntity
     {
+        public Allowance()
+        {
+            Countries = new List<Country>();
+        }
+
         public decimal DailyAllowance { get; set; }
 
         public decimal AccomodationAllowance { get; set; }
@@ -12,9 +17,6 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         public DateTime? ValidTo { get; set; }
 
-        [ForeignKey(nameof(Country))]
-        public Guid CountryId { get; set; }
-
-        public Country Country { get; set; }
+        public ICollection<Country> Countries { get; set; }
     }
 }

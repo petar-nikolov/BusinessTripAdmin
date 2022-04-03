@@ -26,7 +26,7 @@ namespace BusinessTripAdmin.Infrastructure.Extensions
 
             foreach (var country in countiesToImport)
             {
-                modelBuilder.Entity<Country>().HasData(country);
+                //modelBuilder.Entity<Country>().HasData(country);
             }
         }
     }

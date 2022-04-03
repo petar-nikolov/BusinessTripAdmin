@@ -15,7 +15,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
 
         public DateTime CreatedDate { get; set; }
 
