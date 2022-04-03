@@ -1,5 +1,6 @@
 ﻿using BusinessTripAdmin.Infrastructure.Data.DbModels;
 using BusinessTripAdmin.Infrastructure.Data.Identity;
+using BusinessTripAdmin.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,12 @@ namespace BusinessTripAdmin.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Seed();
         }
 
         public DbSet<Employee> Employees { get; set; }

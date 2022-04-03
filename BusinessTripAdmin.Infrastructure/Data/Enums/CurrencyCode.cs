@@ -2,6 +2,7 @@
 {
     public enum CurrencyCode
     {
+        UNDEFINED,
         USD,
         BGN,
         EUR,
