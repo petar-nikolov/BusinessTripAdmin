@@ -1,33 +1,54 @@
-﻿using BusinessTripAdmin.Infrastructure.Data.Enums;
+﻿using BusinessTripAdmin.Infrastructure.Data.DbModels;
+using BusinessTripAdmin.Infrastructure.Data.Enums;
 using System.Reflection;
 
 namespace BusinessTripAdmin.Infrastructure
 {
     public static class Helpers
     {
-        public static Dictionary<string, string> ReadCountriesFromFile()
+        public static IDictionary<Country, Allowance> ReadCountriesFromFile()
         {
             var countryNamesFileName = "Countries.txt";
             var countryNamesFilePath = GetPathByFileName(countryNamesFileName);
-            var countries = new List<string>();
+            var splitCountryInfo = new List<string>();
 
             using (var reader = new StreamReader(countryNamesFilePath))
             {
                 var fileReadLines = reader.ReadToEnd();
-                countries = fileReadLines.Trim().Replace("\n", "").Replace("\r", "").Split(",").ToList();
+                splitCountryInfo = fileReadLines.Trim().Replace("\n", "").Replace("\r", "").Split(",").ToList();
             }
 
-            var countryCurrencies = new Dictionary<string, string>();
+            var countries = new Dictionary<Country, Allowance>();
 
-            foreach (var country in countries)
+            foreach (var countryInfo in splitCountryInfo)
             {
-                var countrySplit = country.Split("-");
+                var countrySplit = countryInfo.Split("-");
                 var countryName = countrySplit[0];
                 var countryCurrency = countrySplit[1];
-                countryCurrencies.Add(countryName, countryCurrency);
+                var allowancePerDay = decimal.Parse(countrySplit[2]);
+                var accomodation = decimal.Parse(countrySplit[3]);
+
+                var allowance = new Allowance
+                {
+                    Id = Guid.NewGuid(),
+                    DailyAllowance = allowancePerDay,
+                    AccomodationAllowance = accomodation,
+                    ValidFrom = DateTime.Today,
+                    ValidTo = null
+                };
+
+                var country = new Country
+                {
+                    CountryName = countryName,
+                    Currency = countryCurrency,
+                    CurrencyCode = GetCurrencyCodeByCurrencyName(countryCurrency),
+                    AllowanceId = allowance.Id
+                };
+
+                countries.Add(country, allowance);
             }
 
-            return countryCurrencies;
+            return countries;
         }
 
         public static CurrencyCode GetCurrencyCodeByCurrencyName(string currencyName)
