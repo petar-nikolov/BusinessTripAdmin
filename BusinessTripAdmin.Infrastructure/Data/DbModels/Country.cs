@@ -15,7 +15,13 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         [Required]
         [StringLength(ValidationConstants.CurrencyMaxLength)]
-        public string Currency { get; set; }
+        public string TripCurrency { get; set; }
+
+        [StringLength(ValidationConstants.CurrencyMaxLength)]
+        public string? LocalCurrency { get; set; }
+
+        [StringLength(ValidationConstants.DescriptionMaxLength)]
+        public string? Description { get; set; }
 
         [ForeignKey(nameof(Allowance))]
         public Guid AllowanceId { get; set; }
