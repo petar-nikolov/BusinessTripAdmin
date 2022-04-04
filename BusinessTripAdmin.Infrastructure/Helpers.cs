@@ -28,23 +28,24 @@ namespace BusinessTripAdmin.Infrastructure
                 var allowancePerDay = decimal.Parse(countrySplit[2]);
                 var accomodation = decimal.Parse(countrySplit[3]);
 
-                var allowance = new Allowance
-                {
-                    Id = Guid.NewGuid(),
-                    DailyAllowance = allowancePerDay,
-                    AccomodationAllowance = accomodation,
-                    ValidFrom = DateTime.Today,
-                    ValidTo = null
-                };
+
 
                 var country = new Country
                 {
                     CountryName = countryName,
                     TripCurrency = countryCurrency,
                     CurrencyCode = GetCurrencyCodeByCurrencyName(countryCurrency),
-                    AllowanceId = allowance.Id
                 };
 
+                var allowance = new Allowance
+                {
+                    Id = Guid.NewGuid(),
+                    DailyAllowance = allowancePerDay,
+                    AccomodationAllowance = accomodation,
+                    ValidFrom = DateTime.Today,
+                    ValidTo = null,
+                    CountryId = country.Id
+                };
                 countries.Add(country, allowance);
             }
 

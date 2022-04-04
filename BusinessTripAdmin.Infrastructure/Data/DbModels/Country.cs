@@ -22,10 +22,5 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         [StringLength(ValidationConstants.DescriptionMaxLength)]
         public string? Description { get; set; }
-
-        [ForeignKey(nameof(Allowance))]
-        public Guid AllowanceId { get; set; }
-
-        public Allowance Allowance { get; set; }
     }
 }
