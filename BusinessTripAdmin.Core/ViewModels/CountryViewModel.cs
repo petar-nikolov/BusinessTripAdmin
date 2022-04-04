@@ -14,8 +14,8 @@ namespace BusinessTripAdmin.Core.ViewModels
 
         public string? Description { get; set; }
 
-        public decimal DailyAllowance { get; set; }
+        public decimal? DailyAllowance { get; set; }
 
-        public decimal AccomodationAllowance { get; set; }
+        public decimal? AccomodationAllowance { get; set; }
     }
 }

@@ -7,6 +7,11 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class Country : BaseEntity
     {
+        public Country()
+        {
+            Allowances = new List<Allowance>();
+        }
+
         [Required]
         [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string CountryName { get; set; }
@@ -22,5 +27,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         [StringLength(ValidationConstants.DescriptionMaxLength)]
         public string? Description { get; set; }
+
+        public ICollection<Allowance> Allowances { get; set; }
     }
 }

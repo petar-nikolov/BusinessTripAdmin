@@ -1,0 +1,53 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@model IEnumerable<CountryViewModel>
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Countries</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+                <tr>
+                    <th>Country Name</th>
+                    <th>Business Trip Currency</th>
+                    <th>Local Currency</th>
+                    <th>Daily Allowance</th>
+                    <th>Accomodation Allowance</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var countryViewModel in Model)
+                    {
+                        <tr>
+                            <td>@countryViewModel.CountryName</td>
+                            <td>@countryViewModel.TripCurrency</td>
+                            <td>@countryViewModel.LocalCurrency</td>
+                            <td>@countryViewModel.DailyAllowance</td>
+                            <td>@countryViewModel.AccomodationAllowance</td>
+                            <td>@countryViewModel.Description</td>
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

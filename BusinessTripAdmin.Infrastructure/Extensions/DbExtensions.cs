@@ -16,5 +16,11 @@ namespace BusinessTripAdmin.Infrastructure.Extensions
                 modelBuilder.Entity<Country>().HasData(countryAllowance.Key);
             }
         }
+
+        public static Allowance GetCurrentCountryAllowance(this Country country)
+        {
+            var allowanceToReturn = country.Allowances.FirstOrDefault(x => x.ValidFrom <= DateTime.Today && (x.ValidTo > DateTime.Today || x.ValidTo == null));
+            return allowanceToReturn;
+        }
     }
 }

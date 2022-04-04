@@ -13,9 +13,10 @@ namespace BusinessTripAdmin.Controllers
             _countryService = countryService;
         }
 
-        //public IActionResult GetCountries()
-        //{
-        //    var countries = _countryService.GetAllCountries();
-        //}
+        public async Task<IActionResult> GetCountries()
+        {
+            var countries = await _countryService.GetAllCountries();
+            return View(countries);
+        }
     }
 }
