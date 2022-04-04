@@ -40,7 +40,7 @@ namespace BusinessTripAdmin.Infrastructure
                 var country = new Country
                 {
                     CountryName = countryName,
-                    Currency = countryCurrency,
+                    TripCurrency = countryCurrency,
                     CurrencyCode = GetCurrencyCodeByCurrencyName(countryCurrency),
                     AllowanceId = allowance.Id
                 };

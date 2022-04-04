@@ -1,6 +1,6 @@
 ﻿namespace BusinessTripAdmin.Infrastructure.Data.Abstraction
 {
-    public interface IApplicatioDbRepository : IRepository
+    public interface IApplicationDbRepository : IRepository
     {
     }
 }
