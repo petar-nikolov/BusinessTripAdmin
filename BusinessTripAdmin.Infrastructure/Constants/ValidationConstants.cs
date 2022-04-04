@@ -11,5 +11,7 @@
         public const int CountryNameMaxLength = 50;
 
         public const int CurrencyMaxLength = 20;
+
+        public const int DescriptionMaxLength = 500;
     }
 }

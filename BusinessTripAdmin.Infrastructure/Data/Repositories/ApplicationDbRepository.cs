@@ -2,9 +2,9 @@
 
 namespace BusinessTripAdmin.Infrastructure.Data.Repositories
 {
-    public class ApplicatioDbRepository : Repository, IApplicatioDbRepository
+    public class ApplicationDbRepository : Repository, IApplicationDbRepository
     {
-        public ApplicatioDbRepository(ApplicationDbContext context)
+        public ApplicationDbRepository(ApplicationDbContext context)
         {
             Context = context;
         }
