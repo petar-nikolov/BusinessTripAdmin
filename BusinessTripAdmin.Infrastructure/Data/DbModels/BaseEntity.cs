@@ -6,14 +6,16 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class BaseEntity
     {
+        private string dateTimeNow = DateTime.Now.ToString(FormatingConstants.FullTimeFormat, CultureInfo.InvariantCulture);
+       
         protected BaseEntity()
         {
             Id = Guid.NewGuid();
-            CreatedDate = DateTime.ParseExact(DateTime.Now.ToString(), FormatingConstant.NormalDateFormat, CultureInfo.InvariantCulture);
+            CreatedDate = DateTime.ParseExact(dateTimeNow, FormatingConstants.FullTimeFormat, CultureInfo.InvariantCulture);
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
 
         public DateTime CreatedDate { get; set; }
 

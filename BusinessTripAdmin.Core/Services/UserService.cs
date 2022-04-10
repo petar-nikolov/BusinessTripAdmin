@@ -8,9 +8,9 @@ namespace BusinessTripAdmin.Core.Services
 {
     public class UserService : IUserService
     {
-        private readonly IApplicatioDbRepository _applicatioDbRepository;
+        private readonly IApplicationDbRepository _applicatioDbRepository;
 
-        public UserService(IApplicatioDbRepository applicatioDbRepository)
+        public UserService(IApplicationDbRepository applicatioDbRepository)
         {
             _applicatioDbRepository = applicatioDbRepository;
         }

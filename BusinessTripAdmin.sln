@@ -5,9 +5,9 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin", "BusinessTripAdmin\BusinessTripAdmin.csproj", "{F8F3D46F-F439-443A-A9AA-4FAA0C02FB7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTripAdmin.Core", "BusinessTripAdmin.Core\BusinessTripAdmin.Core.csproj", "{77619A4D-B926-4090-B114-FE945A017DE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin.Core", "BusinessTripAdmin.Core\BusinessTripAdmin.Core.csproj", "{77619A4D-B926-4090-B114-FE945A017DE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTripAdmin.Infrastructure", "BusinessTripAdmin.Infrastructure\BusinessTripAdmin.Infrastructure.csproj", "{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin.Infrastructure", "BusinessTripAdmin.Infrastructure\BusinessTripAdmin.Infrastructure.csproj", "{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\webfiles\**" />
+    <Content Remove="Areas\webfiles\**" />
+    <EmbeddedResource Remove="Areas\webfiles\**" />
+    <None Remove="Areas\webfiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
@@ -23,6 +30,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessTripAdmin.Core\BusinessTripAdmin.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
 
 </Project>

@@ -69,12 +69,12 @@ namespace BusinessTripAdmin.Areas.Admin.Controllers
                 Name = $"{user.FirstName} {user.LastName}"
             };
 
-            var roles = _rolemanager.Roles.ToList();
+            var roles = await _rolemanager.Roles.ToListAsync();
             var roleItems = roles
                 .Select(x => new SelectListItem
                 {
                     Text = x.Name,
-                    Value = x.Id,
+                    Value = x.Name,
                     Selected = _userManager.IsInRoleAsync(user, x.Name).Result
                 }).ToList();
 
@@ -86,7 +86,16 @@ namespace BusinessTripAdmin.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Roles(UserRolesList model)
         {
-            return Ok(model);
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == model.UserId);
+            var userRoles = await _userManager.GetRolesAsync(user);
+            await _userManager.RemoveFromRolesAsync(user, userRoles);
+            
+            if (model.RoleNames.Any())
+            {
+                await _userManager.AddToRolesAsync(user, model.RoleNames);
+            }
+
+            return RedirectToAction(nameof(ManageUsers));
         }
 
         public async Task<IActionResult> CreateRole()
