@@ -26,7 +26,7 @@ public class EmailSender : IEmailSender
 
     public async Task Execute(string subject, string message, string toEmail)
     {
-        var apiKey = _configuration.GetValue<string>("SendGridApiKey");
+        var apiKey = _configuration.GetValue<string>("SendGridKey");
         var client = new SendGridClient(apiKey);
         var from = new EmailAddress("p.nikollov@students.softuni.bg");
         var to = new EmailAddress(toEmail);
