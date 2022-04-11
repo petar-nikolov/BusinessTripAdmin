@@ -1,0 +1,90 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@using BusinessTripAdmin.Infrastructure.Data.Enums
+@model CreateCountry
+@{
+    ViewData["Title"] = "Create Country";
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="card card-secondary">
+            <div class="card-header">
+            </div>
+
+
+            <form id="create" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="CountryName" class="form-label">Country Name</label>
+                        <input asp-for="CountryName" class="form-control" aria-required="true" placeholder="Enter country name" />
+                        <span asp-validation-for="CountryName" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group-prepend">
+
+                        @{
+                            var items = Enum.GetValues<CurrencyCode>().ToList().Select(x => new SelectListItem
+            {
+                Text = x.ToString(),
+                Value = x.ToString(),
+                Selected = false
+            }).ToList();
+                        }
+                        <select asp-for="CurrencyCode" asp-items="@items" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TripCurrency" class="form-label">Trip Currency</label>
+                        <input asp-for="TripCurrency" class="form-control" aria-required="true" placeholder="Enter trip currency" />
+                        <span asp-validation-for="TripCurrency" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LocalCurrency" class="form-label">Local Currency</label>
+                        <input asp-for="LocalCurrency" class="form-control" aria-required="true" placeholder="Enter local currency" />
+                        <span asp-validation-for="LocalCurrency" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <input asp-for="Description" class="form-control" aria-required="true" placeholder="Enter description" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DailyAllowance" class="form-label">Daily Allowance</label>
+                        <input asp-for="DailyAllowance" class="form-control" aria-required="true" placeholder="Enter daily allowance" />
+                        <span asp-validation-for="DailyAllowance" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AccomodationAllowance" class="form-label">Accomodation Allowance</label>
+                        <input asp-for="AccomodationAllowance" class="form-control" aria-required="true" placeholder="Enter accomodation allowance" />
+                        <span asp-validation-for="AccomodationAllowance" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ValidFrom" class="form-label">Valid From</label>
+                        <input asp-for="ValidFrom" class="form-control" aria-required="true" placeholder="Enter valid from date" />
+                        <span asp-validation-for="ValidFrom" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ValidTo" class="form-label">Valid To</label>
+                        <input asp-for="ValidTo" class="form-control" aria-required="true" placeholder="Enter valid to date" />
+                        <span asp-validation-for="ValidTo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" asp-controller="Country" class="btn btn-block btn-light btn-sm">Create Country</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+}

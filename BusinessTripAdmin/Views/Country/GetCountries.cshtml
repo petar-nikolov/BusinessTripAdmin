@@ -3,7 +3,20 @@
 @{
     ViewData["Title"] = "Countries";
 }
+<div class="row">
+    <table class="table">
+        <tr>
+            <td class="col-4">
+                <a href="/Country/Create" class="btn btn-block btn-default">Create Country</button>
+                @*<a asp-action="Create" asp-controller="Country" class="btn btn-block btn-default">Create Country</a>*@
 
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+
+</div>
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Countries</h3>
@@ -29,6 +42,8 @@
                     <th>Daily Allowance</th>
                     <th>Accomodation Allowance</th>
                     <th>Description</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +57,12 @@
                             <td>@countryViewModel.DailyAllowance</td>
                             <td>@countryViewModel.AccomodationAllowance</td>
                             <td>@countryViewModel.Description</td>
+                            <td>
+                                <button type="button" class="btn btn-block btn-default">Review Allowances</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-block btn-default">Edit</button>
+                            </td>
                         </tr>
 
                     }
