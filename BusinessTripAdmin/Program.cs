@@ -1,3 +1,4 @@
+using BusinessTripAdmin.Core.Services;
 using BusinessTripAdmin.Infrastructure.Constants;
 using BusinessTripAdmin.Infrastructure.Data;
 using BusinessTripAdmin.ModelBinders;
@@ -21,6 +22,7 @@ builder.Services.AddControllersWithViews()
     });
 
 builder.Services.AddApplicationServices();
+//builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 var app = builder.Build();
 

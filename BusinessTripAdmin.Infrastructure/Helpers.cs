@@ -28,8 +28,6 @@ namespace BusinessTripAdmin.Infrastructure
                 var allowancePerDay = decimal.Parse(countrySplit[2]);
                 var accomodation = decimal.Parse(countrySplit[3]);
 
-
-
                 var country = new Country
                 {
                     CountryName = countryName,
