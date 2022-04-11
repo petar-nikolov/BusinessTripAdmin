@@ -3,6 +3,7 @@ using BusinessTripAdmin.Core.Services;
 using BusinessTripAdmin.Infrastructure.Data;
 using BusinessTripAdmin.Infrastructure.Data.Abstraction;
 using BusinessTripAdmin.Infrastructure.Data.Repositories;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -25,6 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddTransient<IEmailSender, EmailSender>();
 
             return services;
         }
