@@ -11,5 +11,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.Identity
 
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string? LastName { get; set; }
+
+        public Guid OrganizationId { get; set; }
     }
 }
