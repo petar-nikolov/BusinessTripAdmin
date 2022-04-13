@@ -3,20 +3,22 @@
 @{
     ViewData["Title"] = "Countries";
 }
-<div class="row">
-    <table class="table">
-        <tr>
-            <td class="col-4">
-                <a href="/Country/Create" class="btn btn-block btn-default">Create Country</button>
-                @*<a asp-action="Create" asp-controller="Country" class="btn btn-block btn-default">Create Country</a>*@
 
-            </td>
-            <td>
-            </td>
-        </tr>
-    </table>
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row">
+        <table class="table">
+            <tr>
+                <td class="col-4">
+                    <a href="/Country/Create" class="btn btn-block btn-default">Create Country</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
 
-</div>
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Countries</h3>
@@ -54,17 +56,37 @@
                             <td>@countryViewModel.CountryName</td>
                             <td>@countryViewModel.TripCurrency</td>
                             <td>@countryViewModel.LocalCurrency</td>
-                            <td>@countryViewModel.DailyAllowance</td>
-                            <td>@countryViewModel.AccomodationAllowance</td>
+                            @if (countryViewModel.DailyAllowance == null)
+                            {
+                                <td>There is no current allowance</td>
+                            }
+                            else
+                            {
+                                <td>@countryViewModel.DailyAllowance</td>
+                            }
+
+                            @if (countryViewModel.AccomodationAllowance == null)
+                            {
+                                <td>There is no current allowance</td>
+                            }
+                            else
+                            {
+                                <td>@countryViewModel.AccomodationAllowance</td>
+                            }
                             <td>@countryViewModel.Description</td>
                             <td>
-                                <button type="button" class="btn btn-block btn-default">Review Allowances</button>
+                                <a href="/Country/ReviewAllowances/@countryViewModel.CountryName" class="btn btn-block btn-default">Review Allowances</a>
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-block btn-default">Edit</button>
-                            </td>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a href="/Country/EditCountry/@countryViewModel.CountryName" class="btn btn-block btn-default">Edit Country</a>
+                                </td>
+                                <td>
+                                    <a href="/Country/CreateAllowance/@countryViewModel.CountryName" class="btn btn-block btn-default">Create Allowance</a>
+                                </td>
+                            }
                         </tr>
-
                     }
                 }
             </tbody>

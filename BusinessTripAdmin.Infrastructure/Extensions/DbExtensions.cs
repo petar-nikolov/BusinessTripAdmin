@@ -20,6 +20,10 @@ namespace BusinessTripAdmin.Infrastructure.Extensions
         public static Allowance GetCurrentCountryAllowance(this Country country)
         {
             var allowanceToReturn = country.Allowances.FirstOrDefault(x => x.ValidFrom <= DateTime.Today && (x.ValidTo > DateTime.Today || x.ValidTo == null));
+            if(allowanceToReturn == null)
+            {
+                allowanceToReturn = new Allowance();
+            }
             return allowanceToReturn;
         }
     }
