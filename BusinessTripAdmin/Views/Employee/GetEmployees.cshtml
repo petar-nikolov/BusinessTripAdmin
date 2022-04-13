@@ -1,4 +1,7 @@
-﻿@using BusinessTripAdmin.Core.ViewModels
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
+@{ string userId = _userManager.GetUserId(User); }
+@using BusinessTripAdmin.Core.ViewModels
+@using BusinessTripAdmin.Infrastructure.Data.Identity
 @model IEnumerable<EmployeeViewModel>
 @{
     ViewData["Title"] = "Employees";
@@ -10,7 +13,7 @@
         <table class="table">
             <tr>
                 <td class="col-4">
-                    <a href="/Country/Create" class="btn btn-block btn-default">Create Employee</a>
+                    <a href="/Employee/CreateEmployee/@userId" class="btn btn-block btn-default">Create Employee</a>
                 </td>
                 <td>
                 </td>
@@ -21,7 +24,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Countries</h3>
+        <h3 class="card-title">Employees</h3>
         <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -65,5 +68,8 @@
             </tbody>
         </table>
     </div>
-
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

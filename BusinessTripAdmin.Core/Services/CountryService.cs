@@ -73,7 +73,10 @@ namespace BusinessTripAdmin.Core.Services
                 await _applicationDbRepository.AddAsync<Country>(country);
                 await _applicationDbRepository.SaveChangesAsync();
             }
-            catch (OperationCanceledException)
+            catch (Exception ex)
+            when (ex is DbUpdateException ||
+                  ex is DbUpdateConcurrencyException ||
+                  ex is OperationCanceledException)
             {
                 isCreated = false;
             }

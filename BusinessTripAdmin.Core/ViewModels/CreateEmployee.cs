@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BusinessTripAdmin.Core.ViewModels
 {
-    public class EmployeeViewModel
+    public class CreateEmployee
     {
-        public Guid OrganizationId { get; set; } 
-
-        public Guid EmployeeId { get; set; }
-
+        [Required]
+        [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string FirstName { get; set; }
 
+        [Required]
+        [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string LastName { get; set; }
 
+        [Required]
+        [StringLength(ValidationConstants.PositonNameMaxLength)]
         public string PositionName { get; set; }
     }
 }

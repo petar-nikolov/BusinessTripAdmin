@@ -1,4 +1,6 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
+using BusinessTripAdmin.Core.Constants;
+using BusinessTripAdmin.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessTripAdmin.Controllers
@@ -14,34 +16,35 @@ namespace BusinessTripAdmin.Controllers
 
         public async Task<IActionResult> GetEmployees()
         {
-            var countries = await _employeeService.GetAllEmployees();
-            return View(countries);
+            var employees = await _employeeService.GetAllEmployees();
+            return View(employees);
         }
 
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> CreateEmployee()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Create(CreateCountry createCountry)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(createCountry);
-        //    }
+        [HttpPost]
+        [Route("Employee/CreateEmployee/{organizationId}")]
+        public async Task<IActionResult> CreateEmployee(CreateEmployee createEmployee, string organizationId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(createEmployee);
+            }
 
-        //    if (await _countryService.CreateCountry(createCountry))
-        //    {
-        //        ViewData[MessageConstants.SuccessMessage] = "Country has been created!";
-        //    }
-        //    else
-        //    {
-        //        ViewData[MessageConstants.ErrorMessage] = "Country creation failed!";
-        //    }
+            if (await _employeeService.CreateEmployee(createEmployee, organizationId))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Emplyoee has been created!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Employee creation failed!";
+            }
 
-        //    return Redirect("/Country/GetCountries");
-        //}
+            return Redirect("/Employee/GetEmployees");
+        }
 
     }
 }
