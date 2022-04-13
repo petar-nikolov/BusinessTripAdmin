@@ -12,7 +12,7 @@ namespace BusinessTripAdmin.Controllers
             _employeeService = employeeService;
         }
 
-        public async Task<IActionResult> GetCountries()
+        public async Task<IActionResult> GetEmployees()
         {
             var countries = await _employeeService.GetAllEmployees();
             return View(countries);

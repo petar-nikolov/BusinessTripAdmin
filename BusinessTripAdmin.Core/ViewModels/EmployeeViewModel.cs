@@ -5,6 +5,8 @@ namespace BusinessTripAdmin.Core.ViewModels
 {
     public class EmployeeViewModel
     {
+        public Guid EmployeeId { get; set; }
+
         [Required]
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string FirstName { get; set; }
@@ -12,8 +14,6 @@ namespace BusinessTripAdmin.Core.ViewModels
         [Required]
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string LastName { get; set; }
-
-        public bool IsActive { get; set; }
 
         [Required]
         [StringLength(ValidationConstants.PositonNameMaxLength)]
