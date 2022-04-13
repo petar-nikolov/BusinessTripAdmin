@@ -86,12 +86,6 @@ namespace BusinessTripAdmin.Core.Services
             var countryToEdit = await GetCountryById(countryId);
             var isEditted = true;
 
-            //editCountryViewModel.OldCountryName = countryToEdit.CountryName;
-            //editCountryViewModel.OldCurrencyCode = countryToEdit.CurrencyCode;
-            //editCountryViewModel.OldTripCurrency = countryToEdit.TripCurrency;
-            //editCountryViewModel.OldLocalCurrency = countryToEdit.LocalCurrency;
-            //editCountryViewModel.OldDescription = countryToEdit.Description;
-
             countryToEdit.CountryName = editCountryViewModel.CountryName;
             countryToEdit.TripCurrency = editCountryViewModel.TripCurrency;
             countryToEdit.LocalCurrency = editCountryViewModel.LocalCurrency;
