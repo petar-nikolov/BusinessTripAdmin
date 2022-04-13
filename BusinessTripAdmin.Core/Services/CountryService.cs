@@ -81,22 +81,23 @@ namespace BusinessTripAdmin.Core.Services
             return isCreated;
         }
 
-        public async Task<bool> EditCountry(string countryName, EditCountry editCountryViewModel)
+        public async Task<bool> EditCountry(Guid countryId, EditCountry editCountryViewModel)
         {
-            var countryToEdit = await GetCountryByName(countryName);
+            var countryToEdit = await GetCountryById(countryId);
             var isEditted = true;
 
-            editCountryViewModel.OldCountryName = countryToEdit.CountryName;
-            editCountryViewModel.OldCurrencyCode = countryToEdit.CurrencyCode;
-            editCountryViewModel.OldTripCurrency = countryToEdit.TripCurrency;
-            editCountryViewModel.OldLocalCurrency = countryToEdit.LocalCurrency;
-            editCountryViewModel.OldDescription = countryToEdit.Description;
+            //editCountryViewModel.OldCountryName = countryToEdit.CountryName;
+            //editCountryViewModel.OldCurrencyCode = countryToEdit.CurrencyCode;
+            //editCountryViewModel.OldTripCurrency = countryToEdit.TripCurrency;
+            //editCountryViewModel.OldLocalCurrency = countryToEdit.LocalCurrency;
+            //editCountryViewModel.OldDescription = countryToEdit.Description;
 
             countryToEdit.CountryName = editCountryViewModel.CountryName;
             countryToEdit.TripCurrency = editCountryViewModel.TripCurrency;
             countryToEdit.LocalCurrency = editCountryViewModel.LocalCurrency;
             countryToEdit.CurrencyCode = editCountryViewModel.CurrencyCode;
             countryToEdit.Description = editCountryViewModel.Description;
+            countryToEdit.UpdatedDate = DateTime.Now;
 
             try
             {
@@ -117,6 +118,7 @@ namespace BusinessTripAdmin.Core.Services
         {
             var countries = await _applicationDbRepository.GetAll<Country>().AsNoTracking().Include(x => x.Allowances).OrderByDescending(x => x.CreatedDate).Select(x => new CountryViewModel
             {
+                CountryId = x.Id,
                 CountryName = x.CountryName,
                 CurrencyCode = x.CurrencyCode,
                 TripCurrency = x.TripCurrency,
@@ -146,6 +148,12 @@ namespace BusinessTripAdmin.Core.Services
             }
 
             return countryAllowances;
+        }
+
+        public async Task<Country> GetCountryById(Guid countryId)
+        {
+            var country = await _applicationDbRepository.GetAll<Country>().Include(x => x.Allowances).FirstOrDefaultAsync(x => x.Id == countryId);
+            return country;
         }
 
         public async Task<Country> GetCountryByName(string countryName)

@@ -6,6 +6,8 @@ namespace BusinessTripAdmin.Core.ViewModels
 {
     public class EditCountry
     {
+        public Guid CountryId { get; set; }
+
         [Required]
         [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string CountryName { get; set; }
@@ -22,11 +24,11 @@ namespace BusinessTripAdmin.Core.ViewModels
         [StringLength(ValidationConstants.DescriptionMaxLength)]
         public string? Description { get; set; }
 
-        public string OldCountryName { get; set; }
+        public string? OldCountryName { get; set; }
 
-        public CurrencyCode OldCurrencyCode { get; set; }
+        public CurrencyCode? OldCurrencyCode { get; set; }
 
-        public string OldTripCurrency { get; set; }
+        public string? OldTripCurrency { get; set; }
 
         public string? OldLocalCurrency { get; set; }
 

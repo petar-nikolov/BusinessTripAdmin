@@ -46,28 +46,42 @@ namespace BusinessTripAdmin.Controllers
             return Redirect("/Country/GetCountries");
         }
 
-        [HttpPut]
-        [Route("Country/EditCountry/{countryName}")]
-        public async Task<IActionResult> EditCountry(string countryName, EditCountry editCountry)
+        [Route("Country/EditCountry/{countryId}")]
+        public async Task<IActionResult> EditCountry(Guid countryId)
         {
-            return Ok();
-        }
-
-        [Route("Country/EditCountry/{countryName}")]
-        public async Task<IActionResult> EditCountry(string countryName)
-        {
-            var country = await _countryService.GetCountryByName(countryName);
+            var country = await _countryService.GetCountryById(countryId);
             var model = new EditCountry
             {
                 OldDescription = country.Description,
-                OldCountryName = countryName,
+                OldCountryName = country.CountryName,
                 OldCurrencyCode = country.CurrencyCode,
                 OldLocalCurrency = country.LocalCurrency,
                 OldTripCurrency = country.TripCurrency,
+                CountryId = country.Id
             };
 
             ViewBag.OldCountryData = model;
-            return View();
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("Country/EditCountry/{countryId}")]
+        public async Task<IActionResult> EditCountry([FromRoute]Guid countryId, EditCountry editCountry)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editCountry);
+            }
+
+            if (await _countryService.EditCountry(countryId, editCountry))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Country has been editted!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Country edit failed!";
+            }
+            return Redirect("/Country/GetCountries");
         }
 
         public async Task<IActionResult> CreateAllowance()
