@@ -1,5 +1,7 @@
 ﻿@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
-@{ string userId = _userManager.GetUserId(User); }
+@{
+    string userId = _userManager.GetUserId(User);
+}
 @using BusinessTripAdmin.Core.ViewModels
 @using BusinessTripAdmin.Infrastructure.Data.Identity
 @model IEnumerable<EmployeeViewModel>
@@ -44,6 +46,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Position Name</th>
+                    <th>Status</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -56,11 +59,35 @@
                             <td>@employeeViewModel.FirstName</td>
                             <td>@employeeViewModel.LastName</td>
                             <td>@employeeViewModel.PositionName</td>
+                            @if (employeeViewModel.IsActive)
+                            {
+                                <td style="color:green">Active</td>
+
+                            }
+                            else
+                            {
+                                <td style="color:red">Deactivated</td>
+                            }
+
                             @if (User.IsInRole("Administrator"))
                             {
                                 <td>
-                                    <a href="/Country/EditCountry/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Edit Employee</a>
+                                    <a href="/Employee/EditEmployee/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Edit</a>
                                 </td>
+                                if (@employeeViewModel.IsActive)
+                                {
+                                    <td>
+                                        <a href="/Employee/Deactivate/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Deactivate</a>
+                                    </td>
+
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a href="/Employee/Activate/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Activate</a>
+                                    </td>
+
+                                }
                             }
                         </tr>
                     }
@@ -71,5 +98,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }

@@ -2,7 +2,7 @@
 @using BusinessTripAdmin.Infrastructure.Data.Enums
 @model CreateEmployee
 @{
-    ViewData["Title"] = "Create Employee";
+    ViewData["Title"] = "Edit Employee";
 }
 
 <div class="row">
@@ -31,9 +31,9 @@
                         <span asp-validation-for="PositionName" class="text-danger"></span>
                     </div>
 
-                <div class="card-footer">
-                    <button type="submit" asp-controller="Employee" asp-action="CreateEmployee" class="btn btn-block btn-light btn-sm">Create Employee</button>
-                </div>
+                    <div class="card-footer">
+                        <button type="submit" asp-controller="Employee" asp-action="EditEmployee" class="btn btn-block btn-light btn-sm">Edit</button>
+                    </div>
             </form>
         </div>
     </div>

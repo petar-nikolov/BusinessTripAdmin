@@ -66,7 +66,7 @@ namespace BusinessTripAdmin.Controllers
 
         [HttpPost]
         [Route("Country/EditCountry/{countryId}")]
-        public async Task<IActionResult> EditCountry([FromRoute]Guid countryId, EditCountry editCountry)
+        public async Task<IActionResult> EditCountry([FromRoute] Guid countryId, EditCountry editCountry)
         {
             if (!ModelState.IsValid)
             {

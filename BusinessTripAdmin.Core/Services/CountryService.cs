@@ -150,6 +150,11 @@ namespace BusinessTripAdmin.Core.Services
         public async Task<Country> GetCountryById(Guid countryId)
         {
             var country = await _applicationDbRepository.GetAll<Country>().Include(x => x.Allowances).FirstOrDefaultAsync(x => x.Id == countryId);
+            if (country == null)
+            {
+                return new Country();
+            }
+
             return country;
         }
 

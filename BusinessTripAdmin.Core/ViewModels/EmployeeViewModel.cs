@@ -14,5 +14,7 @@ namespace BusinessTripAdmin.Core.ViewModels
         public string LastName { get; set; }
 
         public string PositionName { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }
