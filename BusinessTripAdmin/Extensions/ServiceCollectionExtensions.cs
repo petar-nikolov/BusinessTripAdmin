@@ -27,6 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IBusinessTripService, BusinessTripService>();
             services.AddTransient<IEmailSender, EmailSender>();
 
             return services;

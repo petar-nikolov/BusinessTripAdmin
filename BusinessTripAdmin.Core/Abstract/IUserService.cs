@@ -9,5 +9,7 @@ namespace BusinessTripAdmin.Core.Abstract
         Task<UserEdit> GetUserForEdit(string id);
 
         Task<bool> UpdateUser(UserEdit userEdit);
+
+        Task<Guid> GetOrganizationByUserId(string userId);
     }
 }

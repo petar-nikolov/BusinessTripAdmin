@@ -8,16 +8,28 @@ namespace BusinessTripAdmin.Core.Services
 {
     public class UserService : IUserService
     {
-        private readonly IApplicationDbRepository _applicatioDbRepository;
+        private readonly IApplicationDbRepository _applicationDbRepository;
 
-        public UserService(IApplicationDbRepository applicatioDbRepository)
+        public UserService(IApplicationDbRepository applicationDbRepository)
         {
-            _applicatioDbRepository = applicatioDbRepository;
+            _applicationDbRepository = applicationDbRepository;
+        }
+
+        public async Task<Guid> GetOrganizationByUserId(string userId)
+        {
+            var currentUser = await _applicationDbRepository.GetAll<ApplicationUser>().FirstOrDefaultAsync(x => x.Id == userId);
+            var userOrganization = currentUser?.OrganizationId;
+            if (userOrganization == null)
+            {
+                return Guid.Empty;
+            }
+
+            return (Guid)userOrganization;
         }
 
         public async Task<UserEdit> GetUserForEdit(string id)
         {
-            var user = await _applicatioDbRepository.GetByIdAsync<ApplicationUser>(id);
+            var user = await _applicationDbRepository.GetByIdAsync<ApplicationUser>(id);
             return new UserEdit
             {
                 Id = user.Id,
@@ -28,7 +40,7 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<IEnumerable<UserList>> GetUsers()
         {
-            return await _applicatioDbRepository.GetAll<ApplicationUser>().
+            return await _applicationDbRepository.GetAll<ApplicationUser>().
                 Select(x => new UserList
                 {
                     Id = x.Id,
@@ -39,12 +51,12 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> UpdateUser(UserEdit userEdit)
         {
-            var userToUpdate = await _applicatioDbRepository.GetAll<ApplicationUser>().FirstOrDefaultAsync(x => x.Id == userEdit.Id);
+            var userToUpdate = await _applicationDbRepository.GetAll<ApplicationUser>().FirstOrDefaultAsync(x => x.Id == userEdit.Id);
             if (userToUpdate != null)
             {
                 userToUpdate.FirstName = userEdit.FirstName;
                 userToUpdate.LastName = userEdit.LastName;
-                await _applicatioDbRepository.SaveChangesAsync();
+                await _applicationDbRepository.SaveChangesAsync();
                 return true;
             }
 

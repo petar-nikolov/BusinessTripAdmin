@@ -10,10 +10,12 @@ namespace BusinessTripAdmin.Core.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly IApplicationDbRepository _applicationRepository;
+        private readonly IUserService _userService;
 
-        public EmployeeService(IApplicationDbRepository applicationRepository)
+        public EmployeeService(IApplicationDbRepository applicationRepository, IUserService userService)
         {
             _applicationRepository = applicationRepository;
+            _userService = userService;
         }
 
         public async Task<bool> ActivateEmployee(Guid employeeId)
@@ -25,7 +27,7 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> CreateEmployee(CreateEmployee createEmployee, string userId)
         {
-            var userOrg = _applicationRepository.GetAll<ApplicationUser>().FirstOrDefault(x => x.Id == userId)?.OrganizationId;
+            var userOrg = await _userService.GetOrganizationByUserId(userId);
             var isCreated = true;
 
             var employee = new Employee
@@ -99,6 +101,22 @@ namespace BusinessTripAdmin.Core.Services
             }).ToListAsync();
 
             return employees;
+        }
+
+        public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployeesByOrganizationId(Guid organizationId)
+        {
+            var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().Where(x => x.OrganizationId == organizationId).OrderByDescending(x => x.CreatedDate).Select(x => new EmployeeViewModel
+            {
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                PositionName = x.PositionName,
+                EmployeeId = x.Id,
+                IsActive = x.IsActive,
+                OrganizationId = x.OrganizationId
+            }).ToListAsync();
+
+            return employees;
+
         }
 
         public async Task<Employee> GetEmployeeById(Guid employeeId)
