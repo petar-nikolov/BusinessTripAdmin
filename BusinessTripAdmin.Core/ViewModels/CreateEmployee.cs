@@ -11,7 +11,13 @@ namespace BusinessTripAdmin.Core.ViewModels
 
         [Required]
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
+        public string MiddleName { get; set; }
+
+        [Required]
+        [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string LastName { get; set; }
+
+        public DateOnly BirthDate { get; set; }
 
         [Required]
         [StringLength(ValidationConstants.PositonNameMaxLength)]

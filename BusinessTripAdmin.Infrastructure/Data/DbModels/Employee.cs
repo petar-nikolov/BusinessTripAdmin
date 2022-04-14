@@ -12,7 +12,14 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 
         [Required]
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
+        public string MiddleName { get; set; }
+
+        [Required]
+        [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string LastName { get; set; }
+
+        [Required]
+        public DateOnly BirthDate { get; set; }
 
         public bool IsActive { get; set; }
 

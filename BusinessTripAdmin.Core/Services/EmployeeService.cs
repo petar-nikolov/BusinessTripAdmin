@@ -33,7 +33,9 @@ namespace BusinessTripAdmin.Core.Services
             var employee = new Employee
             {
                 FirstName = createEmployee.FirstName,
+                MiddleName = createEmployee.MiddleName,
                 LastName = createEmployee.LastName,
+                BirthDate = createEmployee.BirthDate,
                 PositionName = createEmployee.PositionName,
                 OrganizationId = (Guid)userOrg,
                 IsActive = true,
@@ -72,8 +74,10 @@ namespace BusinessTripAdmin.Core.Services
             try
             {
                 employeeToEdit.FirstName = editEmployee.FirstName;
+                editEmployee.MiddleName = editEmployee.MiddleName;
                 employeeToEdit.LastName = editEmployee.LastName;
                 employeeToEdit.PositionName = editEmployee.PositionName;
+                editEmployee.BirthDate = editEmployee.BirthDate;
                 await _applicationRepository.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -97,7 +101,9 @@ namespace BusinessTripAdmin.Core.Services
                 PositionName = x.PositionName,
                 EmployeeId = x.Id,
                 IsActive = x.IsActive,
-                OrganizationId = x.OrganizationId
+                OrganizationId = x.OrganizationId,
+                MiddleName = x.MiddleName,
+                BirthDate = x.BirthDate
             }).ToListAsync();
 
             return employees;
@@ -112,7 +118,9 @@ namespace BusinessTripAdmin.Core.Services
                 PositionName = x.PositionName,
                 EmployeeId = x.Id,
                 IsActive = x.IsActive,
-                OrganizationId = x.OrganizationId
+                OrganizationId = x.OrganizationId,
+                MiddleName = x.MiddleName,
+                BirthDate = x.BirthDate
             }).ToListAsync();
 
             return employees;
