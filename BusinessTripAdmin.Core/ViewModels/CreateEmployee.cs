@@ -17,7 +17,9 @@ namespace BusinessTripAdmin.Core.ViewModels
         [StringLength(ValidationConstants.EmployeeNameMaxLength)]
         public string LastName { get; set; }
 
-        public DateOnly BirthDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        public DateTime BirthDate { get; set; }
 
         [Required]
         [StringLength(ValidationConstants.PositonNameMaxLength)]

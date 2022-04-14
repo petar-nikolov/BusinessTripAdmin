@@ -19,7 +19,9 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
         public string LastName { get; set; }
 
         [Required]
-        public DateOnly BirthDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        public DateTime BirthDate { get; set; }
 
         public bool IsActive { get; set; }
 
