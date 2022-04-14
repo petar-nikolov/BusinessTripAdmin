@@ -1,0 +1,102 @@
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
+@{
+    string userId = _userManager.GetUserId(User);
+}
+@using BusinessTripAdmin.Core.ViewModels
+@using BusinessTripAdmin.Infrastructure.Data.Identity
+@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Employees";
+}
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row">
+        <table class="table">
+            <tr>
+                <td class="col-4">
+                    <a href="/Employee/CreateEmployee/@userId" class="btn btn-block btn-default">Create Employee</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Employees</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Position Name</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var employeeViewModel in Model)
+                    {
+                        <tr>
+                            <td>@employeeViewModel.FirstName</td>
+                            <td>@employeeViewModel.LastName</td>
+                            <td>@employeeViewModel.PositionName</td>
+                            @if (employeeViewModel.IsActive)
+                            {
+                                <td style="color:green">Active</td>
+
+                            }
+                            else
+                            {
+                                <td style="color:red">Deactivated</td>
+                            }
+
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a href="/Employee/EditEmployee/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Edit</a>
+                                </td>
+                                if (@employeeViewModel.IsActive)
+                                {
+                                    <td>
+                                        <a href="/Employee/Deactivate/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Deactivate</a>
+                                    </td>
+
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a href="/Employee/Activate/@employeeViewModel.EmployeeId" class="btn btn-block btn-default">Activate</a>
+                                    </td>
+
+                                }
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

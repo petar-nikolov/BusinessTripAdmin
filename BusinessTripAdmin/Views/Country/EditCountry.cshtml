@@ -1,0 +1,66 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@using BusinessTripAdmin.Infrastructure.Data.Enums
+@model EditCountry
+@{
+    ViewData["Title"] = "Edit Country";
+    var oldData = ViewBag.OldCountryData as EditCountry;
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="card card-secondary">
+            <div class="card-header">
+            </div>
+
+            <form id="create" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="CountryName" class="form-label">Country Name</label>
+                        <input asp-for="CountryName" class="form-control" aria-required="true" placeholder="Previous name: @oldData.OldCountryName" />
+                        <span asp-validation-for="CountryName" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group-prepend">
+
+                        @{
+                            var items = Enum.GetValues<CurrencyCode>().Where(x => x != CurrencyCode.UNDEFINED).ToList().Select(x => new SelectListItem
+            {
+                Text = x.ToString(),
+                Value = x.ToString(),
+                Selected = true
+            }).ToList();
+                        }
+                        <select asp-for="CurrencyCode" asp-items="@items" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TripCurrency" class="form-label">Trip Currency</label>
+                        <input asp-for="TripCurrency" class="form-control" aria-required="true" placeholder="Previous trip currency: @oldData.OldTripCurrency" />
+                        <span asp-validation-for="TripCurrency" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LocalCurrency" class="form-label">Local Currency</label>
+                        <input asp-for="LocalCurrency" class="form-control" aria-required="true" placeholder="Previous local currency: @oldData.OldLocalCurrency" />
+                        <span asp-validation-for="LocalCurrency" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <input asp-for="Description" class="form-control" aria-required="true" placeholder="Previous description: @oldData.OldDescription" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" asp-controller="Country" class="btn btn-block btn-light btn-sm">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+}

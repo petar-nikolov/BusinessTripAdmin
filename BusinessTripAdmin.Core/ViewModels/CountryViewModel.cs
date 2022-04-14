@@ -4,6 +4,8 @@ namespace BusinessTripAdmin.Core.ViewModels
 {
     public class CountryViewModel
     {
+        public Guid CountryId { get; set; }
+
         public string? CountryName { get; set; }
 
         public CurrencyCode CurrencyCode { get; set; }

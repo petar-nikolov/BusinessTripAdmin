@@ -1,0 +1,49 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@model IEnumerable<AllowanceViewModel>
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">ALL ALLOWANCES FOR: @Model.First().CountryName</h3>
+    </div>
+
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+                <tr>
+                    <th>Country Name</th>
+                    <th>Daily Allowance</th>
+                    <th>Accomodation Allowance</th>
+                    <th>Valid From</th>
+                    <th>Valid To</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var allowanceViewModel in Model)
+                    {
+                        <tr>
+                            <td>@allowanceViewModel.CountryName</td>
+                            <td>@allowanceViewModel.DailyAllowance</td>
+                            <td>@allowanceViewModel.AccomodationAllowance</td>
+                            <td>@allowanceViewModel.ValidFrom</td>
+                            <td>@allowanceViewModel.ValidTo</td>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a type="button" class="btn btn-block btn-default">Edit</a>
+                                </td>
+                            }
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

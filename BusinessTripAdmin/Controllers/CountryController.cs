@@ -21,7 +21,7 @@ namespace BusinessTripAdmin.Controllers
             return View(countries);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -44,6 +44,81 @@ namespace BusinessTripAdmin.Controllers
             }
 
             return Redirect("/Country/GetCountries");
+        }
+
+        [Route("Country/EditCountry/{countryId}")]
+        public async Task<IActionResult> EditCountry(Guid countryId)
+        {
+            var country = await _countryService.GetCountryById(countryId);
+            var model = new EditCountry
+            {
+                OldDescription = country.Description,
+                OldCountryName = country.CountryName,
+                OldCurrencyCode = country.CurrencyCode,
+                OldLocalCurrency = country.LocalCurrency,
+                OldTripCurrency = country.TripCurrency,
+                CountryId = country.Id
+            };
+
+            ViewBag.OldCountryData = model;
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("Country/EditCountry/{countryId}")]
+        public async Task<IActionResult> EditCountry([FromRoute] Guid countryId, EditCountry editCountry)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editCountry);
+            }
+
+            if (await _countryService.EditCountry(countryId, editCountry))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Country has been editted!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Country edit failed!";
+            }
+            return Redirect("/Country/GetCountries");
+        }
+
+        public async Task<IActionResult> CreateAllowance()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("Country/CreateAllowance/{countryName}")]
+        public async Task<IActionResult> CreateAllowance(string countryName, CreateAllowance allowanceViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(allowanceViewModel);
+            }
+            if (await _countryService.CreateAllowanceByCountryName(countryName, allowanceViewModel))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Allowance has been created!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Allowance creation failed!";
+            }
+
+            return Redirect($"/Country/ReviewAllowances/{countryName}");
+
+        }
+
+        [Route("Country/ReviewAllowances/{countryName}")]
+        public async Task<IActionResult> ReviewAllowances([FromRoute] string countryName)
+        {
+            var allowances = await _countryService.GetAllCountryAllowancesByCountryName(countryName);
+            if (!allowances.Any())
+            {
+                return NotFound($"There are not existing allowances for {countryName} ");
+            }
+            return View(allowances);
         }
     }
 }

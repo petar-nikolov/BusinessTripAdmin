@@ -7,8 +7,17 @@ namespace BusinessTripAdmin.Core.Abstract
     {
         Task<IEnumerable<CountryViewModel>> GetAllCountries();
 
-        Task<Allowance> GetCurrentCountryAllowanceByCountryId(Guid countryId);
-
         Task<bool> CreateCountry(CreateCountry createCountryViewModel);
+
+        Task<bool> EditCountry(Guid countryId, EditCountry editCountryViewModel);
+
+        Task<IEnumerable<AllowanceViewModel>> GetAllCountryAllowancesByCountryName(string countryName);
+
+        Task<bool> CreateAllowanceByCountryName(string countryName, CreateAllowance allowanceViewModel);
+
+        Task<Country> GetCountryByName(string countryName);
+
+        Task<Country> GetCountryById(Guid countryId);
+
     }
 }

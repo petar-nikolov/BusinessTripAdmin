@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
 
                         @{
-                            var items = Enum.GetValues<CurrencyCode>().ToList().Select(x => new SelectListItem
+                            var items = Enum.GetValues<CurrencyCode>().Where(x => x != CurrencyCode.UNDEFINED).ToList().Select(x => new SelectListItem
             {
                 Text = x.ToString(),
                 Value = x.ToString(),
