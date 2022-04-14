@@ -74,10 +74,10 @@ namespace BusinessTripAdmin.Core.Services
             try
             {
                 employeeToEdit.FirstName = editEmployee.FirstName;
-                editEmployee.MiddleName = editEmployee.MiddleName;
+                employeeToEdit.MiddleName = editEmployee.MiddleName;
                 employeeToEdit.LastName = editEmployee.LastName;
                 employeeToEdit.PositionName = editEmployee.PositionName;
-                editEmployee.BirthDate = editEmployee.BirthDate;
+                employeeToEdit.BirthDate = editEmployee.BirthDate;
                 await _applicationRepository.SaveChangesAsync();
             }
             catch (Exception ex)

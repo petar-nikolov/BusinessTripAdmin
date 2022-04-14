@@ -54,9 +54,33 @@ namespace BusinessTripAdmin.Controllers
             {
                 FirstName = employeeToEdit.FirstName,
                 LastName = employeeToEdit.LastName,
-                PositionName = employeeToEdit.PositionName
+                PositionName = employeeToEdit.PositionName,
+                MiddleName = employeeToEdit.MiddleName,
+                BirthDate = employeeToEdit.BirthDate
             };
+
             return View(model);
+        }
+
+        [HttpPost]
+        [Route("Employee/EditEmployee/{employeeId}")]
+        public async Task<IActionResult> EditEmployee(CreateEmployee employeeToEdit, Guid employeeId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(employeeToEdit);
+            }
+
+            if (await _employeeService.EditEmployee(employeeToEdit, employeeId))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Emplyoee has been editted!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Employee edit failed!";
+            }
+
+            return Redirect("/Employee/GetEmployees");
         }
 
         [Route("Employee/Deactivate/{employeeId}")]

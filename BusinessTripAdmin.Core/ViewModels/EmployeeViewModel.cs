@@ -1,5 +1,4 @@
-﻿using BusinessTripAdmin.Infrastructure.Constants;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BusinessTripAdmin.Core.ViewModels
 {
