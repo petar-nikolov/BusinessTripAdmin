@@ -24,5 +24,10 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
         public Guid EmployeeId { get; set; }
 
         public Employee Employee { get; set; }
+
+        [ForeignKey(nameof(TripDetail))]
+        public Guid TripDetailId { get; set; }
+
+        public TripDetail TripDetail { get; set; }
     }
 }

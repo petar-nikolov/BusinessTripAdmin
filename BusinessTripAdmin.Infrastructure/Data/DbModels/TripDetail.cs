@@ -1,0 +1,17 @@
+﻿using BusinessTripAdmin.Infrastructure.Constants;
+using BusinessTripAdmin.Infrastructure.Data.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace BusinessTripAdmin.Infrastructure.Data.DbModels
+{
+    public class TripDetail : BaseEntity
+    {
+        public Transport TripBy { get; set; }
+
+        [StringLength(ValidationConstants.TicketMaxLength)]
+        public string? TicketNumber { get; set; }
+
+        [StringLength(ValidationConstants.CarPlateMaxLength)]
+        public string? CarPlate { get; set; }
+    }
+}

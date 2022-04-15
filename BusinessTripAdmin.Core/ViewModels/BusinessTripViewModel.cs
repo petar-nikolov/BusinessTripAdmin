@@ -1,4 +1,6 @@
-﻿namespace BusinessTripAdmin.Core.ViewModels
+﻿using BusinessTripAdmin.Infrastructure.Data.Enums;
+
+namespace BusinessTripAdmin.Core.ViewModels
 {
     public class BusinessTripViewModel
     {
@@ -16,6 +18,6 @@
 
         public string Employee { get; set; }
 
-        public ICollection<string> Countries { get; set; }
+        public Transport TripBy { get; set; }
     }
 }

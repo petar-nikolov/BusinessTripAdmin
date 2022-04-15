@@ -13,5 +13,9 @@
         public const int CurrencyMaxLength = 20;
 
         public const int DescriptionMaxLength = 500;
+
+        public const int TicketMaxLength = 100;
+
+        public const int CarPlateMaxLength = 20;
     }
 }
