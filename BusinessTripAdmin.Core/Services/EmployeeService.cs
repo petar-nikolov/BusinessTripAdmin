@@ -2,7 +2,6 @@
 using BusinessTripAdmin.Core.ViewModels;
 using BusinessTripAdmin.Infrastructure.Data.Abstraction;
 using BusinessTripAdmin.Infrastructure.Data.DbModels;
-using BusinessTripAdmin.Infrastructure.Data.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessTripAdmin.Core.Services
@@ -92,6 +91,26 @@ namespace BusinessTripAdmin.Core.Services
             return isEditted;
         }
 
+        public async Task<IEnumerable<EmployeeViewModel>> GetActiveEmployeesByOrganizationId(Guid organizationId)
+        {
+            var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().Where(x => x.OrganizationId == organizationId &&
+                                                                                                      x.IsActive)
+                .OrderByDescending(x => x.CreatedDate)
+                .Select(x => new EmployeeViewModel
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    PositionName = x.PositionName,
+                    EmployeeId = x.Id,
+                    IsActive = x.IsActive,
+                    OrganizationId = x.OrganizationId,
+                    MiddleName = x.MiddleName,
+                    BirthDate = x.BirthDate
+                }).ToListAsync();
+
+            return employees;
+        }
+
         public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployees()
         {
             var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().OrderByDescending(x => x.CreatedDate).Select(x => new EmployeeViewModel
@@ -107,24 +126,6 @@ namespace BusinessTripAdmin.Core.Services
             }).ToListAsync();
 
             return employees;
-        }
-
-        public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployeesByOrganizationId(Guid organizationId)
-        {
-            var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().Where(x => x.OrganizationId == organizationId).OrderByDescending(x => x.CreatedDate).Select(x => new EmployeeViewModel
-            {
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                PositionName = x.PositionName,
-                EmployeeId = x.Id,
-                IsActive = x.IsActive,
-                OrganizationId = x.OrganizationId,
-                MiddleName = x.MiddleName,
-                BirthDate = x.BirthDate
-            }).ToListAsync();
-
-            return employees;
-
         }
 
         public async Task<Employee> GetEmployeeById(Guid employeeId)

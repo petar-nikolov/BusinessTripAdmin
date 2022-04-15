@@ -9,13 +9,13 @@
     ViewData["Title"] = "Employees Business Trips";
 }
 
-@if (User.IsInRole("Administrator"))
+@if(User.IsInRole("Administrator"))
 {
     <div class="row">
         <table class="table">
             <tr>
                 <td class="col-4">
-                    <a href="/BusinessTrips/CreateBusinessTrip/@userId" class="btn btn-block btn-default">Add Business Trip</a>
+                    <a href="/BusinessTrip/CreateBusinessTrip/@userId" class="btn btn-block btn-default">Create Business Trip</a>
                 </td>
                 <td>
                 </td>
@@ -80,3 +80,5 @@
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />
 }
+
+
