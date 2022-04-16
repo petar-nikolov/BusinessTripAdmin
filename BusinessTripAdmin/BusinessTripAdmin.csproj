@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusinessTrip.UnitTest\BusinessTrip.Tests.csproj" />
     <ProjectReference Include="..\BusinessTripAdmin.Core\BusinessTripAdmin.Core.csproj" />
   </ItemGroup>
 
