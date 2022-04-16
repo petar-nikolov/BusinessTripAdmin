@@ -8,10 +8,7 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
     {
         public Transport TripBy { get; set; }
 
-        [StringLength(ValidationConstants.TicketMaxLength)]
-        public string? TicketNumber { get; set; }
-
-        [StringLength(ValidationConstants.CarPlateMaxLength)]
-        public string? CarPlate { get; set; }
+        [StringLength(ValidationConstants.TransportNumberMaxLength)]
+        public string? TransportNumber { get; set; }
     }
 }
