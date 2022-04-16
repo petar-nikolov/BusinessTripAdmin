@@ -14,6 +14,12 @@ namespace BusinessTripAdmin.Core.ViewModels
 
         public int TotalDays { get; set; }
 
+        public decimal TotalDailyAllowance { get; set; }
+
+        public decimal TotalAccomodationAllowance { get; set; }
+
+        public string TripCurrency { get; set; }
+
         public Guid EmployeeId { get; set; }
 
         public string Employee { get; set; }

@@ -2,6 +2,7 @@
 using BusinessTripAdmin.Core.ViewModels;
 using BusinessTripAdmin.Infrastructure.Data.Abstraction;
 using BusinessTripAdmin.Infrastructure.Data.DbModels;
+using BusinessTripAdmin.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessTripAdmin.Core.Services
@@ -42,7 +43,8 @@ namespace BusinessTripAdmin.Core.Services
                     TripTo = createBusinessTrip.TripTo,
                     EmployeeId = Guid.Parse(employeeId),
                     TripDetail = businessTripDetail,
-                    Purpose = createBusinessTrip.Purpose
+                    Purpose = createBusinessTrip.Purpose,
+                    TotalDays = (int)(createBusinessTrip.DateTo - createBusinessTrip.DateFrom).TotalDays + 1
                 };
 
                 businessTrips.Add(businessTrip);
@@ -76,14 +78,21 @@ namespace BusinessTripAdmin.Core.Services
                 {
                     Employee = $"{bt.Employee.FirstName} {bt.Employee.LastName}",
                     EmployeeId = bt.EmployeeId,
-                    DateFrom = bt.DateFrom,
-                    DateTo = bt.DateTo,
+                    DateFrom = bt.DateFrom.Date,
+                    DateTo = bt.DateTo.Date,
                     TotalDays = bt.TotalDays,
                     TripFrom = bt.TripFrom,
                     TripTo = bt.TripTo,
                     TripBy = bt.TripDetail.TripBy,
-                    Purpose = bt.Purpose
+                    Purpose = bt.Purpose,
                 }).ToListAsync();
+
+            foreach (var trip in businessTrips)
+            {
+                trip.TotalDailyAllowance = await CalculateTotalDailyAllowance(trip.TripTo, trip.TotalDays);
+                trip.TotalAccomodationAllowance = await CalculateTotalAccomodationAllowance(trip.TripTo, trip.TotalDays); 
+                trip.TripCurrency = await DefineAllowanceCurrency(trip.TripTo);
+            }
 
             return businessTrips;
         }
@@ -94,6 +103,28 @@ namespace BusinessTripAdmin.Core.Services
             var organizationEmployees = await _employeeService.GetActiveEmployeesByOrganizationId(userOrgId);
             var countries = await _countryService.GetAllCountries();
             return (countries, organizationEmployees);
+        }
+
+        private async Task<decimal> CalculateTotalDailyAllowance(string countryName, int totalDays)
+        {
+            var country = await _countryService.GetCountryByName(countryName);
+            var currentCountryAllowance = country.GetCurrentCountryAllowance();
+            var totalDailyAllowance = totalDays * currentCountryAllowance.DailyAllowance;
+            return totalDailyAllowance;
+        }
+
+        private async Task<decimal> CalculateTotalAccomodationAllowance(string countryName, int totalDays)
+        {
+            var country = await _countryService.GetCountryByName(countryName);
+            var currentCountryAllowance = country.GetCurrentCountryAllowance();
+            var totalDailyAllowance = totalDays > 1 ? totalDays * currentCountryAllowance.AccomodationAllowance : 0;
+            return totalDailyAllowance;
+        }
+
+        private async Task<string> DefineAllowanceCurrency(string countryName)
+        {
+            var country = await _countryService.GetCountryByName(countryName);
+            return country.CurrencyCode.ToString();
         }
     }
 }
