@@ -19,8 +19,17 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> ActivateEmployee(Guid employeeId)
         {
-            var employeeToEdit = await GetEmployeeById(employeeId);
-            var isActivated = await ChangeEmployeeStatus(employeeToEdit, true);
+            var isActivated = true;
+            try
+            {
+                var employeeToEdit = await GetEmployeeById(employeeId);
+                await ChangeEmployeeStatus(employeeToEdit, true);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
             return isActivated;
         }
 
@@ -59,9 +68,17 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> DeactivateEmployee(Guid employeeId)
         {
-            var employeeToEdit = await GetEmployeeById(employeeId);
-            var isDeactivated = await ChangeEmployeeStatus(employeeToEdit, false);
-            return isDeactivated;
+            try
+            {
+                var employeeToEdit = await GetEmployeeById(employeeId);
+                var isDeactivated = await ChangeEmployeeStatus(employeeToEdit, false);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public async Task<bool> EditEmployee(CreateEmployee editEmployee, Guid employeeId)
@@ -133,7 +150,7 @@ namespace BusinessTripAdmin.Core.Services
             var employee = await _applicationRepository.GetAll<Employee>().FirstOrDefaultAsync(x => x.Id == employeeId);
             if (employee == null)
             {
-                return new Employee();
+                throw new ArgumentException("No Employee");
             }
 
             return employee;
