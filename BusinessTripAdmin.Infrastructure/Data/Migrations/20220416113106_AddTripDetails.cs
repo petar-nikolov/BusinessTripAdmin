@@ -1047,19 +1047,18 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateTable(
-                name: "TripDetail",
+                name: "TripDetails",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TripBy = table.Column<int>(type: "int", nullable: false),
-                    TicketNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    CarPlate = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    TransportNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TripDetail", x => x.Id);
+                    table.PrimaryKey("PK_TripDetails", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
@@ -1067,48 +1066,48 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "CountryName", "CreatedDate", "CurrencyCode", "Description", "LocalCurrency", "TripCurrency", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("02a83abf-69f7-4ca7-b374-23d5e9eeea50"), "NEW ZEALAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("0af4de64-44ba-4a1b-a864-938f3d20a954"), "ESTONIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("0cbc33b2-d24e-4999-9c07-6fc74a97cb92"), "MALTA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("0fdf9c96-af2f-4a56-860b-bbc49fa34735"), "ROMANIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("120cef79-1694-4bab-b86b-c652c8430de7"), "JORDAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("147607f0-26ce-4e80-a1d5-5a9356f573c2"), "BRAZIL", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("1532da41-7b44-426d-a1b5-35eca9d407af"), "BOSNIA AND HERZEGOVINA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("1656cb0d-8d8a-4de9-a3a9-777874619174"), "UNITED STATES", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("16ddf542-b5c2-45c3-98a4-7f8d1b4d6536"), "FRANCE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("18a4cf9a-6a7f-472c-882e-d911ef55382b"), "GEORGIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("18f2a9b9-417f-4375-996e-1790c37d2090"), "LIBYAN ARAB JAMAHIRIYA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("1b6823d3-4824-4cc4-ba88-456edbe034cb"), "BANGLADESH", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("1d6b2c13-e5e2-4253-b625-cd8f7283adf9"), "IRAQ", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("1ef4ca7e-29d8-4918-ae88-a85e9b6e7e5f"), "NORTH MACEDONIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("2075e77b-9674-4ef8-9b0d-cd7780ead9a1"), "MOLDOVA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("231e8dc8-9d7a-46ec-b3c2-4d0ab8cdc58a"), "SINGAPORE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("253a2538-6542-4f9e-8a4a-25aae061931a"), "SOUTH KOREA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("273f448d-8e83-40bc-888d-e394e09a9fc3"), "NIGERIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("294af758-8f2c-42b3-9ccb-b04c655a9e48"), "DENMARK", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("2cd2500c-523a-4ed4-8b07-b81e8f9feea2"), "SWEDEN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("31a6985d-986a-4dd1-b881-1241febb4198"), "AUSTRALIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 4, null, null, "Australian Dollar", null },
-                    { new Guid("33c813f3-13d3-49f2-95e0-43885cfbe0c4"), "PORTUGAL", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("366e2efb-c0cd-45cb-a630-fc53ae0f2d1e"), "AUSTRIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("36afc57d-9bee-4fde-9efc-1527181b1271"), "LUXEMBOURG", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("37750d9d-56c7-4fc0-ba3f-1885c5014611"), "CANADA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("38dc1ce9-6782-45ab-81a7-37386e67dfce"), "VIETNAM", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("3aa3d17e-23f8-4394-a7ee-cea54b32a5bb"), "CROATIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("3eaae17e-a5a9-43f5-9fce-898a7875e4f0"), "CHILE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("3ec6a5e8-e13c-41c1-bb71-ed00ed6334e1"), "SAUDI ARABIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("3f936909-20eb-4a4a-b487-6d53c8b3e534"), "POLAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("499b8670-c73e-43b4-8d63-b4822ed7fc4d"), "LATVIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("49da6273-5972-4cfe-8c4c-6515ef1a6f35"), "ITALY", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("558e5d8a-e59c-43ce-a628-29dfc8c52b27"), "INDONESIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("565deb60-6b0a-472a-995c-4355ef675e03"), "SOUTH AFRICA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("56985aaa-02ab-4f97-a431-305fbd8bd662"), "HUNGARY", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("58f6654e-e751-4f42-b45c-40b36abb1e06"), "EGYPT", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("59779657-1e9d-4d65-8f6f-6065aa2cd3d2"), "SAN MARINO", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("5a0308b4-f379-48d0-8aa8-b22eaf724110"), "ALGERIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("5a217061-f93b-44d7-96b4-8dbd8b63764f"), "KENYA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("5b1630c6-667e-4e02-8ab7-d65ad5040384"), "COTE D'IVOIRE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("5b6026de-c2ee-4cda-b2da-cbc39f83dccb"), "KAZAKHSTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("5cd9eb52-349f-45bb-bbed-4449a58c3388"), "GREECE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null }
+                    { new Guid("007f9461-116c-4760-b248-bffb7a6dce0f"), "AUSTRIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("0b9a86f4-a03c-4879-9ce3-4aebcc224d93"), "TAJIKISTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("0bf198dd-b3a4-4913-86da-0942d65ed98d"), "ARMENIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("1908d2d4-fc20-4d62-88eb-30f62aa5d830"), "LITHUANIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("1b02013e-949a-4ced-880e-900d403aac18"), "GEORGIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("1c5f2a84-5c45-445a-a80f-efa8e23c75e5"), "LUXEMBOURG", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("205fb844-b643-487b-bbd3-d3b6d794fd92"), "ETHIOPIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("20e55597-f101-455b-b086-2d1fa6382215"), "AZERBAIJAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("287d848f-6238-44dc-8642-fdefba0d2c5c"), "ARGENTINA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("2dc41548-fc93-4cbe-a5bf-5de6251e4e9f"), "FINLAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("2de088c3-26c4-4fed-8338-bcb331830606"), "ALBANIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("323fe0c7-34d4-4ed1-92b9-3a20460179cc"), "CYPRUS", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("3670e21d-a0e8-4fb1-bfc6-2836e426f905"), "IRELAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("38f2a5c9-e434-4cd1-a148-5479b52c9fd9"), "SOUTH AFRICA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("3abefb98-503e-4348-be03-6bdcb49fe7bd"), "KUWAIT", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("3c146ed0-e896-434f-901a-bb6df2fb762d"), "MALAYSIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("3cd2bf44-4925-4972-8b7d-f5ead78e64bf"), "NETHERLANDS", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("3cf2ed75-4428-4efd-a430-a786abc9dcd6"), "TUNISIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("3f0890fb-0ae0-428d-aa9f-57efeab6ca45"), "CZECH REPUBLIC", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("41c51cf9-c0f5-465b-80aa-7cd430a83968"), "SYRIAN ARAB REPUBLIC", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("42621a0e-4faa-4e50-bf97-68fe1d80acab"), "UKRAINE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("430c65df-7557-4592-89f0-d386aa6182cd"), "MALI", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("439e9f25-6d64-4ece-b7d5-24372d3cac6c"), "KAZAKHSTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("48e3c041-9c21-4921-ab2b-0009c2462658"), "CHILE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("49437e11-42cf-4f50-9df7-4de000748a8c"), "ANGOLA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("499410c8-4c1f-40f1-bc6b-998cb32c8088"), "MEXICO", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("4bc150dd-a156-4454-8dd6-dc414120abf4"), "LIECHTENSTEIN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("4d2e87d8-5e2f-47a4-92e3-9fbd5a1b2986"), "ALGERIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("4dab349b-5562-4e6e-8ae0-5959852c4792"), "LEBANON", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("4f9546d3-20e9-4484-a151-a8bf816414b9"), "POLAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("4fd8a53f-0c3c-4f27-825c-392132b4056f"), "GERMANY", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("53470116-041c-458b-a9ec-115c0258da52"), "GREECE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("53e21c8d-c3ab-4f45-bb77-13f75402edce"), "EGYPT", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("542c2db9-1ecb-48d1-9a19-65d98a7bad50"), "SWITZERLAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 6, null, null, "Swiss Franc", null },
+                    { new Guid("5a372ab3-046d-4eed-a6e7-bbc9a6f98f86"), "MOROCCO", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("5e263be9-0f53-46bc-b9e5-71c8acc8ba86"), "DENMARK", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("60d43666-5e4f-463b-b3b5-d2d741e3d2c9"), "COTE D'IVOIRE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("6497ce5d-2a28-4195-b80b-d2211b17d887"), "SAUDI ARABIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("65468d10-f03c-4cf1-9963-a839825b6f22"), "KENYA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("6626287e-60f1-4354-8eee-1a133b377278"), "SLOVENIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("69a074e2-c9a7-4362-81d3-84c5a8782eea"), "MONGOLIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("69a32cbb-e4dd-465c-a2e6-9c2c7cee4be0"), "IRAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1116,48 +1115,48 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "CountryName", "CreatedDate", "CurrencyCode", "Description", "LocalCurrency", "TripCurrency", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("5e1d24f2-1027-493d-9a9a-8269d66f75a1"), "FINLAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("5ec6857a-3c5a-48bf-a777-bb2dd8f8b39b"), "ARGENTINA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("647c86aa-7016-4212-bfca-04f84de20e58"), "AZERBAIJAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("64cc3336-5d5f-4d77-b3f1-1a3a3dfdd379"), "ETHIOPIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("67243e17-a4c8-469c-86e2-334e5f1911dd"), "MEXICO", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("68705f10-0cbf-4a24-a4b4-26c5eb985b6b"), "KUWAIT", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("6af57cb4-cb7e-49a2-9dc9-1da06f27df0b"), "SWITZERLAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 6, null, null, "Swiss Franc", null },
-                    { new Guid("6b26d2c6-87c4-4a70-8106-52ed4d87021b"), "MONGOLIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("6c6422b4-3b8e-4fbb-b049-3c626db2c526"), "SERBIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("6e74e185-6518-42e7-b68b-e59970b58a6f"), "GERMANY", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("716c9729-179b-4db7-bd97-3fc064d46906"), "TURKMENISTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("71ad47cc-173b-4dd2-9bef-cfb6631d9d49"), "BELGIUM", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("75396103-8d20-4cbb-909c-ac9d9c505c7e"), "NORWAY", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("7a91b3a6-c2ac-4da6-9cfb-0310d5bdc0d3"), "CYPRUS", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("7be44030-7855-4f15-b114-6c05be0f3bee"), "KYRGYZSTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("7dd12dbe-d027-4f81-843b-be5ae7547403"), "UNITED KINGDOM", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 5, null, null, "Pound Sterling", null },
-                    { new Guid("815f06de-8fbe-424e-92b1-5e898f2def67"), "LIECHTENSTEIN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("84bd0185-ddc6-4038-ba7b-f5cd0dbf2c23"), "CUBA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("87faf41f-5b88-4836-ab72-940ef75d4017"), "IRAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("881d5ae7-260a-48e9-8717-497d61b2b048"), "RUSSIAN FEDERATION", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("88240ae2-14bb-437f-ba12-57cfa5aced7d"), "NETHERLANDS", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("887b901b-98a4-4c99-9ee3-2736295b988d"), "ISRAEL", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("8a73c8c2-0334-45ef-9574-657782e6088e"), "UKRAINE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("8aa979b5-2c78-4176-a47d-5f90a96c65c2"), "TURKEY", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("8d769798-e199-4eed-9c74-3897881807e2"), "NORTH KOREA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("91101f68-f3a5-4528-8fc4-4a4b2fca1e35"), "TAJIKISTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("994cda27-8aa2-4c6e-8f72-dde7d506ca82"), "UNITED ARAB EMIRATES", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("9b516480-6214-4852-899a-e48666871238"), "ANGOLA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("9f38a8e4-67d9-47a2-9559-a01ad84b1d88"), "IRELAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("a0c14b1d-a828-4e16-b389-9fd9f350fdff"), "MOROCCO", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("a24e110d-433b-444c-a63f-70c0ccb000b3"), "ALL OTHER COUNTRIES", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("a3069248-a79a-4e02-9a50-0697f237a296"), "SLOVAKIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("a72f19f1-b81f-4eae-af0f-fa5ca79b97ab"), "ALBANIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("a8cacfbd-38f4-4a81-bbdc-ae13d2fc2a51"), "YEMEN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("ab5b9780-f60e-4339-8ecc-0326caa8b797"), "MALI", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("afe14a5a-74a3-4c94-abbf-0eaaae73531d"), "JAPAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 7, null, null, "Yen", null },
-                    { new Guid("b576c064-ed9b-4fd2-b208-1b4b0f7714d7"), "ZIMBABWE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("b59450e9-7d85-4179-bf2e-4b86fe0c1daf"), "PERU", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("b6215afe-482e-477d-b80c-1d4ceb1a7be9"), "NICARAGUA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("b87f38d7-24d9-4ac4-82c2-344c9a584078"), "BELARUS", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("b93e91c9-fadf-4c4a-ab3f-dcc9fef2ca1f"), "SLOVENIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("d1047995-83b6-4340-8393-82c314ebd59b"), "LEBANON", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null }
+                    { new Guid("69d4045d-aaa3-429a-bf6b-a8ea9a0efd53"), "LATVIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("6aed38b2-d50c-4671-a8da-3c612cda11ef"), "UNITED ARAB EMIRATES", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("7014ba5b-8a99-461a-9498-8598c4506dd7"), "ITALY", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("7049e13b-b598-4896-9846-97ea878c389d"), "CHINA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("706a6940-00b2-45f3-a8db-bd20cd86c578"), "BANGLADESH", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("74be167a-49b6-4ccf-87b3-22efcff36d4e"), "TURKMENISTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("769458cf-678c-4533-bfa2-491ed8739669"), "TURKEY", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("7de0fbd2-705b-4da3-8767-cbae420896ac"), "PERU", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("7e888a71-638d-42a0-8551-10baf2f4b6d4"), "UZBEKISTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("80b105d2-9771-4a43-a941-6442ed351ccc"), "NORWAY", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("8135c2ed-5b0c-405b-afdd-7bb952b68258"), "NIGERIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("848a78c3-295d-4d54-bf36-342e6d002df8"), "MALTA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("88d9950b-1213-417f-9d71-9036b05ffa2b"), "ISRAEL", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("8b7cf7a9-b426-4b43-af39-975caa8f430a"), "CONGO", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("8d20da6f-3c40-4fce-8bce-c28ce41e8822"), "UNITED STATES", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("902492da-bcb0-4692-b56c-9869302cd927"), "KYRGYZSTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("944ec487-7887-4e9b-9688-7b790386c8f3"), "MOLDOVA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("999208a9-b229-49dc-82cc-4d36ade2b047"), "BRAZIL", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("9b93e0b5-821d-45c4-b504-cf5ea28a5998"), "BELGIUM", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("9fd8fd0b-f1dc-4b9e-91e7-0afea0207f86"), "SPAIN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("a19900d0-e781-4bc3-a667-c41f2b64ad1b"), "PAKISTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("a3df72ce-d515-4410-9109-c6b2f83c681b"), "JORDAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("a527e8ef-160b-4d76-a026-39e4d244de4f"), "COLOMBIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("a5391fe5-5447-45e4-8110-23b35638124d"), "SINGAPORE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("a8cf4aef-af99-4ac0-8a3e-44c86080557d"), "NEW ZEALAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("ab39065e-4227-411b-86b5-86f2a437807c"), "PORTUGAL", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("ab99ed38-d096-4712-950d-75f23a4b1044"), "BELARUS", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("adc1f6cd-476c-4436-b17e-8ec72e9baf12"), "UNITED KINGDOM", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 5, null, null, "Pound Sterling", null },
+                    { new Guid("b314a198-1d5a-45ec-a11b-ce7e8f20a1b4"), "MONACO", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("b501246a-4a47-4322-bb3b-585dd832cac5"), "INDONESIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("b8acd35d-0486-44a1-899d-4cbbe0c63476"), "ROMANIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("ba19e4eb-366e-43c0-9825-dc455b25d4ea"), "AFGHANISTAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("bd2f72e4-aea8-4a97-800c-84c8d2fd74ea"), "CROATIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("bf3389ff-9590-4152-a7db-0d637449b6e2"), "ICELAND", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("c5e39f24-31d1-42f1-8563-8527a95617b6"), "JAPAN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 7, null, null, "Yen", null },
+                    { new Guid("c6a0c184-1672-45a7-8b7a-165fe4bbc3a7"), "CANADA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("c6fa1c61-3c4d-4e44-9898-f5158249847c"), "VIETNAM", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("c71374ac-f465-43e3-8c0e-f6b6783b9277"), "ESTONIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("c8c6fb05-4e6c-468b-a82b-ff9358895443"), "BOSNIA AND HERZEGOVINA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("cbde7d19-5ba3-4bbf-a8c1-c40c9db03e3e"), "GIBRALTAR", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("cd0b4c8b-b539-47ae-89f0-421fe20fec54"), "ALL OTHER COUNTRIES", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("cd7d7c61-b767-4134-a396-335be390bb9a"), "CUBA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1165,25 +1164,25 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "CountryName", "CreatedDate", "CurrencyCode", "Description", "LocalCurrency", "TripCurrency", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { new Guid("d23b0ecf-56ad-4447-898d-8773e4e77e4b"), "CHINA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d432077d-6ac5-4430-ad99-2203c5739cc8"), "SYRIAN ARAB REPUBLIC", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d48386c6-96e4-4e83-a6f1-5ec3a80bebb7"), "CONGO", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d520d634-90cf-4f19-80a0-f4d321dd0462"), "COLOMBIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d57b2eb2-3ad6-4d1f-8df4-614ada90393c"), "UZBEKISTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d5d98dfe-6a3c-4d01-bd29-8fe75281eb26"), "PAKISTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("d6e7e9a2-8f9e-43c1-91d8-50288a2d4510"), "MALAYSIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("dc14875d-b27d-4151-a81b-2975fa0165ec"), "AFGHANISTAN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("dcdbf59a-84e5-48b3-a6a8-752af2ff88e3"), "GHANA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("e998fd9f-5b7a-4322-9ce2-7e78644b162a"), "LITHUANIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("e9faacd7-7c3b-4800-87b5-6d90805eb024"), "MOZAMBIQUE", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("ed920dc2-3736-4bef-9846-ee2915bdca15"), "INDIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("ef5d62dd-25d7-4524-a1cb-4837313360e2"), "TUNISIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("f05d5de7-6c21-484c-b5a9-d4bb36f3a65e"), "ARMENIA", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
-                    { new Guid("f30dd4b3-045a-4db0-91f7-73048d29efcb"), "CZECH REPUBLIC", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("f44f9425-2214-4e93-b178-98a8e4b1a920"), "SPAIN", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("f583f390-5aad-445b-9712-b78f69306e71"), "GIBRALTAR", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("fc29ac05-32bd-46e4-acf8-0ce9d78cf05b"), "ICELAND", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
-                    { new Guid("fc66e461-0bfe-4ddd-8363-42997541e191"), "MONACO", new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null }
+                    { new Guid("cddb27a7-cafc-4294-961e-3491fc62ac1f"), "ZIMBABWE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("d6a64d15-2ea3-4ddd-9f6c-fab2630fcd9b"), "AUSTRALIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 4, null, null, "Australian Dollar", null },
+                    { new Guid("da658d8d-05c1-4c9b-96b6-ddd1057713d7"), "FRANCE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("de920e80-f38d-4031-b28b-bf857c2e4258"), "SWEDEN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("df4d1915-6eac-4e9d-a70e-a6cf91762da0"), "LIBYAN ARAB JAMAHIRIYA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("df8b5b62-c6cc-48a7-954e-f83c81955f5d"), "NORTH MACEDONIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("e24d0151-8d4a-4183-b800-b97a38278937"), "SERBIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("e4f1b5ac-845c-46b2-8344-a9c8da2d3cea"), "SOUTH KOREA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("e7424dfe-8071-4669-94fc-ec04789a27b1"), "NORTH KOREA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("e8e38747-c171-4cd0-8961-0d24d46377c8"), "IRAQ", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("ea8d5c58-1b43-4118-a601-24097bb60a01"), "SLOVAKIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("eb4aaa45-393a-4cc5-920e-22e8de206c20"), "GHANA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("f0dfd940-a3da-4288-9a1d-da0ebc126ab3"), "NICARAGUA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("f2b58350-9e13-4b9c-ab14-48a50c39c901"), "HUNGARY", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("fa683f9d-ff5c-4e46-a1de-d8eed093eb03"), "YEMEN", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("fa7caa94-1771-475d-b585-47e7cd19d262"), "MOZAMBIQUE", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("fa82cf80-fb1b-4b4f-a2b7-2dad53d91078"), "SAN MARINO", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 3, null, null, "Euro", null },
+                    { new Guid("fcc6a750-ca1f-4a72-84e1-73b385534bfb"), "RUSSIAN FEDERATION", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null },
+                    { new Guid("fdeeff26-5d8c-432b-b7c3-fe1b1408086b"), "INDIA", new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 1, null, null, "US Dollar", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1191,48 +1190,48 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "AccomodationAllowance", "CountryId", "CreatedDate", "DailyAllowance", "UpdatedDate", "ValidFrom", "ValidTo" },
                 values: new object[,]
                 {
-                    { new Guid("03b4d9dd-fc37-4e37-93d3-73dfa3f9707b"), 150m, new Guid("6af57cb4-cb7e-49a2-9dc9-1da06f27df0b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 60m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("04dd28eb-a97e-4ab0-a136-97a8285f15e1"), 100m, new Guid("dcdbf59a-84e5-48b3-a6a8-752af2ff88e3"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("07de7418-152c-4a81-8fc5-2840ed053454"), 110m, new Guid("558e5d8a-e59c-43ce-a628-29dfc8c52b27"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("07df1be7-8500-4272-89d7-ad8dbf85e9c1"), 90m, new Guid("b6215afe-482e-477d-b80c-1d4ceb1a7be9"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0b24c75d-e225-4aa4-b785-41a98840a427"), 80m, new Guid("b87f38d7-24d9-4ac4-82c2-344c9a584078"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0ca2b4a1-4e47-46aa-bca9-df7e7706aee5"), 100m, new Guid("5b6026de-c2ee-4cda-b2da-cbc39f83dccb"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0cd4a5df-e413-4fba-8e0a-c80f0f7453db"), 150m, new Guid("881d5ae7-260a-48e9-8717-497d61b2b048"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0e6a7786-2d0e-4c33-8933-41965f88e096"), 90m, new Guid("a24e110d-433b-444c-a63f-70c0ccb000b3"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0ed24353-585f-4f6c-8f3c-07653ff31c27"), 130m, new Guid("2cd2500c-523a-4ed4-8b07-b81e8f9feea2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("0fac2ea7-7ffd-4c01-8108-1a177b9c78b8"), 130m, new Guid("6e74e185-6518-42e7-b68b-e59970b58a6f"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("1315b17b-0cff-4c63-884e-c082903a054d"), 90m, new Guid("e9faacd7-7c3b-4800-87b5-6d90805eb024"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("15567d36-9ca0-4651-87b2-e890a558ed27"), 130m, new Guid("f30dd4b3-045a-4db0-91f7-73048d29efcb"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("16273267-8167-4a88-bda1-a9b7ac07c9a8"), 100m, new Guid("84bd0185-ddc6-4038-ba7b-f5cd0dbf2c23"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("16fe6573-dc87-4d15-bfb6-a777962fbe6e"), 130m, new Guid("f44f9425-2214-4e93-b178-98a8e4b1a920"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("196c13e7-e2ba-445a-b762-ff0afcad1c86"), 130m, new Guid("815f06de-8fbe-424e-92b1-5e898f2def67"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("19d41023-4236-4cc8-bd26-5512f33ead53"), 130m, new Guid("59779657-1e9d-4d65-8f6f-6065aa2cd3d2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("1ba11bb3-850d-43d8-8353-eeb9d4ecbe20"), 130m, new Guid("3f936909-20eb-4a4a-b487-6d53c8b3e534"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("1d32aaa2-916c-438f-85ab-f71cc165e8e4"), 80m, new Guid("ab5b9780-f60e-4339-8ecc-0326caa8b797"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("227df4b7-e30d-4056-9e2d-8e164c437846"), 110m, new Guid("647c86aa-7016-4212-bfca-04f84de20e58"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("24603614-8220-4a57-a09d-558f90f644a7"), 110m, new Guid("8a73c8c2-0334-45ef-9574-657782e6088e"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("2d44582d-03b0-4284-9e7e-8da8bf02c4b5"), 90m, new Guid("8aa979b5-2c78-4176-a47d-5f90a96c65c2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("2f1992d2-c7b8-4148-a096-7cbffd05d302"), 80m, new Guid("02a83abf-69f7-4ca7-b374-23d5e9eeea50"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("35d18bbd-baee-43f1-b5de-d3c3c6cf69d5"), 120m, new Guid("fc66e461-0bfe-4ddd-8363-42997541e191"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("3c0a8e24-8949-4c82-84dd-b05e0d71a35a"), 100m, new Guid("5a0308b4-f379-48d0-8aa8-b22eaf724110"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("3d0474e6-3769-432a-a0ab-935c19530fd5"), 100m, new Guid("887b901b-98a4-4c99-9ee3-2736295b988d"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("40f40949-a497-476d-a992-90d87943fb34"), 90m, new Guid("ed920dc2-3736-4bef-9846-ee2915bdca15"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("424a7580-7cc8-456e-aa53-83e9de514189"), 100m, new Guid("18f2a9b9-417f-4375-996e-1790c37d2090"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("44e099c7-6405-4c17-bc9d-13568324ef11"), 130m, new Guid("88240ae2-14bb-437f-ba12-57cfa5aced7d"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("4ae3a490-bd60-4d80-8c2a-33a8737eaead"), 100m, new Guid("38dc1ce9-6782-45ab-81a7-37386e67dfce"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("4c2d2da5-6296-4725-a08f-5ff092458406"), 100m, new Guid("231e8dc8-9d7a-46ec-b3c2-4d0ab8cdc58a"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("4fd8cfde-91a2-4e80-9d1c-c6c78a5f991b"), 130m, new Guid("a0c14b1d-a828-4e16-b389-9fd9f350fdff"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("50541fd2-380f-48d2-b537-9384a3a3235e"), 100m, new Guid("994cda27-8aa2-4c6e-8f72-dde7d506ca82"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("53bb2382-2a09-4f63-bb92-d88bad1fbae9"), 90m, new Guid("67243e17-a4c8-469c-86e2-334e5f1911dd"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("5781ec65-d0b4-42bf-b30f-d5728445d540"), 130m, new Guid("1ef4ca7e-29d8-4918-ae88-a85e9b6e7e5f"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("5b829d3f-304e-4078-ba2d-635fb44b41a6"), 130m, new Guid("f583f390-5aad-445b-9712-b78f69306e71"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("5b9bba67-a0df-42ed-a445-091f58a10246"), 80m, new Guid("716c9729-179b-4db7-bd97-3fc064d46906"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("61f147d4-7b1b-41ab-a209-00fbc5c3b62e"), 90m, new Guid("d5d98dfe-6a3c-4d01-bd29-8fe75281eb26"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("63d8390c-af63-4113-ad4a-05eeeb0a674f"), 80m, new Guid("d432077d-6ac5-4430-ad99-2203c5739cc8"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("65844988-e0eb-4869-bba2-f961f0c568ca"), 130m, new Guid("499b8670-c73e-43b4-8d63-b4822ed7fc4d"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("6b525e65-7fd9-4a8e-9410-40df497be94f"), 130m, new Guid("5cd9eb52-349f-45bb-bbed-4449a58c3388"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("6be670df-dab4-4194-8014-728700119b24"), 130m, new Guid("0fdf9c96-af2f-4a56-860b-bbc49fa34735"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("6cfe58c9-7512-43e4-8fb6-c9e34d8cfdbc"), 130m, new Guid("0af4de64-44ba-4a1b-a864-938f3d20a954"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null }
+                    { new Guid("045c9413-edbf-4b5d-add9-b94766049da6"), 130m, new Guid("9b93e0b5-821d-45c4-b504-cf5ea28a5998"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("0b659d64-c10b-4831-a0db-61ab43341165"), 100m, new Guid("cd7d7c61-b767-4134-a396-335be390bb9a"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("1038f52f-da59-42e3-bc1e-93f49581cccd"), 130m, new Guid("bf3389ff-9590-4152-a7db-0d637449b6e2"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("13118efc-1835-407b-ba90-5cf4c0ffa1c0"), 80m, new Guid("65468d10-f03c-4cf1-9963-a839825b6f22"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("16b032e9-288d-40f1-a8d7-0bfe6fb08bd7"), 130m, new Guid("7014ba5b-8a99-461a-9498-8598c4506dd7"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("172c5667-d6c5-48b7-bcdc-b9cac70b508b"), 100m, new Guid("eb4aaa45-393a-4cc5-920e-22e8de206c20"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("17695b24-8607-41a1-a265-5ac092ab06f1"), 100m, new Guid("8b7cf7a9-b426-4b43-af39-975caa8f430a"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("1b1e3ba4-9148-4678-95d3-8823dccbc009"), 100m, new Guid("6497ce5d-2a28-4195-b80b-d2211b17d887"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("1f3cfc79-cf15-4e71-9138-18f6281e9562"), 90m, new Guid("38f2a5c9-e434-4cd1-a148-5479b52c9fd9"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("1ff2ff3e-03f0-4872-9e7b-0fae73a5a665"), 130m, new Guid("da658d8d-05c1-4c9b-96b6-ddd1057713d7"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("209c6ecf-3456-413c-a068-75ae25867c86"), 90m, new Guid("fdeeff26-5d8c-432b-b7c3-fe1b1408086b"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("2186064f-6d31-44fc-9895-c5823b14cb84"), 90m, new Guid("f0dfd940-a3da-4288-9a1d-da0ebc126ab3"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("242bdea8-fa24-4eaa-ace6-aeb96c764e77"), 130m, new Guid("69d4045d-aaa3-429a-bf6b-a8ea9a0efd53"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("251321b4-d57d-4460-b82c-0dd383e753ec"), 130m, new Guid("ea8d5c58-1b43-4118-a601-24097bb60a01"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("26c1b23f-1769-4b63-bbcf-31ae899df5f6"), 145m, new Guid("80b105d2-9771-4a43-a941-6442ed351ccc"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("27d12a7d-ddb9-4e91-af2e-aae63932de1b"), 80m, new Guid("2de088c3-26c4-4fed-8338-bcb331830606"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("2c8cac70-a57d-4b96-a4f5-33abd46d0609"), 100m, new Guid("4d2e87d8-5e2f-47a4-92e3-9fbd5a1b2986"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("2e3be636-f244-4f04-8e21-6d65522df8ae"), 100m, new Guid("439e9f25-6d64-4ece-b7d5-24372d3cac6c"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("3349825a-e065-4b2a-8856-c0764e1c1069"), 110m, new Guid("944ec487-7887-4e9b-9688-7b790386c8f3"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("337ebb64-c26d-4e97-8c5d-d50f538759f6"), 100m, new Guid("88d9950b-1213-417f-9d71-9036b05ffa2b"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("35f614aa-725e-41c4-80c2-952361bdd484"), 100m, new Guid("1b02013e-949a-4ced-880e-900d403aac18"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("363e1a16-c5fa-4a31-bc76-8e017ddd7f2f"), 130m, new Guid("fa82cf80-fb1b-4b4f-a2b7-2dad53d91078"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("3667a104-5a1a-4369-b934-571d62f55448"), 100m, new Guid("69a074e2-c9a7-4362-81d3-84c5a8782eea"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("3855d75d-d966-4e4c-9f14-246ee31e979a"), 150m, new Guid("542c2db9-1ecb-48d1-9a19-65d98a7bad50"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 60m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("445d6e4b-f2ac-47ba-82dd-9416e52ae6ad"), 90m, new Guid("499410c8-4c1f-40f1-bc6b-998cb32c8088"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("468ad22f-0862-4479-b808-a551191548a1"), 90m, new Guid("769458cf-678c-4533-bfa2-491ed8739669"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("47601e35-a32c-4acf-ade0-d80197528880"), 130m, new Guid("4f9546d3-20e9-4484-a151-a8bf816414b9"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4794ba72-a5e2-4ade-b579-1f3779f59235"), 90m, new Guid("fa7caa94-1771-475d-b585-47e7cd19d262"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4818d925-8a5c-40b6-b4c5-47a38d9c2647"), 80m, new Guid("430c65df-7557-4592-89f0-d386aa6182cd"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("48888d59-9c87-4211-8ee9-50c0772c6f48"), 100m, new Guid("999208a9-b229-49dc-82cc-4d36ade2b047"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4b6f1d59-0b84-42d3-b98d-9ff075c811dd"), 100m, new Guid("706a6940-00b2-45f3-a8db-bd20cd86c578"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4b733939-57b2-4e58-9b2b-78c331af0ef4"), 80m, new Guid("49437e11-42cf-4f50-9df7-4de000748a8c"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4d538934-9a2e-435d-b945-46834df6767b"), 80m, new Guid("3cf2ed75-4428-4efd-a430-a786abc9dcd6"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4e1f999d-039e-4270-98ee-bcbd51656af1"), 80m, new Guid("53e21c8d-c3ab-4f45-bb77-13f75402edce"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("4f6a056a-239b-4c40-a194-04c905352c9f"), 90m, new Guid("69a32cbb-e4dd-465c-a2e6-9c2c7cee4be0"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("503564ee-b355-4e9d-a4c0-2768002d9406"), 80m, new Guid("41c51cf9-c0f5-465b-80aa-7cd430a83968"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("5445122d-9879-4476-8c4b-ca8e7985c8f7"), 100m, new Guid("287d848f-6238-44dc-8642-fdefba0d2c5c"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("55d29800-f52e-4151-923f-cc773d564741"), 100m, new Guid("adc1f6cd-476c-4436-b17e-8ec72e9baf12"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("5a59542a-406b-48a6-b684-437286fc9ea8"), 110m, new Guid("42621a0e-4faa-4e50-bf97-68fe1d80acab"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("5ad0c781-0e75-48ae-83d6-3691cfa75203"), 130m, new Guid("5e263be9-0f53-46bc-b9e5-71c8acc8ba86"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("5d1436c3-f35f-4f13-ba89-78ef95b964c4"), 17000m, new Guid("c5e39f24-31d1-42f1-8563-8527a95617b6"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 5500m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("5ff2e1af-4752-43f0-8b4b-d22ec230ece0"), 130m, new Guid("3670e21d-a0e8-4fb1-bfc6-2836e426f905"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null }
                 });
 
             migrationBuilder.InsertData(
@@ -1240,48 +1239,48 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "AccomodationAllowance", "CountryId", "CreatedDate", "DailyAllowance", "UpdatedDate", "ValidFrom", "ValidTo" },
                 values: new object[,]
                 {
-                    { new Guid("6f77535f-d7f0-4d5a-9c7d-fcd33cbe4016"), 90m, new Guid("d23b0ecf-56ad-4447-898d-8773e4e77e4b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("726809bd-51bf-43d1-be92-8909a007c220"), 130m, new Guid("fc29ac05-32bd-46e4-acf8-0ce9d78cf05b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("72719035-29a8-4cd0-95a1-d3599fbc5991"), 85m, new Guid("3eaae17e-a5a9-43f5-9fce-898a7875e4f0"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("79e04650-b0a3-40d6-8298-852e21f2be4c"), 100m, new Guid("120cef79-1694-4bab-b86b-c652c8430de7"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("79ec8512-d766-47b4-9cd1-5ef67d0ebbbb"), 130m, new Guid("9f38a8e4-67d9-47a2-9559-a01ad84b1d88"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("7ed93660-2f89-47f6-81d8-5ba2d8dc5155"), 80m, new Guid("d520d634-90cf-4f19-80a0-f4d321dd0462"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("82d1008c-84e0-493c-a960-316daf85a91c"), 145m, new Guid("75396103-8d20-4cbb-909c-ac9d9c505c7e"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("85b5504e-60b5-44a6-a7a8-c9ce91cf965a"), 100m, new Guid("5b1630c6-667e-4e02-8ab7-d65ad5040384"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("88eaabb8-dc91-4aeb-aa97-fdc028327d13"), 110m, new Guid("2075e77b-9674-4ef8-9b0d-cd7780ead9a1"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("8ec8c0b4-ad20-43b6-b22e-2e0d12a1ff8a"), 80m, new Guid("d6e7e9a2-8f9e-43c1-91d8-50288a2d4510"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("8f53fdcf-74c1-42fd-9af2-ba7ce2c25594"), 90m, new Guid("8d769798-e199-4eed-9c74-3897881807e2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("90fe8141-24e5-4d5e-8f99-110046a65c06"), 130m, new Guid("366e2efb-c0cd-45cb-a630-fc53ae0f2d1e"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("93d3eef0-587e-451a-9804-5c215750f4f3"), 100m, new Guid("1b6823d3-4824-4cc4-ba88-456edbe034cb"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("96f14459-9b26-4b91-b671-7e32500f62a8"), 130m, new Guid("b93e91c9-fadf-4c4a-ab3f-dcc9fef2ca1f"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("97e9313a-8212-4ed0-b6c6-f2ec81e72f96"), 150m, new Guid("1656cb0d-8d8a-4de9-a3a9-777874619174"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("98fe65d3-8ed4-4624-beb9-6514aec4e16d"), 100m, new Guid("3ec6a5e8-e13c-41c1-bb71-ed00ed6334e1"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("9992922e-5494-4995-b965-1d1ddfeafda5"), 100m, new Guid("7dd12dbe-d027-4f81-843b-be5ae7547403"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("9d1f0410-8e78-45bd-8b0f-dce44903a471"), 100m, new Guid("d48386c6-96e4-4e83-a6f1-5ec3a80bebb7"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("a0dccb5e-fcbd-4fec-bc64-66954cf7513e"), 130m, new Guid("71ad47cc-173b-4dd2-9bef-cfb6631d9d49"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("a16a69e5-fe13-4282-a6b9-b53e76cbb49f"), 80m, new Guid("d57b2eb2-3ad6-4d1f-8df4-614ada90393c"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("a52ec9cd-0abd-4254-a706-fffc506a7955"), 130m, new Guid("5e1d24f2-1027-493d-9a9a-8269d66f75a1"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("a5487fd2-3b86-4594-96cf-459982f5d9c4"), 120m, new Guid("68705f10-0cbf-4a24-a4b4-26c5eb985b6b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("aca49b21-2a4b-479c-9b33-3ec0b8c56d12"), 100m, new Guid("b576c064-ed9b-4fd2-b208-1b4b0f7714d7"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b039c980-b42d-4295-ba3c-618ad8a25ee5"), 130m, new Guid("e998fd9f-5b7a-4322-9ce2-7e78644b162a"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b0616b88-3789-47a7-82e9-3ef8fd52372c"), 80m, new Guid("64cc3336-5d5f-4d77-b3f1-1a3a3dfdd379"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b3d8cc8d-9718-4b29-abe9-b4bf07f45593"), 80m, new Guid("a72f19f1-b81f-4eae-af0f-fa5ca79b97ab"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b57a48b0-2dd9-488a-8dea-ade6ccd3751f"), 80m, new Guid("91101f68-f3a5-4528-8fc4-4a4b2fca1e35"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b5c81c3a-9f15-463f-a91a-b20d5df16501"), 100m, new Guid("d1047995-83b6-4340-8393-82c314ebd59b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("b9cf896d-7af5-42d9-a427-9ce0a4d4618f"), 100m, new Guid("37750d9d-56c7-4fc0-ba3f-1885c5014611"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("bc64649f-961c-478f-b97d-467b54aaa338"), 17000m, new Guid("afe14a5a-74a3-4c94-abbf-0eaaae73531d"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 5500m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("bcc68653-57d0-45c8-9e4c-b9db1be5db31"), 130m, new Guid("56985aaa-02ab-4f97-a431-305fbd8bd662"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c0b9ed68-d2c6-44eb-8c67-04339c7191fd"), 90m, new Guid("565deb60-6b0a-472a-995c-4355ef675e03"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c0c2777e-bee3-460a-9ec3-a6f9580e18b1"), 100m, new Guid("5ec6857a-3c5a-48bf-a777-bb2dd8f8b39b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c151f741-483a-4a56-9385-248e0f8e715c"), 100m, new Guid("6b26d2c6-87c4-4a70-8106-52ed4d87021b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c2ee74fa-63f6-42c0-a106-ae3d427dbb81"), 130m, new Guid("36afc57d-9bee-4fde-9efc-1527181b1271"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c7d6fc3b-8647-40cf-a61f-bd0619de7e0b"), 100m, new Guid("18a4cf9a-6a7f-472c-882e-d911ef55382b"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("c89c5ac5-2f41-47e1-b706-ea9cf0c87554"), 100m, new Guid("147607f0-26ce-4e80-a1d5-5a9356f573c2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("caa34345-d844-439d-bd42-b1c14334e97c"), 90m, new Guid("7be44030-7855-4f15-b114-6c05be0f3bee"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("cc7edca6-4e3b-401e-b868-7904fe71b65e"), 80m, new Guid("9b516480-6214-4852-899a-e48666871238"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("ccec9d56-6c4c-42e2-b3d1-6ea4e0fa601f"), 130m, new Guid("a3069248-a79a-4e02-9a50-0697f237a296"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("d00c0f7e-0500-4b8d-a2df-651802afcb96"), 80m, new Guid("f05d5de7-6c21-484c-b5a9-d4bb36f3a65e"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("d13970a4-bb4d-4f19-a42f-75032ffdf1e1"), 80m, new Guid("5a217061-f93b-44d7-96b4-8dbd8b63764f"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null }
+                    { new Guid("602af7e0-7524-4a8a-9a9c-f4af4b040e11"), 130m, new Guid("1c5f2a84-5c45-445a-a80f-efa8e23c75e5"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("6803be2b-aa74-49b2-8b64-ae2afdd0294e"), 130m, new Guid("6626287e-60f1-4354-8eee-1a133b377278"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("697cc9ef-c1ab-4134-b870-02efc4836fb2"), 130m, new Guid("c71374ac-f465-43e3-8c0e-f6b6783b9277"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("6aa93d3f-5556-4e1b-9b1b-1c90698f89dd"), 100m, new Guid("a3df72ce-d515-4410-9109-c6b2f83c681b"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("6effeb28-3c76-423e-b044-03523459fd2b"), 120m, new Guid("e4f1b5ac-845c-46b2-8344-a9c8da2d3cea"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("723552ae-8426-4f0b-aa9f-602e684ffee4"), 90m, new Guid("902492da-bcb0-4692-b56c-9869302cd927"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("75280283-605a-4a1f-a1bd-178faf44a873"), 80m, new Guid("205fb844-b643-487b-bbd3-d3b6d794fd92"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("759c0c14-50a2-4ce3-94cc-e4daca7e3099"), 80m, new Guid("a527e8ef-160b-4d76-a026-39e4d244de4f"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("795ce722-f8d9-4aac-8479-9676f9989050"), 100m, new Guid("df4d1915-6eac-4e9d-a70e-a6cf91762da0"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("7c8143a2-2cb8-4249-8226-5b73bb6812b5"), 130m, new Guid("848a78c3-295d-4d54-bf36-342e6d002df8"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("7d69cc21-d0db-46db-9c8d-10108dabdcca"), 130m, new Guid("007f9461-116c-4760-b248-bffb7a6dce0f"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("935a3cc1-93c5-4e3b-87fc-0e6a76792585"), 100m, new Guid("c6fa1c61-3c4d-4e44-9898-f5158249847c"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("94b9008c-3125-4d40-bc2a-250cc12dfbef"), 90m, new Guid("8135c2ed-5b0c-405b-afdd-7bb952b68258"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("99f5ae2f-2ba6-486f-91b5-79bf2a5fb536"), 90m, new Guid("e8e38747-c171-4cd0-8961-0d24d46377c8"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("9a074114-a42d-4e41-84c6-c5d092ea92d4"), 130m, new Guid("f2b58350-9e13-4b9c-ab14-48a50c39c901"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("9a0f6405-dbf0-49f7-945c-78df94b2b519"), 130m, new Guid("c8c6fb05-4e6c-468b-a82b-ff9358895443"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("9ad7f17a-ff6d-4e00-bae1-4b33105468f3"), 130m, new Guid("323fe0c7-34d4-4ed1-92b9-3a20460179cc"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("9be66d12-d12a-469f-9a44-5652bec83640"), 80m, new Guid("0b9a86f4-a03c-4879-9ce3-4aebcc224d93"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("9c1af855-9b89-4087-be78-95c23a3e892c"), 90m, new Guid("cd0b4c8b-b539-47ae-89f0-421fe20fec54"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("a1e01784-8eb1-4a4d-9b72-f6263dad9c6b"), 130m, new Guid("bd2f72e4-aea8-4a97-800c-84c8d2fd74ea"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("a1e4cbc4-22d9-425f-9ae8-4c9c82aaebdc"), 150m, new Guid("8d20da6f-3c40-4fce-8bce-c28ce41e8822"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("a832b5f5-fc89-4efa-8f40-4858332dc643"), 85m, new Guid("48e3c041-9c21-4921-ab2b-0009c2462658"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("ab9cae91-c90c-4e88-a837-15b692249d1f"), 130m, new Guid("3f0890fb-0ae0-428d-aa9f-57efeab6ca45"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("af07d47d-2ab7-49ef-80eb-086be06c5be6"), 90m, new Guid("e7424dfe-8071-4669-94fc-ec04789a27b1"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b38ca52e-1297-49e3-b655-16284af30402"), 80m, new Guid("7e888a71-638d-42a0-8551-10baf2f4b6d4"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b577f5b1-834a-4f67-8ac4-67dceaa8fced"), 130m, new Guid("4fd8a53f-0c3c-4f27-825c-392132b4056f"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b6f7c2d5-96cd-4f1a-994a-2747143898c0"), 130m, new Guid("9fd8fd0b-f1dc-4b9e-91e7-0afea0207f86"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b78251f4-072d-4d8a-b7a4-70c20d8ca952"), 150m, new Guid("fcc6a750-ca1f-4a72-84e1-73b385534bfb"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b7a17953-055c-4cc9-af46-84a865296105"), 120m, new Guid("d6a64d15-2ea3-4ddd-9f6c-fab2630fcd9b"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("b9ec9b35-310d-4633-8fec-951e3b48b765"), 100m, new Guid("60d43666-5e4f-463b-b3b5-d2d741e3d2c9"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("baa53c0f-4029-4319-bb24-13a0087c6357"), 130m, new Guid("1908d2d4-fc20-4d62-88eb-30f62aa5d830"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("bd03cddf-80c4-4357-a49e-5a463c97788c"), 90m, new Guid("a19900d0-e781-4bc3-a667-c41f2b64ad1b"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("bf9ef66a-b100-4294-aa70-d298b08aed8d"), 100m, new Guid("c6a0c184-1672-45a7-8b7a-165fe4bbc3a7"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("c3fba795-98d3-4bbf-8554-22e5f1c44744"), 90m, new Guid("7049e13b-b598-4896-9846-97ea878c389d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("c54467e4-c885-44ae-b66f-b793f1b6a250"), 130m, new Guid("4bc150dd-a156-4454-8dd6-dc414120abf4"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("c90b53ee-e195-411b-ae78-02e60645cf33"), 130m, new Guid("cbde7d19-5ba3-4bbf-a8c1-c40c9db03e3e"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("cb61d06f-a187-406d-9c1e-6a310d354c12"), 130m, new Guid("de920e80-f38d-4031-b28b-bf857c2e4258"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("cf63d15b-7a45-4d36-83e6-0d8a030a8a52"), 100m, new Guid("cddb27a7-cafc-4294-961e-3491fc62ac1f"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d26e907a-46ba-414a-8c96-8ea841f8a2fc"), 120m, new Guid("3abefb98-503e-4348-be03-6bdcb49fe7bd"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d45b5bf7-2506-4868-93b8-f7052c33cdd8"), 130m, new Guid("ab39065e-4227-411b-86b5-86f2a437807c"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d60609bb-eb62-404a-912a-69ba052afa36"), 110m, new Guid("b501246a-4a47-4322-bb3b-585dd832cac5"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d834f1f2-57f2-4b6a-91ba-787c3b914248"), 80m, new Guid("74be167a-49b6-4ccf-87b3-22efcff36d4e"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null }
                 });
 
             migrationBuilder.InsertData(
@@ -1289,25 +1288,25 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 columns: new[] { "Id", "AccomodationAllowance", "CountryId", "CreatedDate", "DailyAllowance", "UpdatedDate", "ValidFrom", "ValidTo" },
                 values: new object[,]
                 {
-                    { new Guid("d8d32a12-c8df-44fe-ba70-26ca8a7f22e3"), 90m, new Guid("87faf41f-5b88-4836-ab72-940ef75d4017"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("da914f15-005e-4d90-9fc3-1778ac554d7d"), 80m, new Guid("ef5d62dd-25d7-4524-a1cb-4837313360e2"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("daa08a12-e5d9-418d-abf5-adce1cb8a38a"), 120m, new Guid("253a2538-6542-4f9e-8a4a-25aae061931a"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("dad8fe33-459b-40c7-ad4b-0da4c69beb71"), 100m, new Guid("a8cacfbd-38f4-4a81-bbdc-ae13d2fc2a51"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("dc2cde03-86c2-49df-ae1d-a8bf5adabc0e"), 130m, new Guid("1532da41-7b44-426d-a1b5-35eca9d407af"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("df4af487-9eac-4a52-9fcc-c3827eeaac2f"), 130m, new Guid("6c6422b4-3b8e-4fbb-b049-3c626db2c526"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("e4903d35-634e-42fd-9941-686f53979d92"), 120m, new Guid("31a6985d-986a-4dd1-b881-1241febb4198"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("e7e6ff17-e5d9-4f2d-8823-95c8314ed2c6"), 130m, new Guid("3aa3d17e-23f8-4394-a7ee-cea54b32a5bb"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("e8281b6b-9570-4ea4-9319-f416a137637e"), 90m, new Guid("1d6b2c13-e5e2-4253-b625-cd8f7283adf9"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("e8b764ee-6906-45eb-a81f-3c419a166d2d"), 130m, new Guid("294af758-8f2c-42b3-9ccb-b04c655a9e48"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("ebd95af9-5604-4f02-a0f8-1a8a1029bffd"), 130m, new Guid("16ddf542-b5c2-45c3-98a4-7f8d1b4d6536"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("ed123281-ed83-47e7-93c4-83ccd4cfa44e"), 130m, new Guid("7a91b3a6-c2ac-4da6-9cfb-0310d5bdc0d3"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("eddc4312-47ec-447e-aae8-f12528b411fd"), 80m, new Guid("dc14875d-b27d-4151-a81b-2975fa0165ec"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("f297ced3-8798-4212-84f5-4c65f159ff06"), 130m, new Guid("49da6273-5972-4cfe-8c4c-6515ef1a6f35"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("f659c6f0-e213-41fc-b1b9-c44dad799cc0"), 80m, new Guid("58f6654e-e751-4f42-b45c-40b36abb1e06"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("f6643f3c-a6c3-4b5f-8147-b0fdb1b38849"), 70m, new Guid("b59450e9-7d85-4179-bf2e-4b86fe0c1daf"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("f75733c0-6118-4f77-89fd-6247e92693fe"), 90m, new Guid("273f448d-8e83-40bc-888d-e394e09a9fc3"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("fb17a8a4-e1cc-4e3b-a5c2-3c9af7aae913"), 130m, new Guid("33c813f3-13d3-49f2-95e0-43885cfbe0c4"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null },
-                    { new Guid("fff0f774-aae2-4418-a27d-c8eca1572a03"), 130m, new Guid("0cbc33b2-d24e-4999-9c07-6fc74a97cb92"), new DateTime(2022, 4, 15, 11, 58, 31, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), null }
+                    { new Guid("d8e5797c-b1e1-40af-931c-f5626d5a219b"), 100m, new Guid("4dab349b-5562-4e6e-8ae0-5959852c4792"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d99774fe-87df-4162-8dfe-6e3eab9c87b4"), 100m, new Guid("fa683f9d-ff5c-4e46-a1de-d8eed093eb03"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("d9c17264-22d7-4739-a002-4d7b0f619d41"), 110m, new Guid("20e55597-f101-455b-b086-2d1fa6382215"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("dcac59a1-9b3c-4fb4-b405-d234f6d4b93e"), 120m, new Guid("b314a198-1d5a-45ec-a11b-ce7e8f20a1b4"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("ddb38782-e381-4c3b-bc76-047569fc7f1e"), 130m, new Guid("3cd2bf44-4925-4972-8b7d-f5ead78e64bf"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("e02718de-c411-449b-b06d-abeb8b738b8a"), 80m, new Guid("a8cf4aef-af99-4ac0-8a3e-44c86080557d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("e3954082-9d6f-47d5-b69d-da3ff7c0da36"), 130m, new Guid("2dc41548-fc93-4cbe-a5bf-5de6251e4e9f"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("e46c3df8-e5ce-463a-a2db-ac17f51454cc"), 80m, new Guid("3c146ed0-e896-434f-901a-bb6df2fb762d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("e482c7f0-f2bb-41f0-83d2-bc1aba9444ac"), 80m, new Guid("0bf198dd-b3a4-4913-86da-0942d65ed98d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("ebfce784-675f-48b3-9349-8c7a042ecd4f"), 100m, new Guid("6aed38b2-d50c-4671-a8da-3c612cda11ef"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("ed66efc4-ff5f-4848-92ad-44f398d61f0a"), 70m, new Guid("7de0fbd2-705b-4da3-8767-cbae420896ac"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("f1e4ea29-7436-4874-a413-778aa8ebdaa6"), 80m, new Guid("ab99ed38-d096-4712-950d-75f23a4b1044"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("f40d8ab9-89a0-44a0-bdba-2fda0c5ecd0d"), 130m, new Guid("53470116-041c-458b-a9ec-115c0258da52"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("f538ef87-b568-4760-9435-3ad6904bf7ec"), 130m, new Guid("5a372ab3-046d-4eed-a6e7-bbc9a6f98f86"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("f59b5336-9106-416f-99b8-cec05d9f884c"), 130m, new Guid("e24d0151-8d4a-4183-b800-b97a38278937"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("f815ccfb-d10f-472c-b434-e9e9a8d012b2"), 80m, new Guid("ba19e4eb-366e-43c0-9825-dc455b25d4ea"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("fb3a1866-4dc5-473f-b31e-d530aceca26d"), 130m, new Guid("df8b5b62-c6cc-48a7-954e-f83c81955f5d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("fb9dbd9b-a657-40c2-8818-8687ac6eb795"), 130m, new Guid("b8acd35d-0486-44a1-899d-4cbbe0c63476"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 35m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null },
+                    { new Guid("fd02012f-7f80-48dc-962b-ee00f73473bf"), 100m, new Guid("a5391fe5-5447-45e4-8110-23b35638124d"), new DateTime(2022, 4, 16, 2, 31, 5, 0, DateTimeKind.Unspecified), 30m, null, new DateTime(2022, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -1316,10 +1315,10 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
                 column: "TripDetailId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_EmployeeBusinessTrips_TripDetail_TripDetailId",
+                name: "FK_EmployeeBusinessTrips_TripDetails_TripDetailId",
                 table: "EmployeeBusinessTrips",
                 column: "TripDetailId",
-                principalTable: "TripDetail",
+                principalTable: "TripDetails",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -1327,11 +1326,11 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_EmployeeBusinessTrips_TripDetail_TripDetailId",
+                name: "FK_EmployeeBusinessTrips_TripDetails_TripDetailId",
                 table: "EmployeeBusinessTrips");
 
             migrationBuilder.DropTable(
-                name: "TripDetail");
+                name: "TripDetails");
 
             migrationBuilder.DropIndex(
                 name: "IX_EmployeeBusinessTrips_TripDetailId",
@@ -1340,1032 +1339,1032 @@ namespace BusinessTripAdmin.Infrastructure.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("03b4d9dd-fc37-4e37-93d3-73dfa3f9707b"));
+                keyValue: new Guid("045c9413-edbf-4b5d-add9-b94766049da6"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("04dd28eb-a97e-4ab0-a136-97a8285f15e1"));
+                keyValue: new Guid("0b659d64-c10b-4831-a0db-61ab43341165"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("07de7418-152c-4a81-8fc5-2840ed053454"));
+                keyValue: new Guid("1038f52f-da59-42e3-bc1e-93f49581cccd"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("07df1be7-8500-4272-89d7-ad8dbf85e9c1"));
+                keyValue: new Guid("13118efc-1835-407b-ba90-5cf4c0ffa1c0"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0b24c75d-e225-4aa4-b785-41a98840a427"));
+                keyValue: new Guid("16b032e9-288d-40f1-a8d7-0bfe6fb08bd7"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0ca2b4a1-4e47-46aa-bca9-df7e7706aee5"));
+                keyValue: new Guid("172c5667-d6c5-48b7-bcdc-b9cac70b508b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0cd4a5df-e413-4fba-8e0a-c80f0f7453db"));
+                keyValue: new Guid("17695b24-8607-41a1-a265-5ac092ab06f1"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0e6a7786-2d0e-4c33-8933-41965f88e096"));
+                keyValue: new Guid("1b1e3ba4-9148-4678-95d3-8823dccbc009"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0ed24353-585f-4f6c-8f3c-07653ff31c27"));
+                keyValue: new Guid("1f3cfc79-cf15-4e71-9138-18f6281e9562"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("0fac2ea7-7ffd-4c01-8108-1a177b9c78b8"));
+                keyValue: new Guid("1ff2ff3e-03f0-4872-9e7b-0fae73a5a665"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("1315b17b-0cff-4c63-884e-c082903a054d"));
+                keyValue: new Guid("209c6ecf-3456-413c-a068-75ae25867c86"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("15567d36-9ca0-4651-87b2-e890a558ed27"));
+                keyValue: new Guid("2186064f-6d31-44fc-9895-c5823b14cb84"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("16273267-8167-4a88-bda1-a9b7ac07c9a8"));
+                keyValue: new Guid("242bdea8-fa24-4eaa-ace6-aeb96c764e77"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("16fe6573-dc87-4d15-bfb6-a777962fbe6e"));
+                keyValue: new Guid("251321b4-d57d-4460-b82c-0dd383e753ec"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("196c13e7-e2ba-445a-b762-ff0afcad1c86"));
+                keyValue: new Guid("26c1b23f-1769-4b63-bbcf-31ae899df5f6"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("19d41023-4236-4cc8-bd26-5512f33ead53"));
+                keyValue: new Guid("27d12a7d-ddb9-4e91-af2e-aae63932de1b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("1ba11bb3-850d-43d8-8353-eeb9d4ecbe20"));
+                keyValue: new Guid("2c8cac70-a57d-4b96-a4f5-33abd46d0609"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("1d32aaa2-916c-438f-85ab-f71cc165e8e4"));
+                keyValue: new Guid("2e3be636-f244-4f04-8e21-6d65522df8ae"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("227df4b7-e30d-4056-9e2d-8e164c437846"));
+                keyValue: new Guid("3349825a-e065-4b2a-8856-c0764e1c1069"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("24603614-8220-4a57-a09d-558f90f644a7"));
+                keyValue: new Guid("337ebb64-c26d-4e97-8c5d-d50f538759f6"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("2d44582d-03b0-4284-9e7e-8da8bf02c4b5"));
+                keyValue: new Guid("35f614aa-725e-41c4-80c2-952361bdd484"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("2f1992d2-c7b8-4148-a096-7cbffd05d302"));
+                keyValue: new Guid("363e1a16-c5fa-4a31-bc76-8e017ddd7f2f"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("35d18bbd-baee-43f1-b5de-d3c3c6cf69d5"));
+                keyValue: new Guid("3667a104-5a1a-4369-b934-571d62f55448"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("3c0a8e24-8949-4c82-84dd-b05e0d71a35a"));
+                keyValue: new Guid("3855d75d-d966-4e4c-9f14-246ee31e979a"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("3d0474e6-3769-432a-a0ab-935c19530fd5"));
+                keyValue: new Guid("445d6e4b-f2ac-47ba-82dd-9416e52ae6ad"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("40f40949-a497-476d-a992-90d87943fb34"));
+                keyValue: new Guid("468ad22f-0862-4479-b808-a551191548a1"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("424a7580-7cc8-456e-aa53-83e9de514189"));
+                keyValue: new Guid("47601e35-a32c-4acf-ade0-d80197528880"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("44e099c7-6405-4c17-bc9d-13568324ef11"));
+                keyValue: new Guid("4794ba72-a5e2-4ade-b579-1f3779f59235"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("4ae3a490-bd60-4d80-8c2a-33a8737eaead"));
+                keyValue: new Guid("4818d925-8a5c-40b6-b4c5-47a38d9c2647"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("4c2d2da5-6296-4725-a08f-5ff092458406"));
+                keyValue: new Guid("48888d59-9c87-4211-8ee9-50c0772c6f48"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("4fd8cfde-91a2-4e80-9d1c-c6c78a5f991b"));
+                keyValue: new Guid("4b6f1d59-0b84-42d3-b98d-9ff075c811dd"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("50541fd2-380f-48d2-b537-9384a3a3235e"));
+                keyValue: new Guid("4b733939-57b2-4e58-9b2b-78c331af0ef4"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("53bb2382-2a09-4f63-bb92-d88bad1fbae9"));
+                keyValue: new Guid("4d538934-9a2e-435d-b945-46834df6767b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("5781ec65-d0b4-42bf-b30f-d5728445d540"));
+                keyValue: new Guid("4e1f999d-039e-4270-98ee-bcbd51656af1"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("5b829d3f-304e-4078-ba2d-635fb44b41a6"));
+                keyValue: new Guid("4f6a056a-239b-4c40-a194-04c905352c9f"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("5b9bba67-a0df-42ed-a445-091f58a10246"));
+                keyValue: new Guid("503564ee-b355-4e9d-a4c0-2768002d9406"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("61f147d4-7b1b-41ab-a209-00fbc5c3b62e"));
+                keyValue: new Guid("5445122d-9879-4476-8c4b-ca8e7985c8f7"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("63d8390c-af63-4113-ad4a-05eeeb0a674f"));
+                keyValue: new Guid("55d29800-f52e-4151-923f-cc773d564741"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("65844988-e0eb-4869-bba2-f961f0c568ca"));
+                keyValue: new Guid("5a59542a-406b-48a6-b684-437286fc9ea8"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("6b525e65-7fd9-4a8e-9410-40df497be94f"));
+                keyValue: new Guid("5ad0c781-0e75-48ae-83d6-3691cfa75203"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("6be670df-dab4-4194-8014-728700119b24"));
+                keyValue: new Guid("5d1436c3-f35f-4f13-ba89-78ef95b964c4"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("6cfe58c9-7512-43e4-8fb6-c9e34d8cfdbc"));
+                keyValue: new Guid("5ff2e1af-4752-43f0-8b4b-d22ec230ece0"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("6f77535f-d7f0-4d5a-9c7d-fcd33cbe4016"));
+                keyValue: new Guid("602af7e0-7524-4a8a-9a9c-f4af4b040e11"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("726809bd-51bf-43d1-be92-8909a007c220"));
+                keyValue: new Guid("6803be2b-aa74-49b2-8b64-ae2afdd0294e"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("72719035-29a8-4cd0-95a1-d3599fbc5991"));
+                keyValue: new Guid("697cc9ef-c1ab-4134-b870-02efc4836fb2"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("79e04650-b0a3-40d6-8298-852e21f2be4c"));
+                keyValue: new Guid("6aa93d3f-5556-4e1b-9b1b-1c90698f89dd"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("79ec8512-d766-47b4-9cd1-5ef67d0ebbbb"));
+                keyValue: new Guid("6effeb28-3c76-423e-b044-03523459fd2b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("7ed93660-2f89-47f6-81d8-5ba2d8dc5155"));
+                keyValue: new Guid("723552ae-8426-4f0b-aa9f-602e684ffee4"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("82d1008c-84e0-493c-a960-316daf85a91c"));
+                keyValue: new Guid("75280283-605a-4a1f-a1bd-178faf44a873"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("85b5504e-60b5-44a6-a7a8-c9ce91cf965a"));
+                keyValue: new Guid("759c0c14-50a2-4ce3-94cc-e4daca7e3099"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("88eaabb8-dc91-4aeb-aa97-fdc028327d13"));
+                keyValue: new Guid("795ce722-f8d9-4aac-8479-9676f9989050"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("8ec8c0b4-ad20-43b6-b22e-2e0d12a1ff8a"));
+                keyValue: new Guid("7c8143a2-2cb8-4249-8226-5b73bb6812b5"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("8f53fdcf-74c1-42fd-9af2-ba7ce2c25594"));
+                keyValue: new Guid("7d69cc21-d0db-46db-9c8d-10108dabdcca"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("90fe8141-24e5-4d5e-8f99-110046a65c06"));
+                keyValue: new Guid("935a3cc1-93c5-4e3b-87fc-0e6a76792585"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("93d3eef0-587e-451a-9804-5c215750f4f3"));
+                keyValue: new Guid("94b9008c-3125-4d40-bc2a-250cc12dfbef"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("96f14459-9b26-4b91-b671-7e32500f62a8"));
+                keyValue: new Guid("99f5ae2f-2ba6-486f-91b5-79bf2a5fb536"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("97e9313a-8212-4ed0-b6c6-f2ec81e72f96"));
+                keyValue: new Guid("9a074114-a42d-4e41-84c6-c5d092ea92d4"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("98fe65d3-8ed4-4624-beb9-6514aec4e16d"));
+                keyValue: new Guid("9a0f6405-dbf0-49f7-945c-78df94b2b519"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("9992922e-5494-4995-b965-1d1ddfeafda5"));
+                keyValue: new Guid("9ad7f17a-ff6d-4e00-bae1-4b33105468f3"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("9d1f0410-8e78-45bd-8b0f-dce44903a471"));
+                keyValue: new Guid("9be66d12-d12a-469f-9a44-5652bec83640"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("a0dccb5e-fcbd-4fec-bc64-66954cf7513e"));
+                keyValue: new Guid("9c1af855-9b89-4087-be78-95c23a3e892c"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("a16a69e5-fe13-4282-a6b9-b53e76cbb49f"));
+                keyValue: new Guid("a1e01784-8eb1-4a4d-9b72-f6263dad9c6b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("a52ec9cd-0abd-4254-a706-fffc506a7955"));
+                keyValue: new Guid("a1e4cbc4-22d9-425f-9ae8-4c9c82aaebdc"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("a5487fd2-3b86-4594-96cf-459982f5d9c4"));
+                keyValue: new Guid("a832b5f5-fc89-4efa-8f40-4858332dc643"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("aca49b21-2a4b-479c-9b33-3ec0b8c56d12"));
+                keyValue: new Guid("ab9cae91-c90c-4e88-a837-15b692249d1f"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b039c980-b42d-4295-ba3c-618ad8a25ee5"));
+                keyValue: new Guid("af07d47d-2ab7-49ef-80eb-086be06c5be6"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b0616b88-3789-47a7-82e9-3ef8fd52372c"));
+                keyValue: new Guid("b38ca52e-1297-49e3-b655-16284af30402"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b3d8cc8d-9718-4b29-abe9-b4bf07f45593"));
+                keyValue: new Guid("b577f5b1-834a-4f67-8ac4-67dceaa8fced"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b57a48b0-2dd9-488a-8dea-ade6ccd3751f"));
+                keyValue: new Guid("b6f7c2d5-96cd-4f1a-994a-2747143898c0"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b5c81c3a-9f15-463f-a91a-b20d5df16501"));
+                keyValue: new Guid("b78251f4-072d-4d8a-b7a4-70c20d8ca952"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("b9cf896d-7af5-42d9-a427-9ce0a4d4618f"));
+                keyValue: new Guid("b7a17953-055c-4cc9-af46-84a865296105"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("bc64649f-961c-478f-b97d-467b54aaa338"));
+                keyValue: new Guid("b9ec9b35-310d-4633-8fec-951e3b48b765"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("bcc68653-57d0-45c8-9e4c-b9db1be5db31"));
+                keyValue: new Guid("baa53c0f-4029-4319-bb24-13a0087c6357"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c0b9ed68-d2c6-44eb-8c67-04339c7191fd"));
+                keyValue: new Guid("bd03cddf-80c4-4357-a49e-5a463c97788c"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c0c2777e-bee3-460a-9ec3-a6f9580e18b1"));
+                keyValue: new Guid("bf9ef66a-b100-4294-aa70-d298b08aed8d"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c151f741-483a-4a56-9385-248e0f8e715c"));
+                keyValue: new Guid("c3fba795-98d3-4bbf-8554-22e5f1c44744"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c2ee74fa-63f6-42c0-a106-ae3d427dbb81"));
+                keyValue: new Guid("c54467e4-c885-44ae-b66f-b793f1b6a250"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c7d6fc3b-8647-40cf-a61f-bd0619de7e0b"));
+                keyValue: new Guid("c90b53ee-e195-411b-ae78-02e60645cf33"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("c89c5ac5-2f41-47e1-b706-ea9cf0c87554"));
+                keyValue: new Guid("cb61d06f-a187-406d-9c1e-6a310d354c12"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("caa34345-d844-439d-bd42-b1c14334e97c"));
+                keyValue: new Guid("cf63d15b-7a45-4d36-83e6-0d8a030a8a52"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("cc7edca6-4e3b-401e-b868-7904fe71b65e"));
+                keyValue: new Guid("d26e907a-46ba-414a-8c96-8ea841f8a2fc"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("ccec9d56-6c4c-42e2-b3d1-6ea4e0fa601f"));
+                keyValue: new Guid("d45b5bf7-2506-4868-93b8-f7052c33cdd8"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("d00c0f7e-0500-4b8d-a2df-651802afcb96"));
+                keyValue: new Guid("d60609bb-eb62-404a-912a-69ba052afa36"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("d13970a4-bb4d-4f19-a42f-75032ffdf1e1"));
+                keyValue: new Guid("d834f1f2-57f2-4b6a-91ba-787c3b914248"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("d8d32a12-c8df-44fe-ba70-26ca8a7f22e3"));
+                keyValue: new Guid("d8e5797c-b1e1-40af-931c-f5626d5a219b"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("da914f15-005e-4d90-9fc3-1778ac554d7d"));
+                keyValue: new Guid("d99774fe-87df-4162-8dfe-6e3eab9c87b4"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("daa08a12-e5d9-418d-abf5-adce1cb8a38a"));
+                keyValue: new Guid("d9c17264-22d7-4739-a002-4d7b0f619d41"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("dad8fe33-459b-40c7-ad4b-0da4c69beb71"));
+                keyValue: new Guid("dcac59a1-9b3c-4fb4-b405-d234f6d4b93e"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("dc2cde03-86c2-49df-ae1d-a8bf5adabc0e"));
+                keyValue: new Guid("ddb38782-e381-4c3b-bc76-047569fc7f1e"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("df4af487-9eac-4a52-9fcc-c3827eeaac2f"));
+                keyValue: new Guid("e02718de-c411-449b-b06d-abeb8b738b8a"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("e4903d35-634e-42fd-9941-686f53979d92"));
+                keyValue: new Guid("e3954082-9d6f-47d5-b69d-da3ff7c0da36"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("e7e6ff17-e5d9-4f2d-8823-95c8314ed2c6"));
+                keyValue: new Guid("e46c3df8-e5ce-463a-a2db-ac17f51454cc"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("e8281b6b-9570-4ea4-9319-f416a137637e"));
+                keyValue: new Guid("e482c7f0-f2bb-41f0-83d2-bc1aba9444ac"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("e8b764ee-6906-45eb-a81f-3c419a166d2d"));
+                keyValue: new Guid("ebfce784-675f-48b3-9349-8c7a042ecd4f"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("ebd95af9-5604-4f02-a0f8-1a8a1029bffd"));
+                keyValue: new Guid("ed66efc4-ff5f-4848-92ad-44f398d61f0a"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("ed123281-ed83-47e7-93c4-83ccd4cfa44e"));
+                keyValue: new Guid("f1e4ea29-7436-4874-a413-778aa8ebdaa6"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("eddc4312-47ec-447e-aae8-f12528b411fd"));
+                keyValue: new Guid("f40d8ab9-89a0-44a0-bdba-2fda0c5ecd0d"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("f297ced3-8798-4212-84f5-4c65f159ff06"));
+                keyValue: new Guid("f538ef87-b568-4760-9435-3ad6904bf7ec"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("f659c6f0-e213-41fc-b1b9-c44dad799cc0"));
+                keyValue: new Guid("f59b5336-9106-416f-99b8-cec05d9f884c"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("f6643f3c-a6c3-4b5f-8147-b0fdb1b38849"));
+                keyValue: new Guid("f815ccfb-d10f-472c-b434-e9e9a8d012b2"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("f75733c0-6118-4f77-89fd-6247e92693fe"));
+                keyValue: new Guid("fb3a1866-4dc5-473f-b31e-d530aceca26d"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("fb17a8a4-e1cc-4e3b-a5c2-3c9af7aae913"));
+                keyValue: new Guid("fb9dbd9b-a657-40c2-8818-8687ac6eb795"));
 
             migrationBuilder.DeleteData(
                 table: "Allowances",
                 keyColumn: "Id",
-                keyValue: new Guid("fff0f774-aae2-4418-a27d-c8eca1572a03"));
+                keyValue: new Guid("fd02012f-7f80-48dc-962b-ee00f73473bf"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("02a83abf-69f7-4ca7-b374-23d5e9eeea50"));
+                keyValue: new Guid("007f9461-116c-4760-b248-bffb7a6dce0f"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("0af4de64-44ba-4a1b-a864-938f3d20a954"));
+                keyValue: new Guid("0b9a86f4-a03c-4879-9ce3-4aebcc224d93"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("0cbc33b2-d24e-4999-9c07-6fc74a97cb92"));
+                keyValue: new Guid("0bf198dd-b3a4-4913-86da-0942d65ed98d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("0fdf9c96-af2f-4a56-860b-bbc49fa34735"));
+                keyValue: new Guid("1908d2d4-fc20-4d62-88eb-30f62aa5d830"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("120cef79-1694-4bab-b86b-c652c8430de7"));
+                keyValue: new Guid("1b02013e-949a-4ced-880e-900d403aac18"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("147607f0-26ce-4e80-a1d5-5a9356f573c2"));
+                keyValue: new Guid("1c5f2a84-5c45-445a-a80f-efa8e23c75e5"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("1532da41-7b44-426d-a1b5-35eca9d407af"));
+                keyValue: new Guid("205fb844-b643-487b-bbd3-d3b6d794fd92"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("1656cb0d-8d8a-4de9-a3a9-777874619174"));
+                keyValue: new Guid("20e55597-f101-455b-b086-2d1fa6382215"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("16ddf542-b5c2-45c3-98a4-7f8d1b4d6536"));
+                keyValue: new Guid("287d848f-6238-44dc-8642-fdefba0d2c5c"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("18a4cf9a-6a7f-472c-882e-d911ef55382b"));
+                keyValue: new Guid("2dc41548-fc93-4cbe-a5bf-5de6251e4e9f"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("18f2a9b9-417f-4375-996e-1790c37d2090"));
+                keyValue: new Guid("2de088c3-26c4-4fed-8338-bcb331830606"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("1b6823d3-4824-4cc4-ba88-456edbe034cb"));
+                keyValue: new Guid("323fe0c7-34d4-4ed1-92b9-3a20460179cc"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("1d6b2c13-e5e2-4253-b625-cd8f7283adf9"));
+                keyValue: new Guid("3670e21d-a0e8-4fb1-bfc6-2836e426f905"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("1ef4ca7e-29d8-4918-ae88-a85e9b6e7e5f"));
+                keyValue: new Guid("38f2a5c9-e434-4cd1-a148-5479b52c9fd9"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("2075e77b-9674-4ef8-9b0d-cd7780ead9a1"));
+                keyValue: new Guid("3abefb98-503e-4348-be03-6bdcb49fe7bd"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("231e8dc8-9d7a-46ec-b3c2-4d0ab8cdc58a"));
+                keyValue: new Guid("3c146ed0-e896-434f-901a-bb6df2fb762d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("253a2538-6542-4f9e-8a4a-25aae061931a"));
+                keyValue: new Guid("3cd2bf44-4925-4972-8b7d-f5ead78e64bf"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("273f448d-8e83-40bc-888d-e394e09a9fc3"));
+                keyValue: new Guid("3cf2ed75-4428-4efd-a430-a786abc9dcd6"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("294af758-8f2c-42b3-9ccb-b04c655a9e48"));
+                keyValue: new Guid("3f0890fb-0ae0-428d-aa9f-57efeab6ca45"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("2cd2500c-523a-4ed4-8b07-b81e8f9feea2"));
+                keyValue: new Guid("41c51cf9-c0f5-465b-80aa-7cd430a83968"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("31a6985d-986a-4dd1-b881-1241febb4198"));
+                keyValue: new Guid("42621a0e-4faa-4e50-bf97-68fe1d80acab"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("33c813f3-13d3-49f2-95e0-43885cfbe0c4"));
+                keyValue: new Guid("430c65df-7557-4592-89f0-d386aa6182cd"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("366e2efb-c0cd-45cb-a630-fc53ae0f2d1e"));
+                keyValue: new Guid("439e9f25-6d64-4ece-b7d5-24372d3cac6c"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("36afc57d-9bee-4fde-9efc-1527181b1271"));
+                keyValue: new Guid("48e3c041-9c21-4921-ab2b-0009c2462658"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("37750d9d-56c7-4fc0-ba3f-1885c5014611"));
+                keyValue: new Guid("49437e11-42cf-4f50-9df7-4de000748a8c"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("38dc1ce9-6782-45ab-81a7-37386e67dfce"));
+                keyValue: new Guid("499410c8-4c1f-40f1-bc6b-998cb32c8088"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("3aa3d17e-23f8-4394-a7ee-cea54b32a5bb"));
+                keyValue: new Guid("4bc150dd-a156-4454-8dd6-dc414120abf4"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("3eaae17e-a5a9-43f5-9fce-898a7875e4f0"));
+                keyValue: new Guid("4d2e87d8-5e2f-47a4-92e3-9fbd5a1b2986"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("3ec6a5e8-e13c-41c1-bb71-ed00ed6334e1"));
+                keyValue: new Guid("4dab349b-5562-4e6e-8ae0-5959852c4792"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("3f936909-20eb-4a4a-b487-6d53c8b3e534"));
+                keyValue: new Guid("4f9546d3-20e9-4484-a151-a8bf816414b9"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("499b8670-c73e-43b4-8d63-b4822ed7fc4d"));
+                keyValue: new Guid("4fd8a53f-0c3c-4f27-825c-392132b4056f"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("49da6273-5972-4cfe-8c4c-6515ef1a6f35"));
+                keyValue: new Guid("53470116-041c-458b-a9ec-115c0258da52"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("558e5d8a-e59c-43ce-a628-29dfc8c52b27"));
+                keyValue: new Guid("53e21c8d-c3ab-4f45-bb77-13f75402edce"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("565deb60-6b0a-472a-995c-4355ef675e03"));
+                keyValue: new Guid("542c2db9-1ecb-48d1-9a19-65d98a7bad50"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("56985aaa-02ab-4f97-a431-305fbd8bd662"));
+                keyValue: new Guid("5a372ab3-046d-4eed-a6e7-bbc9a6f98f86"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("58f6654e-e751-4f42-b45c-40b36abb1e06"));
+                keyValue: new Guid("5e263be9-0f53-46bc-b9e5-71c8acc8ba86"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("59779657-1e9d-4d65-8f6f-6065aa2cd3d2"));
+                keyValue: new Guid("60d43666-5e4f-463b-b3b5-d2d741e3d2c9"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5a0308b4-f379-48d0-8aa8-b22eaf724110"));
+                keyValue: new Guid("6497ce5d-2a28-4195-b80b-d2211b17d887"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5a217061-f93b-44d7-96b4-8dbd8b63764f"));
+                keyValue: new Guid("65468d10-f03c-4cf1-9963-a839825b6f22"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5b1630c6-667e-4e02-8ab7-d65ad5040384"));
+                keyValue: new Guid("6626287e-60f1-4354-8eee-1a133b377278"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5b6026de-c2ee-4cda-b2da-cbc39f83dccb"));
+                keyValue: new Guid("69a074e2-c9a7-4362-81d3-84c5a8782eea"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5cd9eb52-349f-45bb-bbed-4449a58c3388"));
+                keyValue: new Guid("69a32cbb-e4dd-465c-a2e6-9c2c7cee4be0"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5e1d24f2-1027-493d-9a9a-8269d66f75a1"));
+                keyValue: new Guid("69d4045d-aaa3-429a-bf6b-a8ea9a0efd53"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("5ec6857a-3c5a-48bf-a777-bb2dd8f8b39b"));
+                keyValue: new Guid("6aed38b2-d50c-4671-a8da-3c612cda11ef"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("647c86aa-7016-4212-bfca-04f84de20e58"));
+                keyValue: new Guid("7014ba5b-8a99-461a-9498-8598c4506dd7"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("64cc3336-5d5f-4d77-b3f1-1a3a3dfdd379"));
+                keyValue: new Guid("7049e13b-b598-4896-9846-97ea878c389d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("67243e17-a4c8-469c-86e2-334e5f1911dd"));
+                keyValue: new Guid("706a6940-00b2-45f3-a8db-bd20cd86c578"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("68705f10-0cbf-4a24-a4b4-26c5eb985b6b"));
+                keyValue: new Guid("74be167a-49b6-4ccf-87b3-22efcff36d4e"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("6af57cb4-cb7e-49a2-9dc9-1da06f27df0b"));
+                keyValue: new Guid("769458cf-678c-4533-bfa2-491ed8739669"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("6b26d2c6-87c4-4a70-8106-52ed4d87021b"));
+                keyValue: new Guid("7de0fbd2-705b-4da3-8767-cbae420896ac"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("6c6422b4-3b8e-4fbb-b049-3c626db2c526"));
+                keyValue: new Guid("7e888a71-638d-42a0-8551-10baf2f4b6d4"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("6e74e185-6518-42e7-b68b-e59970b58a6f"));
+                keyValue: new Guid("80b105d2-9771-4a43-a941-6442ed351ccc"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("716c9729-179b-4db7-bd97-3fc064d46906"));
+                keyValue: new Guid("8135c2ed-5b0c-405b-afdd-7bb952b68258"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("71ad47cc-173b-4dd2-9bef-cfb6631d9d49"));
+                keyValue: new Guid("848a78c3-295d-4d54-bf36-342e6d002df8"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("75396103-8d20-4cbb-909c-ac9d9c505c7e"));
+                keyValue: new Guid("88d9950b-1213-417f-9d71-9036b05ffa2b"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("7a91b3a6-c2ac-4da6-9cfb-0310d5bdc0d3"));
+                keyValue: new Guid("8b7cf7a9-b426-4b43-af39-975caa8f430a"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("7be44030-7855-4f15-b114-6c05be0f3bee"));
+                keyValue: new Guid("8d20da6f-3c40-4fce-8bce-c28ce41e8822"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("7dd12dbe-d027-4f81-843b-be5ae7547403"));
+                keyValue: new Guid("902492da-bcb0-4692-b56c-9869302cd927"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("815f06de-8fbe-424e-92b1-5e898f2def67"));
+                keyValue: new Guid("944ec487-7887-4e9b-9688-7b790386c8f3"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("84bd0185-ddc6-4038-ba7b-f5cd0dbf2c23"));
+                keyValue: new Guid("999208a9-b229-49dc-82cc-4d36ade2b047"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("87faf41f-5b88-4836-ab72-940ef75d4017"));
+                keyValue: new Guid("9b93e0b5-821d-45c4-b504-cf5ea28a5998"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("881d5ae7-260a-48e9-8717-497d61b2b048"));
+                keyValue: new Guid("9fd8fd0b-f1dc-4b9e-91e7-0afea0207f86"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("88240ae2-14bb-437f-ba12-57cfa5aced7d"));
+                keyValue: new Guid("a19900d0-e781-4bc3-a667-c41f2b64ad1b"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("887b901b-98a4-4c99-9ee3-2736295b988d"));
+                keyValue: new Guid("a3df72ce-d515-4410-9109-c6b2f83c681b"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("8a73c8c2-0334-45ef-9574-657782e6088e"));
+                keyValue: new Guid("a527e8ef-160b-4d76-a026-39e4d244de4f"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("8aa979b5-2c78-4176-a47d-5f90a96c65c2"));
+                keyValue: new Guid("a5391fe5-5447-45e4-8110-23b35638124d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("8d769798-e199-4eed-9c74-3897881807e2"));
+                keyValue: new Guid("a8cf4aef-af99-4ac0-8a3e-44c86080557d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("91101f68-f3a5-4528-8fc4-4a4b2fca1e35"));
+                keyValue: new Guid("ab39065e-4227-411b-86b5-86f2a437807c"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("994cda27-8aa2-4c6e-8f72-dde7d506ca82"));
+                keyValue: new Guid("ab99ed38-d096-4712-950d-75f23a4b1044"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("9b516480-6214-4852-899a-e48666871238"));
+                keyValue: new Guid("adc1f6cd-476c-4436-b17e-8ec72e9baf12"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("9f38a8e4-67d9-47a2-9559-a01ad84b1d88"));
+                keyValue: new Guid("b314a198-1d5a-45ec-a11b-ce7e8f20a1b4"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("a0c14b1d-a828-4e16-b389-9fd9f350fdff"));
+                keyValue: new Guid("b501246a-4a47-4322-bb3b-585dd832cac5"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("a24e110d-433b-444c-a63f-70c0ccb000b3"));
+                keyValue: new Guid("b8acd35d-0486-44a1-899d-4cbbe0c63476"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("a3069248-a79a-4e02-9a50-0697f237a296"));
+                keyValue: new Guid("ba19e4eb-366e-43c0-9825-dc455b25d4ea"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("a72f19f1-b81f-4eae-af0f-fa5ca79b97ab"));
+                keyValue: new Guid("bd2f72e4-aea8-4a97-800c-84c8d2fd74ea"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("a8cacfbd-38f4-4a81-bbdc-ae13d2fc2a51"));
+                keyValue: new Guid("bf3389ff-9590-4152-a7db-0d637449b6e2"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("ab5b9780-f60e-4339-8ecc-0326caa8b797"));
+                keyValue: new Guid("c5e39f24-31d1-42f1-8563-8527a95617b6"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("afe14a5a-74a3-4c94-abbf-0eaaae73531d"));
+                keyValue: new Guid("c6a0c184-1672-45a7-8b7a-165fe4bbc3a7"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("b576c064-ed9b-4fd2-b208-1b4b0f7714d7"));
+                keyValue: new Guid("c6fa1c61-3c4d-4e44-9898-f5158249847c"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("b59450e9-7d85-4179-bf2e-4b86fe0c1daf"));
+                keyValue: new Guid("c71374ac-f465-43e3-8c0e-f6b6783b9277"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("b6215afe-482e-477d-b80c-1d4ceb1a7be9"));
+                keyValue: new Guid("c8c6fb05-4e6c-468b-a82b-ff9358895443"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("b87f38d7-24d9-4ac4-82c2-344c9a584078"));
+                keyValue: new Guid("cbde7d19-5ba3-4bbf-a8c1-c40c9db03e3e"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("b93e91c9-fadf-4c4a-ab3f-dcc9fef2ca1f"));
+                keyValue: new Guid("cd0b4c8b-b539-47ae-89f0-421fe20fec54"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d1047995-83b6-4340-8393-82c314ebd59b"));
+                keyValue: new Guid("cd7d7c61-b767-4134-a396-335be390bb9a"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d23b0ecf-56ad-4447-898d-8773e4e77e4b"));
+                keyValue: new Guid("cddb27a7-cafc-4294-961e-3491fc62ac1f"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d432077d-6ac5-4430-ad99-2203c5739cc8"));
+                keyValue: new Guid("d6a64d15-2ea3-4ddd-9f6c-fab2630fcd9b"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d48386c6-96e4-4e83-a6f1-5ec3a80bebb7"));
+                keyValue: new Guid("da658d8d-05c1-4c9b-96b6-ddd1057713d7"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d520d634-90cf-4f19-80a0-f4d321dd0462"));
+                keyValue: new Guid("de920e80-f38d-4031-b28b-bf857c2e4258"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d57b2eb2-3ad6-4d1f-8df4-614ada90393c"));
+                keyValue: new Guid("df4d1915-6eac-4e9d-a70e-a6cf91762da0"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d5d98dfe-6a3c-4d01-bd29-8fe75281eb26"));
+                keyValue: new Guid("df8b5b62-c6cc-48a7-954e-f83c81955f5d"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("d6e7e9a2-8f9e-43c1-91d8-50288a2d4510"));
+                keyValue: new Guid("e24d0151-8d4a-4183-b800-b97a38278937"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("dc14875d-b27d-4151-a81b-2975fa0165ec"));
+                keyValue: new Guid("e4f1b5ac-845c-46b2-8344-a9c8da2d3cea"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("dcdbf59a-84e5-48b3-a6a8-752af2ff88e3"));
+                keyValue: new Guid("e7424dfe-8071-4669-94fc-ec04789a27b1"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("e998fd9f-5b7a-4322-9ce2-7e78644b162a"));
+                keyValue: new Guid("e8e38747-c171-4cd0-8961-0d24d46377c8"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("e9faacd7-7c3b-4800-87b5-6d90805eb024"));
+                keyValue: new Guid("ea8d5c58-1b43-4118-a601-24097bb60a01"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("ed920dc2-3736-4bef-9846-ee2915bdca15"));
+                keyValue: new Guid("eb4aaa45-393a-4cc5-920e-22e8de206c20"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("ef5d62dd-25d7-4524-a1cb-4837313360e2"));
+                keyValue: new Guid("f0dfd940-a3da-4288-9a1d-da0ebc126ab3"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("f05d5de7-6c21-484c-b5a9-d4bb36f3a65e"));
+                keyValue: new Guid("f2b58350-9e13-4b9c-ab14-48a50c39c901"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("f30dd4b3-045a-4db0-91f7-73048d29efcb"));
+                keyValue: new Guid("fa683f9d-ff5c-4e46-a1de-d8eed093eb03"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("f44f9425-2214-4e93-b178-98a8e4b1a920"));
+                keyValue: new Guid("fa7caa94-1771-475d-b585-47e7cd19d262"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("f583f390-5aad-445b-9712-b78f69306e71"));
+                keyValue: new Guid("fa82cf80-fb1b-4b4f-a2b7-2dad53d91078"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("fc29ac05-32bd-46e4-acf8-0ce9d78cf05b"));
+                keyValue: new Guid("fcc6a750-ca1f-4a72-84e1-73b385534bfb"));
 
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
-                keyValue: new Guid("fc66e461-0bfe-4ddd-8363-42997541e191"));
+                keyValue: new Guid("fdeeff26-5d8c-432b-b7c3-fe1b1408086b"));
 
             migrationBuilder.DropColumn(
                 name: "TripDetailId",
