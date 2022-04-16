@@ -19,6 +19,11 @@ namespace BusinessTripAdmin.Core.Services
         public async Task<Organization> GetOrganizationById(Guid orgId)
         {
             var organization = await _applicationDbRepository.GetAll<Organization>().FirstOrDefaultAsync(x => x.Id == orgId);
+            if (organization == null)
+            {
+                throw new ArgumentException("No Organization");
+            }
+
             return organization;
         }
 
@@ -28,7 +33,7 @@ namespace BusinessTripAdmin.Core.Services
             var userOrganization = currentUser?.OrganizationId;
             if (userOrganization == null)
             {
-                return Guid.Empty;
+                throw new ArgumentException("No Organization");
             }
 
             return (Guid)userOrganization;
@@ -37,6 +42,11 @@ namespace BusinessTripAdmin.Core.Services
         public async Task<UserEdit> GetUserForEdit(string id)
         {
             var user = await _applicationDbRepository.GetByIdAsync<ApplicationUser>(id);
+            if(user == null)
+            {
+                throw new ArgumentException("No User");
+            }
+
             return new UserEdit
             {
                 Id = user.Id,

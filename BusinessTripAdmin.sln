@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin.Core", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessTripAdmin.Infrastructure", "BusinessTripAdmin.Infrastructure\BusinessTripAdmin.Infrastructure.csproj", "{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTrip.Tests", "BusinessTrip.Tests\BusinessTrip.Tests.csproj", "{1BC8808A-E555-4045-A054-65C689776DB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9827BF0C-9439-4CC8-9721-C97AAEEE6CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BC8808A-E555-4045-A054-65C689776DB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BC8808A-E555-4045-A054-65C689776DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BC8808A-E555-4045-A054-65C689776DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BC8808A-E555-4045-A054-65C689776DB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

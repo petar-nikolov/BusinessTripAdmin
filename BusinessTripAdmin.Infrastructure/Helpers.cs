@@ -10,6 +10,10 @@ namespace BusinessTripAdmin.Infrastructure
         {
             var countryNamesFileName = "Countries.txt";
             var countryNamesFilePath = GetPathByFileName(countryNamesFileName);
+            if (countryNamesFilePath == String.Empty)
+            {
+                return new Dictionary<Country, Allowance>();
+            }
             var splitCountryInfo = new List<string>();
 
             using (var reader = new StreamReader(countryNamesFilePath))
@@ -95,6 +99,10 @@ namespace BusinessTripAdmin.Infrastructure
             var path = Path.GetDirectoryName(Uri.UnescapeDataString(uri.Path));
             var currentProject = Assembly.GetCallingAssembly().GetName().Name;
             var countryNamesFilePath = @$"{path}\{currentProject}\Constants\{fileName}";
+            if (baseDirectory.Contains("BusinessTrip.Tests"))
+            {
+                return String.Empty;
+            }
             return countryNamesFilePath;
         }
     }
