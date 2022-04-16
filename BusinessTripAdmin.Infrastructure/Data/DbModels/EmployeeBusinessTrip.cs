@@ -6,6 +6,11 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
 {
     public class EmployeeBusinessTrip : BaseEntity
     {
+        public EmployeeBusinessTrip()
+        {
+            TotalDays = (int)(DateTo - DateFrom).TotalDays;
+        }
+
         [Required]
         [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string TripFrom { get; set; }
