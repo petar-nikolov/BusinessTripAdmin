@@ -1,6 +1,7 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
 using BusinessTripAdmin.Core.ViewModels;
 using BusinessTripAdmin.Infrastructure.Data.Abstraction;
+using BusinessTripAdmin.Infrastructure.Data.DbModels;
 using BusinessTripAdmin.Infrastructure.Data.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,13 @@ namespace BusinessTripAdmin.Core.Services
             _applicationDbRepository = applicationDbRepository;
         }
 
-        public async Task<Guid> GetOrganizationByUserId(string userId)
+        public async Task<Organization> GetOrganizationById(Guid orgId)
+        {
+            var organization = await _applicationDbRepository.GetAll<Organization>().FirstOrDefaultAsync(x => x.Id == orgId);
+            return organization;
+        }
+
+        public async Task<Guid> GetOrganizationIdByUserId(string userId)
         {
             var currentUser = await _applicationDbRepository.GetAll<ApplicationUser>().FirstOrDefaultAsync(x => x.Id == userId);
             var userOrganization = currentUser?.OrganizationId;

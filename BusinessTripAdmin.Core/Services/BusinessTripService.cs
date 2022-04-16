@@ -21,30 +21,74 @@ namespace BusinessTripAdmin.Core.Services
             _countryService = countryService;
         }
 
+        public async Task<bool> CreateBusinessTrip(CreateBusinessTrip createBusinessTrip)
+        {
+            var isCreated = true;
+
+            var businessTripDetail = new TripDetail
+            {
+                TripBy = createBusinessTrip.TripBy,
+                TransportNumber = createBusinessTrip.TransportNumber
+            };
+
+            var businessTrips = new List<EmployeeBusinessTrip>();
+            foreach (var employeeId in createBusinessTrip.Employees)
+            {
+                var businessTrip = new EmployeeBusinessTrip
+                {
+                    DateFrom = createBusinessTrip.DateFrom,
+                    DateTo = createBusinessTrip.DateTo,
+                    TripFrom = createBusinessTrip.TripFrom,
+                    TripTo = createBusinessTrip.TripTo,
+                    EmployeeId = Guid.Parse(employeeId),
+                    TripDetail = businessTripDetail,
+                };
+
+                businessTrips.Add(businessTrip);
+            }
+
+            try
+            {
+                await _applicationDbRepository.AddRangeAsync(businessTrips);
+                await _applicationDbRepository.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            when (ex is DbUpdateException ||
+                  ex is DbUpdateConcurrencyException ||
+                  ex is OperationCanceledException)
+            {
+
+                isCreated = false;
+            }
+
+            return isCreated;
+        }
+
         public async Task<ICollection<BusinessTripViewModel>> GelAllTrips(string userId)
         {
-            var userOrgId = await _userService.GetOrganizationByUserId(userId);
+            var userOrgId = await _userService.GetOrganizationIdByUserId(userId);
             var organizationEmployees = await _employeeService.GetActiveEmployeesByOrganizationId(userOrgId);
             var employeeIds = organizationEmployees.Where(x => x.IsActive).Select(x => x.EmployeeId).ToList();
-            var businessTrips = await _applicationDbRepository.GetAll<EmployeeBusinessTrip>().Where(x => employeeIds.Any(eid => eid == x.EmployeeId))
+            var businessTrips = await _applicationDbRepository.GetAll<EmployeeBusinessTrip>().Where(x => employeeIds.Any(eid => eid == x.EmployeeId)).Include(x => x.TripDetail)
                 .OrderByDescending(x => x.CreatedDate)
                 .Select(bt => new BusinessTripViewModel
-            {
-                Employee = $"{bt.Employee.FirstName} {bt.Employee.LastName}",
-                EmployeeId = bt.EmployeeId,
-                DateFrom = bt.DateFrom,
-                DateTo = bt.DateTo,
-                TotalDays = bt.TotalDays,
-                TripFrom = bt.TripFrom,
-                TripTo = bt.TripTo
-            }).ToListAsync();
+                {
+                    Employee = $"{bt.Employee.FirstName} {bt.Employee.LastName}",
+                    EmployeeId = bt.EmployeeId,
+                    DateFrom = bt.DateFrom,
+                    DateTo = bt.DateTo,
+                    TotalDays = bt.TotalDays,
+                    TripFrom = bt.TripFrom,
+                    TripTo = bt.TripTo,
+                    TripBy = bt.TripDetail.TripBy
+                }).ToListAsync();
 
             return businessTrips;
         }
 
         public async Task<(IEnumerable<CountryViewModel>, IEnumerable<EmployeeViewModel>)> GetDataForCreateAsync(string userId)
         {
-            var userOrgId = await _userService.GetOrganizationByUserId(userId);
+            var userOrgId = await _userService.GetOrganizationIdByUserId(userId);
             var organizationEmployees = await _employeeService.GetActiveEmployeesByOrganizationId(userOrgId);
             var countries = await _countryService.GetAllCountries();
             return (countries, organizationEmployees);

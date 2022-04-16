@@ -19,5 +19,7 @@ namespace BusinessTripAdmin.Core.ViewModels
         public string Employee { get; set; }
 
         public Transport TripBy { get; set; }
+
+        public string TransportNumber { get; set; }
     }
 }

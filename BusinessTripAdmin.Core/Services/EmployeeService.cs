@@ -26,7 +26,7 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> CreateEmployee(CreateEmployee createEmployee, string userId)
         {
-            var userOrg = await _userService.GetOrganizationByUserId(userId);
+            var userOrg = await _userService.GetOrganizationIdByUserId(userId);
             var isCreated = true;
 
             var employee = new Employee
