@@ -10,6 +10,7 @@ namespace BusinessTripAdmin.Core.ViewModels
         [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string CountryName { get; set; }
 
+        [Required]
         public CurrencyCode CurrencyCode { get; set; }
 
         [Required]
@@ -22,10 +23,12 @@ namespace BusinessTripAdmin.Core.ViewModels
         [StringLength(ValidationConstants.DescriptionMaxLength)]
         public string? Description { get; set; }
 
+        [Required]
         public decimal DailyAllowance { get; set; }
 
         public decimal AccomodationAllowance { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime ValidFrom { get; set; }
