@@ -15,5 +15,7 @@
         public const int DescriptionMaxLength = 500;
 
         public const int TransportNumberMaxLength = 100;
+
+        public const int PurposeMaxLength = 500;
     }
 }

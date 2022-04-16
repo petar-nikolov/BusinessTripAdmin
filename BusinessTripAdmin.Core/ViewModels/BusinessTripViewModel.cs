@@ -21,5 +21,7 @@ namespace BusinessTripAdmin.Core.ViewModels
         public Transport TripBy { get; set; }
 
         public string TransportNumber { get; set; }
+
+        public string Purpose { get; set; }
     }
 }

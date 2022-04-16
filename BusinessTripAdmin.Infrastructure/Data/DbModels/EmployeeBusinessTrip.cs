@@ -18,9 +18,13 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
         [Required]
         [StringLength(ValidationConstants.CountryNameMaxLength)]
         public string TripTo { get; set; }
-
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime DateFrom { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime DateTo { get; set; }
 
         public int TotalDays { get; set; }
@@ -34,5 +38,9 @@ namespace BusinessTripAdmin.Infrastructure.Data.DbModels
         public Guid TripDetailId { get; set; }
 
         public TripDetail TripDetail { get; set; }
+
+        [Required]
+        [StringLength(ValidationConstants.PurposeMaxLength)]
+        public string Purpose{ get; set; }
     }
 }

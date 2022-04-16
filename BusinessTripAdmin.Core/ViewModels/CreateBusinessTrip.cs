@@ -37,5 +37,9 @@ namespace BusinessTripAdmin.Core.ViewModels
         [StringLength(ValidationConstants.TransportNumberMaxLength)]
         [Required]
         public string TransportNumber { get; set; }
+
+        [Required]
+        [StringLength(ValidationConstants.PurposeMaxLength)]
+        public string  Purpose { get; set; }
     }
 }

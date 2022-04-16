@@ -42,6 +42,7 @@ namespace BusinessTripAdmin.Core.Services
                     TripTo = createBusinessTrip.TripTo,
                     EmployeeId = Guid.Parse(employeeId),
                     TripDetail = businessTripDetail,
+                    Purpose = createBusinessTrip.Purpose
                 };
 
                 businessTrips.Add(businessTrip);
@@ -80,7 +81,8 @@ namespace BusinessTripAdmin.Core.Services
                     TotalDays = bt.TotalDays,
                     TripFrom = bt.TripFrom,
                     TripTo = bt.TripTo,
-                    TripBy = bt.TripDetail.TripBy
+                    TripBy = bt.TripDetail.TripBy,
+                    Purpose = bt.Purpose
                 }).ToListAsync();
 
             return businessTrips;
