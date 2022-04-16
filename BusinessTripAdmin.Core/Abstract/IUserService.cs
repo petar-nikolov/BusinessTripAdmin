@@ -1,4 +1,5 @@
 ﻿using BusinessTripAdmin.Core.ViewModels;
+using BusinessTripAdmin.Infrastructure.Data.DbModels;
 
 namespace BusinessTripAdmin.Core.Abstract
 {
@@ -9,5 +10,9 @@ namespace BusinessTripAdmin.Core.Abstract
         Task<UserEdit> GetUserForEdit(string id);
 
         Task<bool> UpdateUser(UserEdit userEdit);
+
+        Task<Guid> GetOrganizationIdByUserId(string userId);
+
+        Task<Organization> GetOrganizationById(Guid orgId);
     }
 }

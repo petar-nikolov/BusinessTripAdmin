@@ -29,22 +29,19 @@
         <h3 class="card-title">Employees</h3>
         <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+                <input type="text" name="table_search" class="form-control float-right" id="myInput" placeholder="Search">
             </div>
         </div>
     </div>
 
     <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+        <table class="table table-hover text-nowrap" id="mytable">
             <thead>
                 <tr>
                     <th>First Name</th>
+                    <th>Middle Name</th>
                     <th>Last Name</th>
+                    <th>Date of Birth</th>
                     <th>Position Name</th>
                     <th>Status</th>
                     <th></th>
@@ -57,7 +54,9 @@
                     {
                         <tr>
                             <td>@employeeViewModel.FirstName</td>
+                            <td>@employeeViewModel.MiddleName</td>
                             <td>@employeeViewModel.LastName</td>
+                            <td>@employeeViewModel.BirthDate</td>
                             <td>@employeeViewModel.PositionName</td>
                             @if (employeeViewModel.IsActive)
                             {
@@ -96,6 +95,9 @@
         </table>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="~/js/tablesearchfilter.js"></script>
 
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />

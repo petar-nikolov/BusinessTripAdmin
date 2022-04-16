@@ -2,7 +2,6 @@
 using BusinessTripAdmin.Core.ViewModels;
 using BusinessTripAdmin.Infrastructure.Data.Abstraction;
 using BusinessTripAdmin.Infrastructure.Data.DbModels;
-using BusinessTripAdmin.Infrastructure.Data.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessTripAdmin.Core.Services
@@ -10,10 +9,12 @@ namespace BusinessTripAdmin.Core.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly IApplicationDbRepository _applicationRepository;
+        private readonly IUserService _userService;
 
-        public EmployeeService(IApplicationDbRepository applicationRepository)
+        public EmployeeService(IApplicationDbRepository applicationRepository, IUserService userService)
         {
             _applicationRepository = applicationRepository;
+            _userService = userService;
         }
 
         public async Task<bool> ActivateEmployee(Guid employeeId)
@@ -25,13 +26,15 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> CreateEmployee(CreateEmployee createEmployee, string userId)
         {
-            var userOrg = _applicationRepository.GetAll<ApplicationUser>().FirstOrDefault(x => x.Id == userId)?.OrganizationId;
+            var userOrg = await _userService.GetOrganizationIdByUserId(userId);
             var isCreated = true;
 
             var employee = new Employee
             {
                 FirstName = createEmployee.FirstName,
+                MiddleName = createEmployee.MiddleName,
                 LastName = createEmployee.LastName,
+                BirthDate = createEmployee.BirthDate,
                 PositionName = createEmployee.PositionName,
                 OrganizationId = (Guid)userOrg,
                 IsActive = true,
@@ -70,8 +73,10 @@ namespace BusinessTripAdmin.Core.Services
             try
             {
                 employeeToEdit.FirstName = editEmployee.FirstName;
+                employeeToEdit.MiddleName = editEmployee.MiddleName;
                 employeeToEdit.LastName = editEmployee.LastName;
                 employeeToEdit.PositionName = editEmployee.PositionName;
+                employeeToEdit.BirthDate = editEmployee.BirthDate;
                 await _applicationRepository.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -86,6 +91,26 @@ namespace BusinessTripAdmin.Core.Services
             return isEditted;
         }
 
+        public async Task<IEnumerable<EmployeeViewModel>> GetActiveEmployeesByOrganizationId(Guid organizationId)
+        {
+            var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().Where(x => x.OrganizationId == organizationId &&
+                                                                                                      x.IsActive)
+                .OrderByDescending(x => x.CreatedDate)
+                .Select(x => new EmployeeViewModel
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    PositionName = x.PositionName,
+                    EmployeeId = x.Id,
+                    IsActive = x.IsActive,
+                    OrganizationId = x.OrganizationId,
+                    MiddleName = x.MiddleName,
+                    BirthDate = x.BirthDate
+                }).ToListAsync();
+
+            return employees;
+        }
+
         public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployees()
         {
             var employees = await _applicationRepository.GetAll<Employee>().AsNoTracking().OrderByDescending(x => x.CreatedDate).Select(x => new EmployeeViewModel
@@ -95,7 +120,9 @@ namespace BusinessTripAdmin.Core.Services
                 PositionName = x.PositionName,
                 EmployeeId = x.Id,
                 IsActive = x.IsActive,
-                OrganizationId = x.OrganizationId
+                OrganizationId = x.OrganizationId,
+                MiddleName = x.MiddleName,
+                BirthDate = x.BirthDate
             }).ToListAsync();
 
             return employees;

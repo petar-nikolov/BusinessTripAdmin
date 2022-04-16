@@ -30,5 +30,7 @@ namespace BusinessTripAdmin.Infrastructure.Data
         public DbSet<Allowance> Allowances { get; set; }
 
         public DbSet<EmployeeBusinessTrip> EmployeeBusinessTrips { get; set; }
+
+        public DbSet<TripDetail> TripDetails { get; set; }
     }
 }

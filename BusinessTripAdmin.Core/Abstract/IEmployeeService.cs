@@ -7,6 +7,8 @@ namespace BusinessTripAdmin.Core.Abstract
     {
         Task<IEnumerable<EmployeeViewModel>> GetAllEmployees();
 
+        Task<IEnumerable<EmployeeViewModel>> GetActiveEmployeesByOrganizationId(Guid organizationId);
+
         Task<bool> CreateEmployee(CreateEmployee createEmployee, string organizationId);
 
         Task<bool> EditEmployee(CreateEmployee createEmployee, Guid employeeId);

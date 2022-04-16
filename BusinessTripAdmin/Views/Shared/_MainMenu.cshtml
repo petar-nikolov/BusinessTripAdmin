@@ -1,4 +1,10 @@
-﻿<nav class="mt-2">
+﻿@using BusinessTripAdmin.Infrastructure.Data.Identity
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
+@{
+    string userId = _userManager.GetUserId(User);
+}
+
+<nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
@@ -13,7 +19,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a asp-controller="BusinessTrip" asp-action="GetBusinessTrips" asp-route-userId="@userId" class="nav-link">
                 <i class="fas fa-plane"></i>
                 <p>
                     Business Trips

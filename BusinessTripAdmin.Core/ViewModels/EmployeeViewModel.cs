@@ -1,5 +1,4 @@
-﻿using BusinessTripAdmin.Infrastructure.Constants;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BusinessTripAdmin.Core.ViewModels
 {
@@ -11,7 +10,13 @@ namespace BusinessTripAdmin.Core.ViewModels
 
         public string FirstName { get; set; }
 
+        public string MiddleName { get; set; }
+
         public string LastName { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        public DateTime BirthDate { get; set; }
 
         public string PositionName { get; set; }
 

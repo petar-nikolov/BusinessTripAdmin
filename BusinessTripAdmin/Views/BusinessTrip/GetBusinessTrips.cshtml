@@ -1,0 +1,85 @@
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
+@{
+    string userId = _userManager.GetUserId(User);
+}
+@using BusinessTripAdmin.Core.ViewModels
+@using BusinessTripAdmin.Infrastructure.Data.Identity
+@model IEnumerable<BusinessTripViewModel>
+@{
+    ViewData["Title"] = "Employees Business Trips";
+}
+
+@if(User.IsInRole("Administrator"))
+{
+    <div class="row">
+        <table class="table">
+            <tr>
+                <td class="col-4">
+                    <a href="/BusinessTrip/CreateBusinessTrip/@userId" class="btn btn-block btn-default">Create Business Trip</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Employees Business Trips</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" id="myInput" placeholder="Search">
+             </div>
+        </div>
+    </div>
+
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap" id="mytable">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Trip From</th>
+                    <th>Trip To</th>
+                    <th>From Date</th>
+                    <th>To Date(inclusive)</th>
+                    <th>Total Days</th>
+                    <th>Total Daily Allowance</th>
+                    <th>Total Accomodation Allowance</th>
+                    <th>Currency</th>
+                    <th>Trip By</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var businessTripViewModel in Model)
+                    {
+                        <tr>
+                            <td>@businessTripViewModel.Employee</td>
+                            <td>@businessTripViewModel.TripFrom</td>
+                            <td>@businessTripViewModel.TripTo</td>
+                            <td>@businessTripViewModel.DateFrom</td>
+                            <td>@businessTripViewModel.DateTo</td>
+                            <td>@businessTripViewModel.TotalDays</td>
+                            <td>@businessTripViewModel.TotalDailyAllowance</td>
+                            <td>@businessTripViewModel.TotalAccomodationAllowance</td>
+                            <td>@businessTripViewModel.TripCurrency</td>
+                            <td>@businessTripViewModel.TripBy</td>
+                            <td>@businessTripViewModel.Purpose</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="~/js/tablesearchfilter.js"></script>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+
+
