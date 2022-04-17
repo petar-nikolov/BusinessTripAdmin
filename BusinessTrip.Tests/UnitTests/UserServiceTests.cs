@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusinessTrip.Tests
+namespace BusinessTrip.Tests.UnitTests
 {
     [TestFixture]
     public class UserServiceTests
@@ -32,7 +32,7 @@ namespace BusinessTrip.Tests
                 .AddSingleton<IApplicationDbRepository, ApplicationDbRepository>()
                 .AddSingleton<IUserService, UserService>()
                 .BuildServiceProvider();
-            
+
             var repository = _serviceProvider.GetService<IApplicationDbRepository>();
             await SeedDbAsync(repository);
         }
@@ -48,7 +48,7 @@ namespace BusinessTrip.Tests
         [Test]
         public async Task CheckIfOrganizationIfReturnedWhenOrgIsMissing()
         {
-            var service =  _serviceProvider.GetService<IUserService>();
+            var service = _serviceProvider.GetService<IUserService>();
             Assert.CatchAsync<ArgumentException>(async () => await service.GetOrganizationById(Guid.NewGuid()));
         }
 
@@ -96,12 +96,12 @@ namespace BusinessTrip.Tests
             var service = _serviceProvider.GetService<IUserService>();
             var repository = _serviceProvider.GetService<IApplicationDbRepository>();
             var usersToDelete = await repository.GetAll<ApplicationUser>().ToListAsync();
-            repository.DeleteRange<ApplicationUser>(usersToDelete);
+            repository.DeleteRange(usersToDelete);
             await repository.SaveChangesAsync();
             var usersToReturn = await service.GetUsers();
             Assert.AreEqual(0, usersToReturn.Count());
         }
-        
+
         [Test]
         public async Task UpdateUser()
         {

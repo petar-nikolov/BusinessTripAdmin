@@ -38,7 +38,10 @@ namespace BusinessTripAdmin.Core.Services
                 await _applicationDbRepository.AddAsync<Allowance>(allowance);
                 await _applicationDbRepository.SaveChangesAsync();
             }
-            catch (OperationCanceledException)
+            catch (Exception ex)
+            when (ex is DbUpdateException ||
+                  ex is DbUpdateConcurrencyException ||
+                  ex is OperationCanceledException)
             {
                 isCreated = false;
             }
@@ -86,7 +89,16 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<bool> EditCountry(Guid countryId, EditCountry editCountryViewModel)
         {
-            var countryToEdit = await GetCountryById(countryId);
+            Country countryToEdit;
+            try
+            {
+                countryToEdit = await GetCountryById(countryId);
+
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
             var isEditted = true;
 
             countryToEdit.CountryName = editCountryViewModel.CountryName;
@@ -130,8 +142,8 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<IEnumerable<AllowanceViewModel>> GetAllCountryAllowancesByCountryName(string countryName)
         {
-            var country = await GetCountryByName(countryName);
             var countryAllowances = new List<AllowanceViewModel>();
+            var country = await GetCountryByName(countryName);
             if (country != null)
             {
                 countryAllowances = country.Allowances.Select(x => new AllowanceViewModel
@@ -152,7 +164,7 @@ namespace BusinessTripAdmin.Core.Services
             var country = await _applicationDbRepository.GetAll<Country>().Include(x => x.Allowances).FirstOrDefaultAsync(x => x.Id == countryId);
             if (country == null)
             {
-                return new Country();
+                throw new ArgumentException("No Country");
             }
 
             return country;

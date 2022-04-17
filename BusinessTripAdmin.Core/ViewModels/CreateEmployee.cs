@@ -18,6 +18,7 @@ namespace BusinessTripAdmin.Core.ViewModels
         public string LastName { get; set; }
 
         [DataType(DataType.Date)]
+        [Required]
         [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
