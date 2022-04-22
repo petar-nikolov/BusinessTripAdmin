@@ -36,7 +36,7 @@
                             @if (User.IsInRole("Administrator"))
                             {
                                 <td>
-                                    <a href="/Country/EditAllowance/" class="btn btn-block btn-default">Edit Allowance</a>
+                                    <a href="/Country/EditAllowance/@allowanceViewModel.AllowanceId" class="btn btn-block btn-default">Edit Allowance</a>
                                 </td>
                             }
                         </tr>

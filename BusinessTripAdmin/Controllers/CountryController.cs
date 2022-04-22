@@ -93,13 +93,13 @@ namespace BusinessTripAdmin.Controllers
 
         [HttpPost]
         [Route("Country/CreateAllowance/{countryName}")]
-        public async Task<IActionResult> CreateAllowance(string countryName, CreateAllowance allowanceViewModel)
+        public async Task<IActionResult> CreateAllowance(string countryName, CreateAllowance createAllowanceModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(allowanceViewModel);
+                return View(createAllowanceModel);
             }
-            if (await _countryService.CreateAllowanceByCountryName(countryName, allowanceViewModel))
+            if (await _countryService.CreateAllowanceByCountryName(countryName, createAllowanceModel))
             {
                 _toastNotification.AddSuccessToastMessage("Allowance has been created!");
             }
@@ -111,6 +111,42 @@ namespace BusinessTripAdmin.Controllers
             return Redirect($"/Country/ReviewAllowances/{countryName}");
 
         }
+
+        [Route("Country/EditAllowance/{allowanceId}")]
+        public async Task<IActionResult> EditAllowance(Guid allowanceId)
+        {
+            var allowanceToEdit = await _countryService.GetAllowanceById(allowanceId);
+            var model = new CreateAllowance
+            {
+                AccomodationAllowance = allowanceToEdit.AccomodationAllowance,
+                DailyAllowance = allowanceToEdit.DailyAllowance,
+                ValidFrom = allowanceToEdit.ValidFrom,
+                ValidTo = allowanceToEdit.ValidTo
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("Country/EditAllowance/{allowanceId}")]
+        public async Task<IActionResult> EditAllowance(Guid allowanceId, CreateAllowance editAllowance)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editAllowance);
+            }
+            if (await _countryService.EditAllowance(allowanceId, editAllowance))
+            {
+                _toastNotification.AddSuccessToastMessage("Allowance has been editted!");
+            }
+            else
+            {
+                _toastNotification.AddErrorToastMessage("Allowance edit failed! Possible reasons: Incorrect values or matching allowances existing for the selected time period!");
+            }
+
+            return Redirect($"/Country/GetCountries");
+
+        }
+
 
         [Route("Country/ReviewAllowances/{countryName}")]
         public async Task<IActionResult> ReviewAllowances([FromRoute] string countryName)

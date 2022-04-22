@@ -87,6 +87,11 @@ namespace BusinessTripAdmin.Core.Services
 
             var employeeToEdit = await _applicationRepository.GetAll<Employee>().FirstOrDefaultAsync(x => x.Id == employeeId);
 
+            if (employeeToEdit == null)
+            {
+                return false;
+            }
+
             try
             {
                 employeeToEdit.FirstName = editEmployee.FirstName;

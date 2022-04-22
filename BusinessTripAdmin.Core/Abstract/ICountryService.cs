@@ -19,5 +19,10 @@ namespace BusinessTripAdmin.Core.Abstract
 
         Task<Country> GetCountryById(Guid countryId);
 
+        Task<bool> EditAllowance(Guid allowanceId, CreateAllowance editAllowanceModel);
+
+        Task<Allowance> GetAllowanceById(Guid allowanceId);
+
+        Task<bool> ValidateAllowanceValidDates(string countryName, DateTime validFromDate, DateTime? ValidToDate);
     }
 }
