@@ -52,11 +52,11 @@ namespace BusinessTripAdmin.Controllers
             var country = await _countryService.GetCountryById(countryId);
             var model = new EditCountry
             {
-                OldDescription = country.Description,
-                OldCountryName = country.CountryName,
-                OldCurrencyCode = country.CurrencyCode,
-                OldLocalCurrency = country.LocalCurrency,
-                OldTripCurrency = country.TripCurrency,
+                Description = country.Description,
+                CountryName = country.CountryName,
+                CurrencyCode = country.CurrencyCode,
+                LocalCurrency = country.LocalCurrency,
+                TripCurrency = country.TripCurrency,
                 CountryId = country.Id
             };
 

@@ -31,6 +31,8 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.MinimumSameSitePolicy = SameSiteMode.None;
 });
 
+
+//TODO Antiforgery token
 //builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 var app = builder.Build();

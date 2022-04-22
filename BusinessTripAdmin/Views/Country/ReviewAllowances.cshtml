@@ -32,6 +32,13 @@
                             <td>@allowanceViewModel.AccomodationAllowance</td>
                             <td>@allowanceViewModel.ValidFrom</td>
                             <td>@allowanceViewModel.ValidTo</td>
+                            <td></td>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a href="/Country/EditAllowance/" class="btn btn-block btn-default">Edit Allowance</a>
+                                </td>
+                            }
                         </tr>
                     }
                 }

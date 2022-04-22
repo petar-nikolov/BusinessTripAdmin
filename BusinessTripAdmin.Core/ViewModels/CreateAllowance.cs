@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BusinessTripAdmin.Core.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusinessTripAdmin.Core.ViewModels
 {
@@ -10,6 +11,7 @@ namespace BusinessTripAdmin.Core.ViewModels
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
+        [DateBeforeOrEqual(nameof(ValidTo), ErrorMessage = "ValidFrom need to be earlier or equal to ValidTo")]
         public DateTime ValidFrom { get; set; }
 
         [DataType(DataType.Date)]
