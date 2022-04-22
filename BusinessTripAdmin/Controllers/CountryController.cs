@@ -2,17 +2,19 @@
 using BusinessTripAdmin.Core.Constants;
 using BusinessTripAdmin.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace BusinessTripAdmin.Controllers
 {
     public class CountryController : BaseController
     {
-
+        private readonly IToastNotification _toastNotification;
         private readonly ICountryService _countryService;
 
-        public CountryController(ICountryService countryService)
+        public CountryController(ICountryService countryService, IToastNotification toastNotification)
         {
             _countryService = countryService;
+            _toastNotification = toastNotification;
         }
 
         public async Task<IActionResult> GetCountries()
@@ -36,11 +38,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (await _countryService.CreateCountry(createCountry))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Country has been created!";
+                _toastNotification.AddSuccessToastMessage("Country has been created!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Country creation failed!";
+                _toastNotification.AddErrorToastMessage("Country creation failed!");
             }
 
             return Redirect("/Country/GetCountries");
@@ -75,11 +77,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (await _countryService.EditCountry(countryId, editCountry))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Country has been editted!";
+                _toastNotification.AddSuccessToastMessage("Country has been editted!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Country edit failed!";
+                _toastNotification.AddErrorToastMessage("Country edit failed!");
             }
             return Redirect("/Country/GetCountries");
         }
@@ -99,11 +101,11 @@ namespace BusinessTripAdmin.Controllers
             }
             if (await _countryService.CreateAllowanceByCountryName(countryName, allowanceViewModel))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Allowance has been created!";
+                _toastNotification.AddSuccessToastMessage("Allowance has been created!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Allowance creation failed!";
+                _toastNotification.AddErrorToastMessage("Allowance creation failed!");
             }
 
             return Redirect($"/Country/ReviewAllowances/{countryName}");

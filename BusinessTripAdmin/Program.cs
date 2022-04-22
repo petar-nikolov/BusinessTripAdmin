@@ -2,6 +2,7 @@ using BusinessTripAdmin.Infrastructure.Constants;
 using BusinessTripAdmin.Infrastructure.Data;
 using BusinessTripAdmin.ModelBinders;
 using Microsoft.AspNetCore.Identity;
+using NToastNotify;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,11 @@ builder.Services.AddControllersWithViews()
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
         options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(FormatingConstants.NormalDateFormat));
         options.ModelBinderProviders.Insert(2, new DoubleModelBinderProvider());
+    })
+    .AddNToastNotifyToastr(new ToastrOptions
+    {
+        ProgressBar = false,
+        PositionClass = ToastPositions.TopRight
     });
 
 builder.Services.AddApplicationServices();
@@ -57,6 +63,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseNToastNotify();
 
 app.MapControllerRoute(
     name: "Area",

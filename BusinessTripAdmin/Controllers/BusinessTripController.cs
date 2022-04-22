@@ -1,7 +1,7 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
-using BusinessTripAdmin.Core.Constants;
 using BusinessTripAdmin.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace BusinessTripAdmin.Controllers
 {
@@ -12,12 +12,20 @@ namespace BusinessTripAdmin.Controllers
         private readonly IEmployeeService _employeeService;
         private readonly IUserService _userService;
 
-        public BusinessTripController(IBusinessTripService businessTripService, ICountryService countryService, IEmployeeService employeeService, IUserService userService)
+        private readonly IToastNotification _toastNotification;
+
+        public BusinessTripController(
+            IBusinessTripService businessTripService,
+            ICountryService countryService,
+            IEmployeeService employeeService,
+            IUserService userService,
+            IToastNotification toastNotification)
         {
             _businessTripService = businessTripService;
             _countryService = countryService;
             _employeeService = employeeService;
             _userService = userService;
+            _toastNotification = toastNotification;
         }
 
         [Route("BusinessTrip/GetBusinessTrips/{userId}")]
@@ -44,17 +52,17 @@ namespace BusinessTripAdmin.Controllers
         {
             if (!ModelState.IsValid || !createBusinessTrip.Employees.Any())
             {
-                ViewData[MessageConstants.ErrorMessage] = "Business Trip creation failed!";
+                _toastNotification.AddErrorToastMessage("Business Trip creation failed!");
                 return View(createBusinessTrip);
             }
 
             if (await _businessTripService.CreateBusinessTrip(createBusinessTrip))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Business Trip has been created!";
+                _toastNotification.AddSuccessToastMessage("Business Trip has been created!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Business Trip creation failed!";
+                _toastNotification.AddErrorToastMessage("Business Trip creation failed!");
             }
 
             return Redirect($"/BusinessTrip/GetBusinessTrips/{userId}");

@@ -1,17 +1,19 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
-using BusinessTripAdmin.Core.Constants;
 using BusinessTripAdmin.Core.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace BusinessTripAdmin.Controllers
 {
     public class EmployeeController : BaseController
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IToastNotification _toastNotification;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService, IToastNotification toastNotification)
         {
             _employeeService = employeeService;
+            _toastNotification = toastNotification;
         }
 
         public async Task<IActionResult> GetEmployees()
@@ -36,11 +38,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (await _employeeService.CreateEmployee(createEmployee, organizationId))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Emplyoee has been created!";
+                _toastNotification.AddSuccessToastMessage("Emplyoee has been created!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Employee creation failed!";
+                _toastNotification.AddErrorToastMessage("Employee creation failed!");
             }
 
             return Redirect("/Employee/GetEmployees");
@@ -73,11 +75,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (await _employeeService.EditEmployee(employeeToEdit, employeeId))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Emplyoee has been editted!";
+                _toastNotification.AddSuccessToastMessage("Emplyoee has been editted!");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Employee edit failed!";
+                _toastNotification.AddErrorToastMessage("Employee edit failed!");
             }
 
             return Redirect("/Employee/GetEmployees");
@@ -90,11 +92,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (isDeactivated)
             {
-                ViewData[MessageConstants.SuccessMessage] = "Employee is deactivated successfully.";
+                _toastNotification.AddSuccessToastMessage("Employee is deactivated successfully");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Employee deactivation failed!";
+                _toastNotification.AddErrorToastMessage("Employee deactivation failed!");
             }
 
             return Redirect("/Employee/GetEmployees");
@@ -107,11 +109,11 @@ namespace BusinessTripAdmin.Controllers
 
             if (isActivated)
             {
-                ViewData[MessageConstants.SuccessMessage] = "Employee is activated successfully.";
+                _toastNotification.AddSuccessToastMessage("Employee is activated successfully");
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "Employee activation failed!";
+                _toastNotification.AddErrorToastMessage("Employee activation failed!");
             }
 
             return Redirect("/Employee/GetEmployees");
