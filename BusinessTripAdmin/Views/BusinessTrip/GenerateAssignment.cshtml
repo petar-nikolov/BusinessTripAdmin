@@ -1,0 +1,46 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@model PreviewAssignmentViewModel
+@{
+    ViewData["Title"] = "Generate assignment";
+    var bId = ViewBag.BusinessTripId.ToString();
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Please fulfill trip data on cyrilic for the bulgarian assignment</h3>
+            </div>
+            <form id="create" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="EmployeeFullNameCyrillic" class="form-label">Employee Full Name</label>
+                        <input asp-for="EmployeeFullNameCyrillic" class="form-control" aria-required="true" placeholder="Enter cyrillic employee name" />
+                        <span asp-validation-for="EmployeeFullNameCyrillic" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TripByCyrillic" class="form-label">Trip By</label>
+                        <input asp-for="TripByCyrillic" class="form-control" aria-required="true" placeholder="Enter vehicle name on cyrillic" />
+                        <span asp-validation-for="TripByCyrillic" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TripToCyrillic" class="form-label">Trip To</label>
+                        <input asp-for="TripToCyrillic" class="form-control" aria-required="true" placeholder="Enter cyrillic name of destination country" />
+                        <span asp-validation-for="TripToCyrillic" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PurposeCyrillic" class="form-label">Purpose</label>
+                        <input asp-for="PurposeCyrillic" class="form-control" aria-required="true" placeholder="Enter trip purpose on cyrillic" />
+                        <span asp-validation-for="PurposeCyrillic" class="text-danger"></span>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="submit" asp-controller="BusinessTrip" asp-action="PreviewAssignment" asp-route-id="@bId" class="btn btn-block btn-light btn-sm">Preview Assignment</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

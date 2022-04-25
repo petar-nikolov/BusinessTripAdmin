@@ -1,5 +1,6 @@
 ﻿using BusinessTripAdmin.Core.Abstract;
 using BusinessTripAdmin.Core.ViewModels;
+using BusinessTripAdmin.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 
@@ -11,6 +12,7 @@ namespace BusinessTripAdmin.Controllers
         private readonly ICountryService _countryService;
         private readonly IEmployeeService _employeeService;
         private readonly IUserService _userService;
+        private Dictionary<string, object> _data = new Dictionary<string, object>();
 
         private readonly IToastNotification _toastNotification;
 
@@ -56,6 +58,12 @@ namespace BusinessTripAdmin.Controllers
                 return View(createBusinessTrip);
             }
 
+            if(!await _businessTripService.IsThereValidAllowanceForTheTrip(createBusinessTrip))
+            {
+                _toastNotification.AddErrorToastMessage("There is no allowances for the selected trip or there is more than one for the trip period.");
+                return View(createBusinessTrip);
+            }
+
             if (await _businessTripService.CreateBusinessTrip(createBusinessTrip))
             {
                 _toastNotification.AddSuccessToastMessage("Business Trip has been created!");
@@ -66,6 +74,32 @@ namespace BusinessTripAdmin.Controllers
             }
 
             return Redirect($"/BusinessTrip/GetBusinessTrips/{userId}");
+        }
+        
+        [HttpGet]
+        [Route("BusinessTrip/GenerateAssignment/{businessTripId}")]
+        public async Task<IActionResult> GenerateAssignmentAsync(Guid businessTripId)
+        {
+            ViewBag.BusinessTripId = businessTripId;
+            return View();
+        }
+
+        [HttpPost]
+        [Route("BusinessTrip/PreviewAssignment/{businessTripId}")]
+        public async Task<IActionResult> PreviewAssignmentAsync(PreviewAssignmentViewModel completedGeneratedAssignment, string businessTripId)
+        {
+            var generatedAssignment = await _businessTripService.PrepareAssignmentGeneration(Guid.Parse(businessTripId));
+            generatedAssignment.TripByCyrillic = completedGeneratedAssignment.TripByCyrillic;
+            generatedAssignment.TripToCyrillic = completedGeneratedAssignment.TripToCyrillic;
+            generatedAssignment.EmployeeFullNameCyrillic = completedGeneratedAssignment.EmployeeFullNameCyrillic;
+            generatedAssignment.PurposeCyrillic = completedGeneratedAssignment.PurposeCyrillic;
+            ViewBag.GeneratedAssignment = generatedAssignment;
+            return View();
+        }
+
+        public IActionResult PreviewAssignment()
+        {
+            return View();
         }
     }
 }

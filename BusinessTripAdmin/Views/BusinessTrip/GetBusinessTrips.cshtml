@@ -9,7 +9,7 @@
     ViewData["Title"] = "Employees Business Trips";
 }
 
-@if(User.IsInRole("Administrator"))
+@if (User.IsInRole("Administrator"))
 {
     <div class="row">
         <table class="table">
@@ -30,7 +30,7 @@
         <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control float-right" id="myInput" placeholder="Search">
-             </div>
+            </div>
         </div>
     </div>
 
@@ -49,6 +49,7 @@
                     <th>Currency</th>
                     <th>Trip By</th>
                     <th>Purpose</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -67,7 +68,15 @@
                             <td>@businessTripViewModel.TripCurrency</td>
                             <td>@businessTripViewModel.TripBy</td>
                             <td>@businessTripViewModel.Purpose</td>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a href="/BusinessTrip/GenerateAssignment/@businessTripViewModel.BusinessTripId" class="btn btn-block btn-default">Generate Assignment</a>
+                                </td>
+                            }
                         </tr>
+
+
                     }
                 }
             </tbody>

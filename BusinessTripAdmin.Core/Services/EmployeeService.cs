@@ -152,7 +152,7 @@ namespace BusinessTripAdmin.Core.Services
 
         public async Task<Employee> GetEmployeeById(Guid employeeId)
         {
-            var employee = await _applicationRepository.GetAll<Employee>().FirstOrDefaultAsync(x => x.Id == employeeId);
+            var employee = await _applicationRepository.GetAll<Employee>().Include(x => x.Organization).FirstOrDefaultAsync(x => x.Id == employeeId);
             if (employee == null)
             {
                 throw new ArgumentException("No Employee");

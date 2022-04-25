@@ -10,5 +10,11 @@ namespace BusinessTripAdmin.Core.Abstract
         Task<(IEnumerable<CountryViewModel>, IEnumerable<EmployeeViewModel>)> GetDataForCreateAsync(string userId);
 
         Task<bool> CreateBusinessTrip(CreateBusinessTrip createBusinessTrip);
+
+        Task<EmployeeBusinessTrip> GetTripById(Guid id);
+
+        Task<bool> IsThereValidAllowanceForTheTrip(CreateBusinessTrip createBusinessTrip);
+
+        Task<PreviewAssignmentViewModel> PrepareAssignmentGeneration(Guid businessTripId);
     }
 }

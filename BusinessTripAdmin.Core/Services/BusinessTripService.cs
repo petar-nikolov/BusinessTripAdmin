@@ -72,7 +72,9 @@ namespace BusinessTripAdmin.Core.Services
             var userOrgId = await _userService.GetOrganizationIdByUserId(userId);
             var organizationEmployees = await _employeeService.GetActiveEmployeesByOrganizationId(userOrgId);
             var employeeIds = organizationEmployees.Where(x => x.IsActive).Select(x => x.EmployeeId).ToList();
-            var businessTrips = await _applicationDbRepository.GetAll<EmployeeBusinessTrip>().Where(x => employeeIds.Any(eid => eid == x.EmployeeId)).Include(x => x.TripDetail)
+            var businessTrips = await _applicationDbRepository.GetAll<EmployeeBusinessTrip>()
+                .Include(x => x.Employee)
+                .Where(x => employeeIds.Any(eid => eid == x.EmployeeId)).Include(x => x.TripDetail)
                 .OrderByDescending(x => x.CreatedDate)
                 .Select(bt => new BusinessTripViewModel
                 {
@@ -85,6 +87,7 @@ namespace BusinessTripAdmin.Core.Services
                     TripTo = bt.TripTo,
                     TripBy = bt.TripDetail.TripBy,
                     Purpose = bt.Purpose,
+                    BusinessTripId = bt.Id
                 }).ToListAsync();
 
             foreach (var trip in businessTrips)
@@ -125,6 +128,66 @@ namespace BusinessTripAdmin.Core.Services
         {
             var country = await _countryService.GetCountryByName(countryName);
             return country.CurrencyCode.ToString();
+        }
+
+        public async Task<EmployeeBusinessTrip> GetTripById(Guid id)
+        {
+            var businessTrip = await _applicationDbRepository.GetAll<EmployeeBusinessTrip>()
+                .Include(e => e.Employee)
+                .Include(e => e.TripDetail)
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (businessTrip == null)
+            {
+                throw new ArgumentException("No trip to return");
+            }
+
+            return businessTrip;
+        }
+
+        public async Task<bool> IsThereValidAllowanceForTheTrip(CreateBusinessTrip createBusinessTrip)
+        {
+            var isOnlyOne = true;
+            var countryAllowances = await _countryService.GetAllCountryAllowancesByCountryName(createBusinessTrip.TripTo);
+
+            var tripAllowances = countryAllowances.Where(x => (x.ValidFrom <= createBusinessTrip.DateFrom && x.ValidTo == null) ||
+                                                              (x.ValidFrom <= createBusinessTrip.DateFrom && x.ValidTo >= createBusinessTrip.DateTo));
+
+            if (tripAllowances.Count() == 1)
+            {
+                return true;
+            }
+
+            else
+            {
+                isOnlyOne = false;
+            }
+
+            return isOnlyOne;
+        }
+
+        public async Task<PreviewAssignmentViewModel> PrepareAssignmentGeneration(Guid businessTripId)
+        {
+            var businessTrip = await GetTripById(businessTripId);
+            var destinationCountry = await _countryService.GetCountryByName(businessTrip.TripTo);
+            var cyrrentCountryAllowance = destinationCountry.GetCurrentCountryAllowance();
+            var employee = await _employeeService.GetEmployeeById(businessTrip.EmployeeId);
+            var generateAssignment = new PreviewAssignmentViewModel
+            {
+                EmployeeFullName = $"{employee.FirstName} {employee.LastName}",
+                DailyAllowance = cyrrentCountryAllowance.DailyAllowance,
+                AccomodationAllowance = cyrrentCountryAllowance.AccomodationAllowance,
+                TripTo = businessTrip.TripTo,
+                FromDate = businessTrip.DateFrom,
+                ToDate = businessTrip.DateTo,
+                Position = employee.PositionName,
+                OrganizationName = employee.Organization.OrganizationName,
+                CurrencyCode = destinationCountry.CurrencyCode,
+                TransportNumber = businessTrip.TripDetail.TransportNumber,
+                TotalDays = businessTrip.TotalDays,
+                Purpose = businessTrip.Purpose,
+            };
+
+            return generateAssignment;
         }
     }
 }

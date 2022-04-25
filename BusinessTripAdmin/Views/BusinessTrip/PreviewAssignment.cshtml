@@ -1,0 +1,95 @@
+﻿@using BusinessTripAdmin.Core.ViewModels
+@{
+    var generatedAssignment = (PreviewAssignmentViewModel)ViewBag.GeneratedAssignment;
+}
+
+<div>
+    <div style="text-align: center;">
+        <br>
+        <p><strong>@generatedAssignment.OrganizationName</strong></p>
+        <p> _________________________________________________________________ </p>
+        <br>
+    </div>
+
+    <table>
+        <tbody>
+            <div>
+        <td>
+            <div style="text-align: center; padding: 20px;">
+                <p><strong>BUSINESS TRIP ASSIGNMENT</strong></p>
+                <p><strong>No: </strong><strong>001</strong><strong>/@DateTime.Today.ToString("dd-MM-yyyy")</strong></p>
+            </div>
+            <div style="text-align: justify; padding: 20px;">
+                <p>
+                    On the authority of the instruction for business trip abroad art.121 and art.215 and art.310
+                    from labor code, I am sending on a business trip:
+                </p>
+            </div>
+            <div style="text-align: center; padding: 10px;">
+                <p><strong>@generatedAssignment.EmployeeFullName</strong></p>
+                <p>Field Operations Engineer, O&amp;E at</p>
+                <p>@generatedAssignment.OrganizationName</p>
+            </div>
+
+            <div style="text-align: justify; padding: 20px;">
+                <p>
+                    To @generatedAssignment.TripTo for a period of @generatedAssignment.TotalDays days, from @generatedAssignment.FromDate.ToShortDateString() to @generatedAssignment.ToDate.ToShortDateString(). The purpose of the
+                    visit is @generatedAssignment.Purpose.
+                    The amount of daily, travel and accommodation allowances will be covered by company of @generatedAssignment.OrganizationName
+                </p>
+            </div>
+
+            <div style="text-align: justify; padding: 20px;">
+                <p>
+                    Employee is obliged to create not later than 14 days after return a financial report on the
+                    expenses incurred in Concur.
+                    Original receipts to submit to the finance department.
+                </p>
+                <p>@DateTime.Today.ToString("dd-MM-yyyy")</p>
+                <p>
+                            @generatedAssignment.OrganizationName;
+                    Bulgaria&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.&nbsp;
+                </p>
+            </div>
+        </td>
+</div>
+<div>
+    <td>
+        <div style="text-align: center; padding: 20px;">
+            <p><strong>ЗАПОВЕД</strong></p>
+            <p><strong>No: 001/</strong><strong>@DateTime.Today.ToString("dd-MM-yyyy")</strong></p>
+        </div>
+        <div style="text-align: justify; padding: 10px;">
+            <p>
+                На основание чл. 121 във връзка с чл.215 и чл.310 от КТ и Наредбата за служебни командировки
+                и специализации в чужбина
+            </p>
+        </div>
+        <div>
+        </div>
+        <div style="padding: 20px;">
+            <p style="text-align: center;"><strong>КОМАНДИРОВАМ</strong></p>
+            <p style="text-align: justify;">
+                <strong>@generatedAssignment.EmployeeFullNameCyrillic,</strong> на длъжност: Field Operations Engineer, O&amp;E
+                зa @generatedAssignment.PurposeCyrillic до @generatedAssignment.TripToCyrillic за срок от @generatedAssignment.TotalDays дни, от @generatedAssignment.FromDate.ToShortDateString() до @generatedAssignment.ToDate.ToShortDateString() включително. Пътуването
+                да се осъществи с @generatedAssignment.TripByCyrillic @generatedAssignment.TransportNumber
+            </p>
+        </div>
+
+        <p>С оглед изпълнението на заповедта определям следните командировъчни пари:</p>
+        <p>1. Дневни пари в размер на @generatedAssignment.DailyAllowance @generatedAssignment.CurrencyCode</p>
+        <p>
+            2. Квартирни пари до @generatedAssignment.AccomodationAllowance @generatedAssignment.CurrencyCode на нощувка, съобразно представен отчетен документ, в т. ч. платени
+            суми за резервация и курортна такса.
+        </p>
+        <p>
+            Задължавам командированият да създаде Не по-късно от 14 дневен срок след завръщането му, финансов
+            отчет за извършените разходи в Конкър. Оригиналните документи да представи във финансовия отдел.
+        </p>
+        <p>Дата: @DateTime.Today.ToString("dd-MM-yyyy")</p>
+        <p>@generatedAssignment.OrganizationName България..................................</p>
+    </td>
+</div>
+        </tbody>
+    </table>
+</div>
